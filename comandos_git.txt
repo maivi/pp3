@@ -1,4 +1,4 @@
-Comandos Git
+Comandos maivi
 1 - git fetch (Actualiza el repositorio local, con el online)
 
 2 - git checkout "nombre_del_branch" (Pasarte a otro branch o rama del proyecto)
