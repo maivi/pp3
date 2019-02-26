@@ -1,11 +1,13 @@
+
 Comandos German
+
 1 - git fetch (Actualiza el repositorio local, con el online)
 
 2 - git checkout "nombre_del_branch" (Pasarte a otro branch o rama del proyecto)
 
 3 - git status (Me muestra todos los ficheros cambiados)
 
-4 - git add .
+4 - git add .  (Me agrega todos los archivos que cambie para poder comitiarlos)
 
 5 - git commit -m "Cambie la ventana de inicio al login. Agregue un fichero con los comandos de git"
 
