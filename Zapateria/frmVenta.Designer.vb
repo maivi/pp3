@@ -98,6 +98,8 @@ Partial Class frmVenta
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Nombre = New System.Windows.Forms.Label()
         Me.bsProductos = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.lblCajero = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel5.SuspendLayout()
@@ -120,6 +122,8 @@ Partial Class frmVenta
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.Teal
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.lblCajero)
+        Me.Panel2.Controls.Add(Me.Label16)
         Me.Panel2.Controls.Add(Me.Label3)
         Me.Panel2.Location = New System.Drawing.Point(11, 12)
         Me.Panel2.Name = "Panel2"
@@ -945,6 +949,26 @@ Partial Class frmVenta
         Me.Nombre.TabIndex = 0
         Me.Nombre.Text = "Producto:"
         '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(1166, 22)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(64, 21)
+        Me.Label16.TabIndex = 8
+        Me.Label16.Text = "Cajero:"
+        '
+        'lblCajero
+        '
+        Me.lblCajero.AutoSize = True
+        Me.lblCajero.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCajero.Location = New System.Drawing.Point(1254, 20)
+        Me.lblCajero.Name = "lblCajero"
+        Me.lblCajero.Size = New System.Drawing.Size(167, 23)
+        Me.lblCajero.TabIndex = 9
+        Me.lblCajero.Text = "aca nombre cajero"
+        '
         'frmVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -1047,4 +1071,6 @@ Partial Class frmVenta
     Friend WithEvents chBoxDescuento As System.Windows.Forms.CheckBox
     Friend WithEvents txtStock As System.Windows.Forms.TextBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents lblCajero As System.Windows.Forms.Label
+    Friend WithEvents Label16 As System.Windows.Forms.Label
 End Class
