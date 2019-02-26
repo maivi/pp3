@@ -11,3 +11,18 @@
 6 - git push origin develop (Sube los cambios online, a la rama develop)
  
 7 - git pull origin develop (Trae los cambios a mi rama actual localmente, desde la rama develop)
+
+8 - git checkout -b "nombre_de_la_rama" (Crea una rama local. Para subirla hay que hacer un push)
+
+
+PARA MERGEAR
+
+1 - git add .
+
+2 - git commit -m "comentarios"
+
+3 - git push origin nombre_de_la_rama
+
+4 - git checkout develop
+
+5 - 
