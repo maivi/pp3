@@ -25,4 +25,11 @@ PARA MERGEAR
 
 4 - git checkout develop
 
-5 - 
+5 - git merge branch_donde_estoy_parado branch_que_quiero_mergear (Mergea, o mezcla, todos los archivos faltantes en la rama que desee) 
+
+git merge develop German
+git merge develop maivi
+
+6 - git push origin develop
+
+FOOTER
