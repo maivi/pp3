@@ -39,4 +39,5 @@ git config --global user.name "maivi" (Almacena el Usuario)
 git config --global user.email "maximilianokadyszyn@gmail.com" (Almacena el Email)
 git config credential.helper store (Deja seteado el password)
 
-FOOTER
+
+SI HAY ERROR EN MERGE, ESCRIBIR :qa! Y PRESIONAR ENTER
