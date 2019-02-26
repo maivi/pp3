@@ -1,0 +1,42 @@
+1 - git fetch (Actualiza el repositorio local, con el online)
+
+2 - git checkout "nombre_del_branch" (Pasarte a otro branch o rama del proyecto)
+
+3 - git status (Me muestra todos los ficheros cambiados)
+
+4 - git add .
+
+5 - git commit -m "Cambie la ventana de inicio al login. Agregue un fichero con los comandos de git"
+
+6 - git push origin develop (Sube los cambios online, a la rama develop)
+ 
+7 - git pull origin develop (Trae los cambios a mi rama actual localmente, desde la rama develop)
+
+8 - git checkout -b "nombre_de_la_rama" (Crea una rama local. Para subirla hay que hacer un push)
+
+
+PARA MERGEAR
+
+1 - git add .
+
+2 - git commit -m "comentarios"
+
+3 - git push origin nombre_de_la_rama
+
+4 - git checkout develop
+
+5 - git merge branch_donde_estoy_parado branch_que_quiero_mergear (Mergea, o mezcla, todos los archivos faltantes en la rama que desee) 
+
+git merge develop German
+git merge develop maivi
+
+6 - git push origin develop
+
+
+COMANDOS USUARIO
+
+git config --global user.name "maivi" (Almacena el Usuario)
+git config --global user.email "maximilianokadyszyn@gmail.com" (Almacena el Email)
+git config credential.helper store (Deja seteado el password)
+
+FOOTER
