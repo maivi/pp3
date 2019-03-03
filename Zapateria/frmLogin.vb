@@ -2,7 +2,6 @@
 
 Public Class frmLogin
     Private MySql As New Utilidades_MySQL
-    'Public con As New MySqlConnection("server=localhost;user id=root;password=mik35563123;persistsecurityinfo=True;database=agenda")
     Public dr As MySqlDataReader
     Public cmd As MySqlCommand
 

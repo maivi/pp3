@@ -2,7 +2,6 @@
 
 Public Class frmMenu
     Private MySql As New Utilidades_MySQL
-    'Public MysqlConexion As New MySqlConnection("server=localhost;user id=root;password=mik35563123;persistsecurityinfo=True;database=agenda")
     Public MysqlCommand As New MySqlCommand
     Public oDataAdapter As New MySqlDataAdapter
     Public oDataSet As New DataSet
@@ -49,6 +48,7 @@ Public Class frmMenu
 
     Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
         Me.Close()
+        frmLogin.Close()
     End Sub
 
     Private Sub btnVentas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVentas.Click
