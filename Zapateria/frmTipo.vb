@@ -11,27 +11,49 @@ Public Class frmTipo
 
     Private Sub frmCategoria_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ObtenerDatos()
-        dgvTipo.Columns("descripcion").Visible = False
+        dgvTipo.Columns("Descripcion").Visible = False
         dgvTipo.Columns("activo").Visible = False
-        dgvTipo.Columns("idTipo").Visible = False
+        dgvTipo.Columns("IdTipoProducto").Visible = False
         btnGuardar.Visible = True
         btnActualizar.Visible = False
+        btnEliminar.Visible = False
     End Sub
 
 
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
+        Dim consulta As String
+        sqlComando = "SELECT * FROM tipoproducto WHERE TipoProducto='" & txtTipo.Text & "';"
+        MySql.MiComandoSQL(sqlComando, Tipo)
+        consulta = Tipo.nombre
 
-        sqlComando = "INSERT into `agenda`.`tipo`(`nombre`,`descripcion`,`activo`) VALUES ('" & txtTipo.Text & "','" & txtDescripcionTipo.Text & "',1);"
-        MySql.MiComandoSQL(sqlComando)
-        MsgBox("El Tipo de calzado " & txtTipo.Text & " ha sido dado de alta ")
-        ObtenerDatos()
-        limpiar()
+        Try
+            If consulta = txtTipo.Text Then
+                MsgBox("Este Tipo de calzado ya existe en la base de datos")
+
+            Else
+                sqlComando = "INSERT into `zapateria`.`tipoproducto`(`TipoProducto`,`Descripcion`,`Activo`) VALUES ('" & txtTipo.Text & "','" & txtDescripcionTipo.Text & "',1);"
+                MySql.MiComandoSQL(sqlComando)
+                MsgBox("El Tipo de calzado " & txtTipo.Text & " ha sido dado de alta ")
+                ObtenerDatos()
+            End If
+
+            limpiar()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+
+        'sqlComando = "INSERT into `zapateria`.`tipoproducto`(`TipoProducto`,`Descripcion`,`Activo`) VALUES ('" & txtTipo.Text & "','" & txtDescripcionTipo.Text & "',1);"
+        'MySql.MiComandoSQL(sqlComando)
+        'MsgBox("El Tipo de calzado " & txtTipo.Text & " ha sido dado de alta ")
+        'ObtenerDatos()
+        'limpiar()
     End Sub
 
     Private Sub ObtenerDatos()
 
         Dim tablaTipo As New DataTable
-        MySql.MiComandoSQL("SELECT idTipo, nombre as categoria, descripcion, activo FROM tipo WHERE activo=1", tablaTipo)
+        MySql.MiComandoSQL("SELECT IdTipoProducto, TipoProducto as categoria, Descripcion, Activo FROM tipoproducto WHERE Activo=1", tablaTipo)
         bscategoria.DataSource = tablaTipo
         dgvTipo.DataSource = bscategoria.DataSource
 
@@ -43,10 +65,10 @@ Public Class frmTipo
 
         btnGuardar.Visible = False
         btnActualizar.Visible = True
-
+        btnEliminar.Visible = True
         idTipo = dgvTipo.Rows(dgvTipo.CurrentRow.Index).Cells(0).Value
         Tipo.idTipo = idTipo
-        sqlComando = "SELECT * FROM tipo WHERE idTipo='" & Tipo.idTipo & "';"
+        sqlComando = "SELECT * FROM tipoproducto WHERE IdTipoProducto='" & Tipo.idTipo & "';"
         MySql.MiComandoSQL(sqlComando, Tipo)
 
     End Sub
@@ -64,6 +86,7 @@ Public Class frmTipo
         limpiar()
         btnGuardar.Visible = True
         btnActualizar.Visible = False
+        btnEliminar.Visible = False
     End Sub
 
     Private Sub btnEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminar.Click
@@ -76,9 +99,8 @@ Public Class frmTipo
         Try
             If (Resultado = DialogResult.Yes) Then
 
-                sqlComando = "Update tipo set activo=0 where idtipo='" & idTipo & "';"
+                sqlComando = "Update tipoproducto set activo=0 where IdTipoProducto='" & idTipo & "';"
                 MySql.MiComandoSQL(sqlComando)
-                MsgBox(sqlComando)
                 MsgBox("El Tipo " & Nombre & " ha sido dado de baja", MsgBoxStyle.Exclamation)
             Else
                 MsgBox("El Tipo " & Nombre & " no ha sido dado de baja", MsgBoxStyle.Exclamation)
@@ -99,8 +121,8 @@ Public Class frmTipo
         Tipo2.descripcion = txtDescripcionTipo.Text
         Tipo2.activo = Tipo.activo
 
-        sqlComando = MySql.MiComandoSQL("tipo", Tipo2, Tipo)
-        MsgBox(sqlComando)
+        sqlComando = MySql.MiComandoSQL("tipoproducto", Tipo2, Tipo)
+
         If MySql.MiComandoSQL(sqlComando) Then
             MsgBox("El Tipo de calzado ha sido actualizado")
         Else
@@ -109,4 +131,6 @@ Public Class frmTipo
         ObtenerDatos()
         limpiar()
     End Sub
+
+
 End Class

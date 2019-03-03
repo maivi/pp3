@@ -9,8 +9,8 @@ Public Class frmVenta
 
     Private Sub frmVenta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         llenarProducto()
-        dgvProducto.Columns("idProducto").Visible = False
-        dgvProducto.Columns("PrecCompra").Visible = False
+        dgvProducto.Columns("IdProducto").Visible = False
+        dgvProducto.Columns("PrecioCompra").Visible = False
         dgvProducto.Columns("Activo").Visible = False
         txtTotalVenta.Text = "0"
     End Sub
@@ -20,7 +20,7 @@ Public Class frmVenta
 
     Private Sub llenarProducto()
         Dim tablaProducto As New DataTable
-        MySql.MiComandoSQL("SELECT idProducto, CodigoProducto as Codigo, GeneroProducto as Genero, NombreProducto as Producto, TalleProducto as Talle, TipoProducto as tipo, Proveedor, PrecCompra, PrecVenta as Precio, Stock, Activo FROM producto WHERE activo=1", tablaProducto)
+        MySql.MiComandoSQL("SELECT IdProducto, CodigoProducto as Codigo, GeneroProducto as Genero, NombreProducto as Producto, TalleProducto as Talle, TipoProducto as tipo, Proveedor, PrecioCompra, PrecioVenta as Precio, Stock, Activo FROM producto WHERE activo=1", tablaProducto)
         bsProductos.DataSource = tablaProducto
         dgvProducto.DataSource = bsProductos.DataSource
     End Sub

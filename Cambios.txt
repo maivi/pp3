@@ -1,0 +1,5 @@
+* Unifique las llamadas a base de datos con solo la clase Utilidades
+
+* Modifique la DB, en la parte de Usuarios, porque no puede haber una Ñ, no es aceptada
+
+* Hay que adaptar todas las llamadas a la DB, porque los campos de la base de datos cambiaron

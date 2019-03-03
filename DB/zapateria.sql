@@ -126,7 +126,6 @@ CREATE TABLE `producto` (
 
 LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES (1,'','','','','','','','','',0),(2,'','','','','','','','','',0),(3,'22','1212','Hombre','121','212','21','1212','212','2112',1);
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -194,7 +193,7 @@ CREATE TABLE `tipoproducto` (
   `Descripcion` varchar(45) DEFAULT NULL,
   `Activo` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`IdTipoProducto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,6 +202,7 @@ CREATE TABLE `tipoproducto` (
 
 LOCK TABLES `tipoproducto` WRITE;
 /*!40000 ALTER TABLE `tipoproducto` DISABLE KEYS */;
+INSERT INTO `tipoproducto` VALUES (1,'Mocasin','',1),(2,'Zapatos Taco Alto','',1),(3,'Zapatos de Noche','',1),(4,'Botines','',1),(5,'zapatos','',1),(6,'botines','',0),(7,'botines','',0);
 /*!40000 ALTER TABLE `tipoproducto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,10 +218,10 @@ CREATE TABLE `usuario` (
   `Nombre` varchar(255) DEFAULT NULL,
   `Nivel` varchar(32) NOT NULL,
   `Usuario` varchar(45) DEFAULT NULL,
-  `Contraseña` varchar(45) DEFAULT NULL,
+  `Contrasenia` varchar(45) DEFAULT NULL,
   `Activo` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`IdUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -230,6 +230,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'Maivi','Administrador','maivi','1234',1);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -271,4 +272,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-25 21:22:54
+-- Dump completed on 2019-03-03  4:40:29

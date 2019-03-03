@@ -46,7 +46,7 @@ Public Class Utilidades_MySQL
         Dim CantRegIns As Integer
         Try
             Using MySQLConexion
-                Dim sql As String = "DELET FROM " & Tabla & " WHERE " & Condicion
+                Dim sql As String = "DELETE FROM " & Tabla & " WHERE " & Condicion
                 Comando = New MySqlCommand(sql, MySQLConexion)
                 CantRegIns = Comando.ExecuteNonQuery()
             End Using
@@ -221,6 +221,75 @@ Public Class Utilidades_MySQL
     '------------------------------------------------------------------------------------------------------------------------------------------
     '------------------------------------------------------------------------------------------------------------------------------------------
 
+    Public Function cantReg(ByVal selectSQL As String)
+        Dim comando As New MySqlCommand
+        Conectar()
+        Dim cantRegIns As Integer = 0
 
+        With comando
+            .CommandText = selectSQL
+            .Connection = MySQLConexion
+            .CommandType = CommandType.Text
+        End With
+
+        Try
+            Using MySQLConexion
+                MySQLConexion.Open()
+                cantRegIns = comando.ExecuteScalar()
+                If (cantRegIns <> Nothing) Then
+                    cantRegIns = Convert.ToInt32(cantRegIns)
+                End If
+            End Using
+        Catch e As MySqlException
+            MsgBox("Mensaje de Error:" & Chr(13) & e.Message, MsgBoxStyle.Critical, "Error en la operación MySQL")
+        Catch ex As Exception
+            MsgBox("Mensaje de Error:" & Chr(13) & ex.Message, MsgBoxStyle.Critical, "Error en la operación")
+        Finally
+            If MySQLConexion.State = ConnectionState.Open Then
+                MySQLConexion.Close()
+            End If
+        End Try
+
+        Return cantRegIns
+    End Function
+
+    Public Function obtenerTipoUsuarios(ByVal selectSQL As String)
+        Dim comando As New MySqlCommand
+        Dim dr As MySqlDataReader
+
+        Dim fila As New ArrayList
+        Dim tipoUsuarios As New List(Of ArrayList)
+        'foo.Add("Bar")
+
+        Conectar()
+        Dim cantRegIns As Integer = 0
+
+        With comando
+            .CommandText = selectSQL
+            .Connection = MySQLConexion
+            .CommandType = CommandType.Text
+        End With
+
+        Try
+            Using MySQLConexion
+                MySQLConexion.Open()
+                dr = comando.ExecuteReader()
+                If dr.Read Then
+                    fila.Add(dr(0).ToString)
+                    fila.Add(dr(1).ToString)
+                    tipoUsuarios.Add(fila)
+                End If
+            End Using
+
+        Catch e As MySqlException
+            MsgBox("Mensaje de Error:" & Chr(13) & e.Message, MsgBoxStyle.Critical, "Error en la operación MySQL")
+        Catch ex As Exception
+            MsgBox("Mensaje de Error:" & Chr(13) & ex.Message, MsgBoxStyle.Critical, "Error en la operación")
+        Finally
+            MySQLConexion.Close()
+        End Try
+
+        Return tipoUsuarios
+    End Function
 
 End Class
