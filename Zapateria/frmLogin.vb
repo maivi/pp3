@@ -1,8 +1,8 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class frmLogin
-
-    Public con As New MySqlConnection("server=localhost;user id=root;password=1234;persistsecurityinfo=True;database=agenda")
+    Private MySql As New Utilidades_MySQL
+    'Public con As New MySqlConnection("server=localhost;user id=root;password=mik35563123;persistsecurityinfo=True;database=agenda")
     Public dr As MySqlDataReader
     Public cmd As MySqlCommand
 
@@ -39,22 +39,14 @@ Public Class frmLogin
             MsgBox("Debe Lenar todos los campos", vbInformation, "Sistema!")
         ElseIf (txtUsuario.Text <> "" And txtContraseña.Text <> "") <> (txtUsuario.Text = "" And txtContraseña.Text = "") Then
 
-            con.Open()
-            Dim sql = "SELECT * FROM usuarios WHERE usuario = '" & txtUsuario.Text & "' AND pass= '" & txtContraseña.Text & "'"
-            Dim cmd = New MySqlCommand(sql, con)
-            Dim dr As MySqlDataReader = cmd.ExecuteReader
-            Try
-                If dr.Read = False Then
-                    MsgBox("No REGISTRADO", vbCritical, "Invalid Login")
-                Else
-                    frmMenu.Show()
-                    Me.Hide()
-                End If
-            Catch ex As Exception
-                MsgBox(ex.Message)
-            End Try
-            con.Close()
-
+            Dim sql As String = "SELECT * FROM usuario WHERE Usuario='" & txtUsuario.Text & "' AND Contrasenia='" & txtContraseña.Text & "'"
+            Dim cantReg As Integer = MySql.cantReg(sql)
+            If cantReg > 0 Then
+                frmMenu.Show()
+                Me.Hide()
+            Else
+                MsgBox("No REGISTRADO", vbCritical, "Invalid Login")
+            End If
         End If
     End Sub
 End Class

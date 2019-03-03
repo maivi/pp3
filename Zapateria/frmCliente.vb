@@ -133,20 +133,20 @@ Public Class frmCliente
         Try
             If consulta = "" Then
 
-                'If Me.ValidateChildren And cmbDocCliente.Text <> String.Empty And txtNombreCliente.Text <> String.Empty And txtDniCliente.Text <> String.Empty And txtDireccionCliente.Text <> String.Empty Then
+                If Me.ValidateChildren And cmbDocCliente.Text <> String.Empty And txtNombreCliente.Text <> String.Empty And txtDniCliente.Text <> String.Empty And txtDireccionCliente.Text <> String.Empty Then
 
-                sqlComando = "INSERT into `zapateria`.`cliente`(`TipoDocumento`,`DocumentoCliente`,`NombreCliente`,`DireccionCliente`,`TelefonoCliente`,`Activo`) VALUES ('" & cmbDocCliente.Text & "','" & txtDniCliente.Text & "','" & txtNombreCliente.Text & "','" & txtDireccionCliente.Text & "','" & txtTelefonoCliente.Text & "',1);"
-                MySql.MiComandoSQL(sqlComando)
-                MsgBox("El Cliente " & txtNombreCliente.Text & " ha sido dado de alta ")
-                ObtenerDatos()
+                    sqlComando = "INSERT into `zapateria`.`cliente`(`TipoDocumento`,`DocumentoCliente`,`NombreCliente`,`DireccionCliente`,`TelefonoCliente`,`Activo`) VALUES ('" & cmbDocCliente.Text & "','" & txtDniCliente.Text & "','" & txtNombreCliente.Text & "','" & txtDireccionCliente.Text & "','" & txtTelefonoCliente.Text & "',1);"
+                    MySql.MiComandoSQL(sqlComando)
+                    MsgBox("El Cliente " & txtNombreCliente.Text & " ha sido dado de alta ")
+                    ObtenerDatos()
 
 
-                'Else
-                'MessageBox.Show("Ingrese correctamente algunos Datos remarcados", "Registro de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                'End If
+                Else
+                    MessageBox.Show("Ingrese correctamente algunos Datos remarcados", "Registro de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End If
             End If
-            MsgBox("Esta DNI ya existe en la base de datos")
-            limpiar()
+                MsgBox("Esta DNI ya existe en la base de datos")
+                limpiar()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -181,21 +181,21 @@ Public Class frmCliente
         limpiar()
     End Sub
 
-    'Private Sub txtDniCliente_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtDniCliente.Validated
-    '    If DirectCast(sender, TextBox).Text.Length > 0 Then
-    '        Me.ErrorProvider1.SetError(sender, "")
-    '    Else
-    '        Me.ErrorProvider1.SetError(sender, "Ingrese el Documento del Cliente, este dato es obligatorio")
-    '    End If
-    'End Sub
+    Private Sub txtDniCliente_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtDniCliente.Validated
+        If DirectCast(sender, TextBox).Text.Length > 0 Then
+            Me.ErrorProvider1.SetError(sender, "")
+        Else
+            Me.ErrorProvider1.SetError(sender, "Ingrese el Documento del Cliente, este dato es obligatorio")
+        End If
+    End Sub
 
-    'Private Sub txtNombreCliente_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtNombreCliente.Validated
-    '    If DirectCast(sender, TextBox).Text.Length > 0 Then
-    '        Me.ErrorProvider1.SetError(sender, "")
-    '    Else
-    '        Me.ErrorProvider1.SetError(sender, "Ingrese el Nombre del Cliente, este dato es obligatorio")
-    '    End If
-    'End Sub
+    Private Sub txtNombreCliente_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtNombreCliente.Validated
+        If DirectCast(sender, TextBox).Text.Length > 0 Then
+            Me.ErrorProvider1.SetError(sender, "")
+        Else
+            Me.ErrorProvider1.SetError(sender, "Ingrese el Nombre del Cliente, este dato es obligatorio")
+        End If
+    End Sub
 
     'Private Sub cmbDocCliente_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles cmbDocCliente.Validating
     '    If DirectCast(sender, ComboBox).Text.Length > 0 Then
@@ -205,21 +205,21 @@ Public Class frmCliente
     '    End If
     'End Sub
 
-    'Private Sub txtDireccionCliente_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles txtDireccionCliente.Validating
-    '    If DirectCast(sender, TextBox).Text.Length > 0 Then
-    '        Me.ErrorProvider1.SetError(sender, "")
-    '    Else
-    '        Me.ErrorProvider1.SetError(sender, "Ingrese Domicilio del Cliente, este dato es obligatorio")
-    '    End If
-    'End Sub
+    Private Sub txtDireccionCliente_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles txtDireccionCliente.Validating
+        If DirectCast(sender, TextBox).Text.Length > 0 Then
+            Me.ErrorProvider1.SetError(sender, "")
+        Else
+            Me.ErrorProvider1.SetError(sender, "Ingrese Domicilio del Cliente, este dato es obligatorio")
+        End If
+    End Sub
 
-    'Private Sub txtTelefonoCliente_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtTelefonoCliente.Validated
-    '    If DirectCast(sender, MaskedTextBox).Text.Length > 0 Then
-    '        Me.ErrorProvider1.SetError(sender, "")
-    '    Else
-    '        Me.ErrorProvider1.SetError(sender, "Ingrese Numero de Telefono, este dato es obligatorio")
-    '    End If
-    'End Sub
+    Private Sub txtTelefonoCliente_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtTelefonoCliente.Validated
+        If DirectCast(sender, MaskedTextBox).Text.Length > 0 Then
+            Me.ErrorProvider1.SetError(sender, "")
+        Else
+            Me.ErrorProvider1.SetError(sender, "Ingrese Numero de Telefono, este dato es obligatorio")
+        End If
+    End Sub
 
     Private Sub txtDNICliente_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDniCliente.KeyPress
         If Char.IsDigit(e.KeyChar) Then

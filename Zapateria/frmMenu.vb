@@ -1,5 +1,17 @@
 ﻿Imports MySql.Data.MySqlClient
+
 Public Class frmMenu
+    Private MySql As New Utilidades_MySQL
+    'Public MysqlConexion As New MySqlConnection("server=localhost;user id=root;password=mik35563123;persistsecurityinfo=True;database=agenda")
+    Public MysqlCommand As New MySqlCommand
+    Public oDataAdapter As New MySqlDataAdapter
+    Public oDataSet As New DataSet
+    Public dr As MySqlDataReader
+    Public sSql As String
+    Private tipoUsuarios As New List(Of ArrayList)
+
+
+
     Private Sub Menu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Timer1.Start()
         frmLogin.Hide()
@@ -47,46 +59,30 @@ Public Class frmMenu
         frmCuentaCorriente.ShowDialog()
     End Sub
 
-    '------------------------------------------------------------------------------------------------------------------------------------
-
-    Public MysqlConexion As New MySqlConnection("server=localhost;user id=root;password=1234;persistsecurityinfo=True;database=agenda")
-    Public MysqlCommand As New MySqlCommand
-    Public oDataAdapter As New MySqlDataAdapter
-    Public oDataSet As New DataSet
-    Public dr As MySqlDataReader
-    Public sSql As String
-
-    Public Sub Conectar()
-        Try
-            MysqlConexion.Open()
-            ' MsgBox("Conexion exitosa")
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
-    End Sub
-
-    Public Sub desconectar()
-        MysqlConexion.Close()
-    End Sub
-
     Public Sub llenarTIPOSUARIO()
+        Dim i As Integer
         Try
-            MysqlCommand.Connection = MysqlConexion
-            MysqlCommand.CommandType = CommandType.Text
-            sSql = "SELECT nombre,roll FROM usuarios WHERE usuario ='" & frmLogin.txtUsuario.Text & "' and pass='" & frmLogin.txtContraseña.Text & "' "
-            MysqlCommand.CommandText = sSql
-            Conectar()
-            dr = MysqlCommand.ExecuteReader
+            ' MysqlCommand.Connection = MysqlConexion
+            'MysqlCommand.CommandType = CommandType.Text
+            sSql = "SELECT Nombre,Nivel FROM usuario WHERE Usuario ='" & frmLogin.txtUsuario.Text & "' and Contrasenia='" & frmLogin.txtContraseña.Text & "' "
+            'MysqlCommand.CommandText = sSql
+            'Conectar()
+            'dr = MysqlCommand.ExecuteReader
+            tipoUsuarios = MySql.obtenerTipoUsuarios(sSql)
+            For i = 0 To tipoUsuarios.Count() - 1
+                Me.lblUsuario.Text = tipoUsuarios(i).Item(0)
+                Me.lblRoll.Text = tipoUsuarios(i).Item(1)
+            Next
 
-            If dr.Read Then
-                Me.lblUsuario.Text = dr(0).ToString
-                Me.lblRoll.Text = dr(1).ToString
-            End If
+
+            'If dr.Read Then
+            '    Me.lblUsuario.Text = dr(0).ToString
+            '    Me.lblRoll.Text = dr(1).ToString
+            'End If
+            'dr.Close()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
-        dr.Close()
-        desconectar()
     End Sub
 
     '*** Restringir TIPO DE USUARIOS***
@@ -111,11 +107,11 @@ Public Class frmMenu
 
             End If
         End If
-        If (lblRoll.Text = "Cajero") Then
+        'If (lblRoll.Text = "Cajero") Then
 
-            btnUsuarios.Enabled = False
+        '    btnUsuarios.Enabled = False
 
-        End If
+        'End If
     End Sub
     Private Sub Timer1_Tick(ByVal sender As Object, ByVal e As EventArgs) Handles Timer1.Tick
         LblHora.Text = Now.ToLongTimeString

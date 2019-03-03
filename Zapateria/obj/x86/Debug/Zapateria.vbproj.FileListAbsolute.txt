@@ -18,3 +18,23 @@ C:\Users\German\Videos\Pictures\Documents\Visual Studio 2010\Projects\Zapateria\
 C:\Users\German\Videos\Pictures\Documents\Visual Studio 2010\Projects\Zapateria\Zapateria\obj\x86\Debug\Zapateria.frmLogin.resources
 C:\Users\German\videos\pictures\documents\visual studio 2010\Projects\Zapateria\Zapateria\obj\x86\Debug\Zapateria.frmTipo.resources
 C:\Users\German\videos\pictures\documents\visual studio 2010\Projects\Zapateria\Zapateria\obj\x86\Debug\Zapateria.frmStock.resources
+C:\Users\maxim\Desktop\pp3\Zapateria\bin\Debug\Zapateria.exe.config
+C:\Users\maxim\Desktop\pp3\Zapateria\obj\x86\Debug\Zapateria.exe
+C:\Users\maxim\Desktop\pp3\Zapateria\obj\x86\Debug\Zapateria.xml
+C:\Users\maxim\Desktop\pp3\Zapateria\obj\x86\Debug\Zapateria.pdb
+C:\Users\maxim\Desktop\pp3\Zapateria\bin\Debug\Zapateria.exe
+C:\Users\maxim\Desktop\pp3\Zapateria\bin\Debug\Zapateria.pdb
+C:\Users\maxim\Desktop\pp3\Zapateria\bin\Debug\Zapateria.xml
+C:\Users\maxim\Desktop\pp3\Zapateria\obj\x86\Debug\Zapateria.frmStock.resources
+C:\Users\maxim\Desktop\pp3\Zapateria\obj\x86\Debug\Zapateria.frmTipo.resources
+C:\Users\maxim\Desktop\pp3\Zapateria\obj\x86\Debug\Zapateria.frmCliente.resources
+C:\Users\maxim\Desktop\pp3\Zapateria\obj\x86\Debug\Zapateria.frmCuentaCorriente.resources
+C:\Users\maxim\Desktop\pp3\Zapateria\obj\x86\Debug\Zapateria.frmLogin.resources
+C:\Users\maxim\Desktop\pp3\Zapateria\obj\x86\Debug\Zapateria.frmMenu.resources
+C:\Users\maxim\Desktop\pp3\Zapateria\obj\x86\Debug\Zapateria.frmPresentacion.resources
+C:\Users\maxim\Desktop\pp3\Zapateria\obj\x86\Debug\Zapateria.frmProducto.resources
+C:\Users\maxim\Desktop\pp3\Zapateria\obj\x86\Debug\Zapateria.frmProveedor.resources
+C:\Users\maxim\Desktop\pp3\Zapateria\obj\x86\Debug\Zapateria.frmUsuario.resources
+C:\Users\maxim\Desktop\pp3\Zapateria\obj\x86\Debug\Zapateria.frmVenta.resources
+C:\Users\maxim\Desktop\pp3\Zapateria\obj\x86\Debug\Zapateria.Resources.resources
+C:\Users\maxim\Desktop\pp3\Zapateria\obj\x86\Debug\Zapateria.vbproj.GenerateResource.Cache
