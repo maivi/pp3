@@ -103,7 +103,7 @@ Public Class frmCliente
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
 
         Cliente2.IdCliente = Cliente.IdCliente
-        Cliente2.tipoDocumento = cmbDocCliente.Text
+        Cliente2.TipoDocumento = cmbDocCliente.Text
         Cliente2.DocumentoCliente = txtDniCliente.Text
         Cliente2.NombreCliente = txtNombreCliente.Text
         Cliente2.DireccionCliente = txtDireccionCliente.Text
@@ -126,31 +126,6 @@ Public Class frmCliente
 
         Dim consulta As String
 
-        sqlComando = "SELECT * FROM cliente WHERE DocumentoCliente='" & txtDniCliente.Text & "';"
-        MySql.MiComandoSQL(sqlComando, Cliente)
-        consulta = Cliente.DocumentoCliente
-
-        Try
-            If consulta = "" Then
-
-                If Me.ValidateChildren And cmbDocCliente.Text <> String.Empty And txtNombreCliente.Text <> String.Empty And txtDniCliente.Text <> String.Empty And txtDireccionCliente.Text <> String.Empty Then
-
-                    sqlComando = "INSERT into `zapateria`.`cliente`(`TipoDocumento`,`DocumentoCliente`,`NombreCliente`,`DireccionCliente`,`TelefonoCliente`,`Activo`) VALUES ('" & cmbDocCliente.Text & "','" & txtDniCliente.Text & "','" & txtNombreCliente.Text & "','" & txtDireccionCliente.Text & "','" & txtTelefonoCliente.Text & "',1);"
-                    MySql.MiComandoSQL(sqlComando)
-                    MsgBox("El Cliente " & txtNombreCliente.Text & " ha sido dado de alta ")
-                    ObtenerDatos()
-
-
-                Else
-                    MessageBox.Show("Ingrese correctamente algunos Datos remarcados", "Registro de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                End If
-            End If
-                MsgBox("Esta DNI ya existe en la base de datos")
-                limpiar()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-
         If cmbDocCliente.Text = "" Then
             MsgBox("Seleccione tipo de Documento", MsgBoxStyle.Information, "Guardar artículo")
             cmbDocCliente.Focus()
@@ -160,23 +135,43 @@ Public Class frmCliente
             txtDniCliente.Focus()
             Exit Sub
         ElseIf txtNombreCliente.Text = "" Then
-            MsgBox("Falta Nombre Cliente", MsgBoxStyle.Information, "Guardar artículo")
+            MsgBox("Falta Nombre del Cliente", MsgBoxStyle.Information, "Guardar artículo")
             txtNombreCliente.Focus()
             Exit Sub
-
-        End If
-
-        If consulta = "" Then
-
-            sqlComando = "INSERT into `zapateria`.`cliente`(`TipoDocumento`,`DocumentoCliente`,`NombreCliente`,`DireccionCliente`,`TelefonoCliente`,`Activo`) VALUES ('" & cmbDocCliente.Text & "','" & txtDniCliente.Text & "','" & txtNombreCliente.Text & "','" & txtDireccionCliente.Text & "','" & txtTelefonoCliente.Text & "',1);"
-            MySql.MiComandoSQL(sqlComando)
-            MsgBox("El Cliente " & txtNombreCliente.Text & " ha sido dado de alta ")
-            ObtenerDatos()
-
+        ElseIf txtDireccionCliente.Text = "" Then
+            MsgBox("Falta Dirección del Cliente", MsgBoxStyle.Information, "Guardar artículo")
+            txtDireccionCliente.Focus()
+            Exit Sub
+        ElseIf txtTelefonoCliente.Text = "(   )   -" Then
+            MsgBox("Falta Teléfono del Cliente", MsgBoxStyle.Information, "Guardar artículo")
+            txtTelefonoCliente.Focus()
+            Exit Sub
         Else
+            Cliente = New clsContactos
+            sqlComando = "SELECT * FROM cliente WHERE DocumentoCliente='" & txtDniCliente.Text & "';"
+            MySql.MiComandoSQL(sqlComando, Cliente)
+            consulta = Cliente.DocumentoCliente
+            Try
+                If consulta = "" Then
 
-            MsgBox("Esta DNI ya existe en la base de datos")
+                    If Me.ValidateChildren And cmbDocCliente.Text <> String.Empty And txtNombreCliente.Text <> String.Empty And txtDniCliente.Text <> String.Empty And txtDireccionCliente.Text <> String.Empty Then
 
+                        sqlComando = "INSERT into `zapateria`.`cliente`(`TipoDocumento`,`DocumentoCliente`,`NombreCliente`,`DireccionCliente`,`TelefonoCliente`,`Activo`) VALUES ('" & cmbDocCliente.Text & "','" & txtDniCliente.Text & "','" & txtNombreCliente.Text & "','" & txtDireccionCliente.Text & "','" & txtTelefonoCliente.Text & "',1);"
+                        MySql.MiComandoSQL(sqlComando)
+                        MsgBox("El Cliente " & txtNombreCliente.Text & " ha sido dado de alta ")
+                        ObtenerDatos()
+                        limpiar()
+
+                    Else
+                        MessageBox.Show("Ingrese correctamente algunos Datos remarcados", "Registro de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    End If
+                Else
+                    MsgBox("Este DNI ya existe en la base de datos")
+                    txtDniCliente.Focus()
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
         End If
         limpiar()
     End Sub

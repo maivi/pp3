@@ -27,9 +27,9 @@ Public Class Utilidades_MySQL
         Catch ex As Exception
             MsgBox("Mensaje de Error:" & Chr(13) & ex.Message, MsgBoxStyle.Critical, "Error en la operaciónL")
         Finally
-            If MySQLConexion.State = ConnectionState.Open Then
-                MySQLConexion.Close()
-            End If
+            'If MySQLConexion.State = ConnectionState.Open Then
+            MySQLConexion.Close()
+            'End If
         End Try
 
         If CantRegIns > 0 Then
@@ -46,6 +46,7 @@ Public Class Utilidades_MySQL
         Dim CantRegIns As Integer
         Try
             Using MySQLConexion
+                MySQLConexion.Open()
                 Dim sql As String = "DELETE FROM " & Tabla & " WHERE " & Condicion
                 Comando = New MySqlCommand(sql, MySQLConexion)
                 CantRegIns = Comando.ExecuteNonQuery()
@@ -55,9 +56,9 @@ Public Class Utilidades_MySQL
         Catch ex As Exception
             MsgBox("Mensaje de Error:" & Chr(13) & ex.Message, MsgBoxStyle.Critical, "Error en la operación")
         Finally
-            If MySQLConexion.State = ConnectionState.Open Then
-                MySQLConexion.Close()
-            End If
+            'If MySQLConexion.State = ConnectionState.Open Then
+            MySQLConexion.Close()
+            'End If
         End Try
 
         If CantRegIns > 0 Then
@@ -75,6 +76,7 @@ Public Class Utilidades_MySQL
         Dim CantRegIns As Integer
         Try
             Using MySQLConexion
+                MySQLConexion.Open()
                 Dim sql As String = "UPDATE " & Tabla & " SET " & Campos & " WHERE " & Condicion
                 Comando = New MySqlCommand(sql, MySQLConexion)
                 CantRegIns = Comando.ExecuteNonQuery()
@@ -84,9 +86,9 @@ Public Class Utilidades_MySQL
         Catch ex As Exception
             MsgBox("Mensaje de Error:" & Chr(13) & ex.Message, MsgBoxStyle.Critical, "Error en la operación")
         Finally
-            If MySQLConexion.State = ConnectionState.Open Then
-                MySQLConexion.Close()
-            End If
+            'If MySQLConexion.State = ConnectionState.Open Then
+            MySQLConexion.Close()
+            'End If
         End Try
 
         If CantRegIns > 0 Then
@@ -124,9 +126,9 @@ Public Class Utilidades_MySQL
         Catch ex As Exception
             MsgBox("Mensaje de Error:" & Chr(13) & ex.Message, MsgBoxStyle.Critical, "Error en la operación")
         Finally
-            If MySQLConexion.State = ConnectionState.Open Then
-                MySQLConexion.Close()
-            End If
+            'If MySQLConexion.State = ConnectionState.Open Then
+            MySQLConexion.Close()
+            'End If
         End Try
         Return True
     End Function
@@ -157,15 +159,16 @@ Public Class Utilidades_MySQL
                     Next
 
                 End If
+
             End Using
         Catch e As MySqlException
             MsgBox("Mensaje de Error:" & Chr(13) & e.Message, MsgBoxStyle.Critical, "Error en la operación MySQL")
         Catch ex As Exception
             MsgBox("Mensaje de Error:" & Chr(13) & ex.Message, MsgBoxStyle.Critical, "Error en la operación")
         Finally
-            If MySQLConexion.State = ConnectionState.Open Then
-                MySQLConexion.Close()
-            End If
+            'If MySQLConexion.State = ConnectionState.Open Then
+            MySQLConexion.Close()
+            'End If
 
         End Try
         Return True
@@ -245,9 +248,9 @@ Public Class Utilidades_MySQL
         Catch ex As Exception
             MsgBox("Mensaje de Error:" & Chr(13) & ex.Message, MsgBoxStyle.Critical, "Error en la operación")
         Finally
-            If MySQLConexion.State = ConnectionState.Open Then
-                MySQLConexion.Close()
-            End If
+            'If MySQLConexion.State = ConnectionState.Open Then
+            MySQLConexion.Close()
+            'End If
         End Try
 
         Return cantRegIns
