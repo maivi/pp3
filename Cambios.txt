@@ -3,3 +3,13 @@
 * Modifique la DB, en la parte de Usuarios, porque no puede haber una Ñ, no es aceptada
 
 * Hay que adaptar todas las llamadas a la DB, porque los campos de la base de datos cambiaron
+
+* Modifique los FINALLY de Utilidades para que cierre las conexiones
+
+* Arregle el Clientes, para que no aparezca el cartel de que falta el DNI.
+
+* Agregue controles a todos los campos
+
+* Agregue una funcionalidad que permite recuperar elementos eliminados, con una pregunta
+
+* Agregue la busqueda interna de contenido

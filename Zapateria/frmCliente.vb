@@ -177,7 +177,7 @@ Public Class frmCliente
                         If result = DialogResult.Yes Then
                             'sqlComando = "UPDATE `zapateria`.`cliente` SET Activo=1 WHERE DocumentoCliente=" & consulta & ";"
                             MySql.MiComandoSQL("`zapateria`.`cliente`", "Activo=1", "DocumentoCliente=" & consulta)
-                            MsgBox("El Cliente " & txtNombreCliente.Text & " ha sido dado de alta ")
+                            MsgBox("El Cliente " & txtNombreCliente.Text & " ha sido recuperado!")
                             ObtenerDatos()
                             limpiar()
                         Else
