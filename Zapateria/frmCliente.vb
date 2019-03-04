@@ -40,8 +40,8 @@ Public Class frmCliente
         btnEliminar.Visible = True
         IdCliente = dgvContactos.Rows(dgvContactos.CurrentRow.Index).Cells(0).Value
         Cliente.IdCliente = IdCliente
-        sqlComando = "SELECT * FROM cliente WHERE IdCliente='" & Cliente.IdCliente & "';"
-        MySql.MiComandoSQL(sqlComando, Cliente)
+        'sqlComando = "SELECT * FROM cliente WHERE IdCliente='" & Cliente.IdCliente & "';"
+        'MySql.MiComandoSQL(sqlComando, Cliente)
 
     End Sub
 
@@ -52,7 +52,7 @@ Public Class frmCliente
             If (Resultado = DialogResult.Yes) Then
                 Me.Close()
             Else
-                MsgBox("Continue Buen Muchacho", MsgBoxStyle.Information)
+                MsgBox("Continue Buen Hombre", MsgBoxStyle.Information)
             End If
         Else
             Me.Close()
@@ -78,7 +78,7 @@ Public Class frmCliente
         Try
             If (Resultado = DialogResult.Yes) Then
 
-                sqlComando = "Update cliente set activo=0 where IdCliente='" & IdCliente & "';"
+                sqlComando = "UPDATE cliente SET activo=0 WHERE IdCliente='" & IdCliente & "';"
                 MySql.MiComandoSQL(sqlComando)
                 MsgBox("El Cliente " & NombreCliente & " ha sido dado de baja", MsgBoxStyle.Exclamation)
             Else
@@ -103,7 +103,7 @@ Public Class frmCliente
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
 
         Cliente2.IdCliente = Cliente.IdCliente
-        Cliente2.tipoDocumento = cmbDocCliente.Text
+        Cliente2.TipoDocumento = cmbDocCliente.Text
         Cliente2.DocumentoCliente = txtDniCliente.Text
         Cliente2.NombreCliente = txtNombreCliente.Text
         Cliente2.DireccionCliente = txtDireccionCliente.Text
@@ -119,37 +119,14 @@ Public Class frmCliente
         End If
         ObtenerDatos()
         btnEliminar.Visible = False
+        btnActualizar.Visible = False
+
         limpiar()
     End Sub
 
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
 
         Dim consulta As String
-
-        sqlComando = "SELECT * FROM cliente WHERE DocumentoCliente='" & txtDniCliente.Text & "';"
-        MySql.MiComandoSQL(sqlComando, Cliente)
-        consulta = Cliente.DocumentoCliente
-
-        Try
-            If consulta = "" Then
-
-                If Me.ValidateChildren And cmbDocCliente.Text <> String.Empty And txtNombreCliente.Text <> String.Empty And txtDniCliente.Text <> String.Empty And txtDireccionCliente.Text <> String.Empty Then
-
-                    sqlComando = "INSERT into `zapateria`.`cliente`(`TipoDocumento`,`DocumentoCliente`,`NombreCliente`,`DireccionCliente`,`TelefonoCliente`,`Activo`) VALUES ('" & cmbDocCliente.Text & "','" & txtDniCliente.Text & "','" & txtNombreCliente.Text & "','" & txtDireccionCliente.Text & "','" & txtTelefonoCliente.Text & "',1);"
-                    MySql.MiComandoSQL(sqlComando)
-                    MsgBox("El Cliente " & txtNombreCliente.Text & " ha sido dado de alta ")
-                    ObtenerDatos()
-
-
-                Else
-                    MessageBox.Show("Ingrese correctamente algunos Datos remarcados", "Registro de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                End If
-            End If
-                MsgBox("Esta DNI ya existe en la base de datos")
-                limpiar()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
 
         If cmbDocCliente.Text = "" Then
             MsgBox("Seleccione tipo de Documento", MsgBoxStyle.Information, "Guardar artículo")
@@ -160,25 +137,59 @@ Public Class frmCliente
             txtDniCliente.Focus()
             Exit Sub
         ElseIf txtNombreCliente.Text = "" Then
-            MsgBox("Falta Nombre Cliente", MsgBoxStyle.Information, "Guardar artículo")
+            MsgBox("Falta Nombre del Cliente", MsgBoxStyle.Information, "Guardar artículo")
             txtNombreCliente.Focus()
             Exit Sub
-
-        End If
-
-        If consulta = "" Then
-
-            sqlComando = "INSERT into `zapateria`.`cliente`(`TipoDocumento`,`DocumentoCliente`,`NombreCliente`,`DireccionCliente`,`TelefonoCliente`,`Activo`) VALUES ('" & cmbDocCliente.Text & "','" & txtDniCliente.Text & "','" & txtNombreCliente.Text & "','" & txtDireccionCliente.Text & "','" & txtTelefonoCliente.Text & "',1);"
-            MySql.MiComandoSQL(sqlComando)
-            MsgBox("El Cliente " & txtNombreCliente.Text & " ha sido dado de alta ")
-            ObtenerDatos()
-
+        ElseIf txtDireccionCliente.Text = "" Then
+            MsgBox("Falta Dirección del Cliente", MsgBoxStyle.Information, "Guardar artículo")
+            txtDireccionCliente.Focus()
+            Exit Sub
+        ElseIf txtTelefonoCliente.Text = "(   )   -" Then
+            MsgBox("Falta Teléfono del Cliente", MsgBoxStyle.Information, "Guardar artículo")
+            txtTelefonoCliente.Focus()
+            Exit Sub
         Else
+            Cliente = New clsContactos
+            sqlComando = "SELECT * FROM cliente WHERE DocumentoCliente='" & txtDniCliente.Text & "';"
+            MySql.MiComandoSQL(sqlComando, Cliente)
+            consulta = Cliente.DocumentoCliente
+            Dim active As Integer = Cliente.Activo
+            Try
+                If consulta = "" Then
 
-            MsgBox("Esta DNI ya existe en la base de datos")
+                    If Me.ValidateChildren And cmbDocCliente.Text <> String.Empty And txtNombreCliente.Text <> String.Empty And txtDniCliente.Text <> String.Empty And txtDireccionCliente.Text <> String.Empty Then
 
+                        sqlComando = "INSERT into `zapateria`.`cliente`(`TipoDocumento`,`DocumentoCliente`,`NombreCliente`,`DireccionCliente`,`TelefonoCliente`,`Activo`) VALUES ('" & cmbDocCliente.Text & "','" & txtDniCliente.Text & "','" & txtNombreCliente.Text & "','" & txtDireccionCliente.Text & "','" & txtTelefonoCliente.Text & "',1);"
+                        MySql.MiComandoSQL(sqlComando)
+                        MsgBox("El Cliente " & txtNombreCliente.Text & " ha sido dado de alta ")
+                        ObtenerDatos()
+                        limpiar()
+
+                    Else
+                        MessageBox.Show("Ingrese correctamente algunos Datos remarcados", "Registro de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    End If
+                Else
+                    If active = 1 Then
+                        MsgBox("Este DNI ya existe en la base de datos")
+                        txtDniCliente.Focus()
+                    Else
+                        Dim result As Integer = MessageBox.Show("¿El DNI contiene información asociada. Desea recuperarla?", "Registro de Usuarios", MessageBoxButtons.YesNoCancel)
+                        If result = DialogResult.Yes Then
+                            'sqlComando = "UPDATE `zapateria`.`cliente` SET Activo=1 WHERE DocumentoCliente=" & consulta & ";"
+                            MySql.MiComandoSQL("`zapateria`.`cliente`", "Activo=1", "DocumentoCliente=" & consulta)
+                            MsgBox("El Cliente " & txtNombreCliente.Text & " ha sido dado de alta ")
+                            ObtenerDatos()
+                            limpiar()
+                        Else
+                            txtDniCliente.Focus()
+                        End If
+                    End If
+                End If
+
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
         End If
-        limpiar()
     End Sub
 
     Private Sub txtDniCliente_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtDniCliente.Validated
@@ -249,7 +260,7 @@ Public Class frmCliente
         Else
             Dim tablaProductos As New DataTable
 
-            MySql.MiComandoSQL("SELECT * FROM cliente where NombreCliente Like'" & txtFiltroCliente.Text & "%' and activo=1 || DocumentoCliente Like'" & txtFiltroCliente.Text & "%' and activo=1", tablaProductos)
+            MySql.MiComandoSQL("SELECT * FROM cliente where NombreCliente Like'%" & txtFiltroCliente.Text & "%' and activo=1 || DocumentoCliente Like'%" & txtFiltroCliente.Text & "%' and activo=1", tablaProductos)
             bsContactos.DataSource = tablaProductos
             dgvContactos.DataSource = bsContactos.DataSource
 

@@ -9,13 +9,13 @@
         End Set
     End Property
 
-    Private _tipoDocumento As String
-    Public Property tipoDocumento() As String
+    Private _TipoDocumento As String
+    Public Property TipoDocumento() As String
         Get
-            Return _tipoDocumento
+            Return _TipoDocumento
         End Get
         Set(ByVal value As String)
-            _tipoDocumento = value
+            _TipoDocumento = value
         End Set
     End Property
 
@@ -59,13 +59,13 @@
         End Set
     End Property
 
-    Private _ActivoCliente As Integer
+    Private _Activo As Integer
     Public Property Activo() As Integer
         Get
-            Return _ActivoCliente
+            Return _Activo
         End Get
         Set(ByVal value As Integer)
-            _ActivoCliente = value
+            _Activo = value
         End Set
     End Property
 End Class
