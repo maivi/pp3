@@ -119,6 +119,8 @@ Public Class frmCliente
         End If
         ObtenerDatos()
         btnEliminar.Visible = False
+        btnActualizar.Visible = False
+
         limpiar()
     End Sub
 
@@ -151,6 +153,7 @@ Public Class frmCliente
             sqlComando = "SELECT * FROM cliente WHERE DocumentoCliente='" & txtDniCliente.Text & "';"
             MySql.MiComandoSQL(sqlComando, Cliente)
             consulta = Cliente.DocumentoCliente
+            Dim active As Integer = Cliente.Activo
             Try
                 If consulta = "" Then
 
@@ -166,14 +169,27 @@ Public Class frmCliente
                         MessageBox.Show("Ingrese correctamente algunos Datos remarcados", "Registro de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     End If
                 Else
-                    MsgBox("Este DNI ya existe en la base de datos")
-                    txtDniCliente.Focus()
+                    If active = 1 Then
+                        MsgBox("Este DNI ya existe en la base de datos")
+                        txtDniCliente.Focus()
+                    Else
+                        Dim result As Integer = MessageBox.Show("¿El DNI contiene información asociada. Desea recuperarla?", "Registro de Usuarios", MessageBoxButtons.YesNoCancel)
+                        If result = DialogResult.Yes Then
+                            'sqlComando = "UPDATE `zapateria`.`cliente` SET Activo=1 WHERE DocumentoCliente=" & consulta & ";"
+                            MySql.MiComandoSQL("`zapateria`.`cliente`", "Activo=1", "DocumentoCliente=" & consulta)
+                            MsgBox("El Cliente " & txtNombreCliente.Text & " ha sido dado de alta ")
+                            ObtenerDatos()
+                            limpiar()
+                        Else
+                            txtDniCliente.Focus()
+                        End If
+                    End If
                 End If
+
             Catch ex As Exception
                 MsgBox(ex.Message)
             End Try
         End If
-        limpiar()
     End Sub
 
     Private Sub txtDniCliente_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtDniCliente.Validated
