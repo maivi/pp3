@@ -40,8 +40,8 @@ Public Class frmCliente
         btnEliminar.Visible = True
         IdCliente = dgvContactos.Rows(dgvContactos.CurrentRow.Index).Cells(0).Value
         Cliente.IdCliente = IdCliente
-        sqlComando = "SELECT * FROM cliente WHERE IdCliente='" & Cliente.IdCliente & "';"
-        MySql.MiComandoSQL(sqlComando, Cliente)
+        'sqlComando = "SELECT * FROM cliente WHERE IdCliente='" & Cliente.IdCliente & "';"
+        'MySql.MiComandoSQL(sqlComando, Cliente)
 
     End Sub
 
@@ -52,7 +52,7 @@ Public Class frmCliente
             If (Resultado = DialogResult.Yes) Then
                 Me.Close()
             Else
-                MsgBox("Continue Buen Muchacho", MsgBoxStyle.Information)
+                MsgBox("Continue Buen Hombre", MsgBoxStyle.Information)
             End If
         Else
             Me.Close()
@@ -78,7 +78,7 @@ Public Class frmCliente
         Try
             If (Resultado = DialogResult.Yes) Then
 
-                sqlComando = "Update cliente set activo=0 where IdCliente='" & IdCliente & "';"
+                sqlComando = "UPDATE cliente SET activo=0 WHERE IdCliente='" & IdCliente & "';"
                 MySql.MiComandoSQL(sqlComando)
                 MsgBox("El Cliente " & NombreCliente & " ha sido dado de baja", MsgBoxStyle.Exclamation)
             Else
@@ -260,7 +260,7 @@ Public Class frmCliente
         Else
             Dim tablaProductos As New DataTable
 
-            MySql.MiComandoSQL("SELECT * FROM cliente where NombreCliente Like'" & txtFiltroCliente.Text & "%' and activo=1 || DocumentoCliente Like'" & txtFiltroCliente.Text & "%' and activo=1", tablaProductos)
+            MySql.MiComandoSQL("SELECT * FROM cliente where NombreCliente Like'%" & txtFiltroCliente.Text & "%' and activo=1 || DocumentoCliente Like'%" & txtFiltroCliente.Text & "%' and activo=1", tablaProductos)
             bsContactos.DataSource = tablaProductos
             dgvContactos.DataSource = bsContactos.DataSource
 
