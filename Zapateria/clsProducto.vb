@@ -96,7 +96,7 @@
         End Set
     End Property
     Private _ActivoProveedor As Integer
-    Public Property activo() As Integer
+    Public Property Activo() As Integer
         Get
             Return _ActivoProveedor
         End Get
