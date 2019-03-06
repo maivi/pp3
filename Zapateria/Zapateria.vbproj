@@ -78,6 +78,7 @@
     <Compile Include="clsProducto.vb" />
     <Compile Include="clsProveedor.vb" />
     <Compile Include="clsTipo.vb" />
+    <Compile Include="clsVantas.vb" />
     <Compile Include="frmStock.Designer.vb">
       <DependentUpon>frmStock.vb</DependentUpon>
     </Compile>
@@ -161,6 +162,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Utilidades_Mysql.vb" />
+    <Compile Include="zapateriaDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>zapateriaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="zapateriaDataSet1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>zapateriaDataSet1.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmStock.resx">
@@ -215,6 +226,28 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="zapateriaDataSet.xsc">
+      <DependentUpon>zapateriaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="zapateriaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>zapateriaDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="zapateriaDataSet.xss">
+      <DependentUpon>zapateriaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="zapateriaDataSet1.xsc">
+      <DependentUpon>zapateriaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="zapateriaDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>zapateriaDataSet1.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="zapateriaDataSet1.xss">
+      <DependentUpon>zapateriaDataSet1.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -276,6 +309,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Stock-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

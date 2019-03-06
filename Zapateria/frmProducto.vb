@@ -15,6 +15,8 @@ Public Class frmProducto
         dgvProducto.Columns("IdProducto").Visible = False
         btnGuardar.Visible = True
         btnActualizar.Visible = False
+        btnEliminar.Visible = False
+
     End Sub
 
     Private Sub txtTipo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTipo.GotFocus
@@ -53,7 +55,7 @@ Public Class frmProducto
         panelCategoria.Hide()
         panelProducto.Hide()
 
-        MySql.MiComandoSQL("SELECT * FROM proveedor WHERE activo=1", tablaProveedor)
+        MySql.MiComandoSQL("SELECT IdProveedor, CUIT, NombreProveedor as Nombre, DireccionProveedor as Direccion, TelefonoProveedor as Telefono, PaginaWebProveedor as 'Pagina Web', Activo FROM proveedor WHERE activo=1", tablaProveedor)
         bsProveedor.DataSource = tablaProveedor
         dgvProveedor.DataSource = bsProveedor.DataSource
         dgvProveedor.Columns("idproveedor").Visible = False
@@ -86,15 +88,37 @@ Public Class frmProducto
     End Sub
 
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
-        If Me.ValidateChildren And txtCodigo.Text <> String.Empty And txtNombre.Text <> String.Empty And txtPreCompra.Text <> String.Empty And txtPreVenta.Text <> String.Empty And txtProveedor.Text <> String.Empty And txtStockInicial.Text <> String.Empty And txtTalle.Text <> String.Empty And txtTipo.Text <> String.Empty Then
-            sqlComando = "INSERT into `zapateria`.`producto`( `CodigoProducto` , `GeneroProducto` , `NombreProducto` , `TalleProducto` , `TipoProducto` , `Proveedor`, `PrecioCompra`, `PrecioVenta`,`Stock`, `Activo`) VALUES ('" & txtCodigo.Text & "','" & cboGenero.Text & "','" & txtNombre.Text & "','" & txtTalle.Text & "','" & txtTipo.Text & "','" & txtProveedor.Text & "','" & txtPreCompra.Text & "','" & txtPreVenta.Text & "','" & txtStockInicial.Text & "',1);"
-            MySql.MiComandoSQL(sqlComando)
-            MsgBox(sqlComando)
-            MsgBox("El Producto " & txtNombre.Text & " ha sido dado de alta ", MessageBoxIcon.Error)
-            llenardgProducto()
-            limpiar()
-        End If
-        MessageBox.Show("Debe llenar todos los campos requeridos")
+
+        Dim consulta As String
+        sqlComando = "SELECT * FROM producto WHERE CodigoProducto='" & txtCodigo.Text & "';"
+        MySql.MiComandoSQL(sqlComando, Producto)
+        consulta = Producto.CodigoProducto
+
+        Try
+            If consulta = "" Then
+
+                If Me.ValidateChildren And txtCodigo.Text <> String.Empty And txtNombre.Text <> String.Empty And txtPreCompra.Text <> String.Empty And txtPreVenta.Text <> String.Empty And txtProveedor.Text <> String.Empty And txtStockInicial.Text <> String.Empty And txtTalle.Text <> String.Empty And txtTipo.Text <> String.Empty Then
+
+                    sqlComando = "INSERT into `zapateria`.`producto`( `CodigoProducto` , `GeneroProducto` , `NombreProducto` , `TalleProducto` , `TipoProducto` , `Proveedor`, `PrecioCompra`, `PrecioVenta`,`Stock`, `Activo`) VALUES ('" & txtCodigo.Text & "','" & cboGenero.Text & "','" & txtNombre.Text & "','" & txtTalle.Text & "','" & txtTipo.Text & "','" & txtProveedor.Text & "','" & txtPreCompra.Text & "','" & txtPreVenta.Text & "','" & txtStockInicial.Text & "',1);"
+                    MySql.MiComandoSQL(sqlComando)
+                    MsgBox("El Producto " & txtNombre.Text & " ha sido dado de alta ", MessageBoxIcon.Error)
+                    llenardgProducto()
+                    limpiar()
+
+                Else
+
+                    MessageBox.Show("Debe llenar todos los campos requeridos")
+
+                End If
+
+
+            End If
+                MsgBox("Esta Codigo ya existe en la base de datos")
+                txtCodigo.Text = ""
+                txtCodigo.Focus()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
 
 
 
@@ -133,11 +157,12 @@ Public Class frmProducto
         btnGuardar.Visible = False
         btnActualizar.Visible = True
         txtStockInicial.Enabled = False
-
+        btnEliminar.Visible = True
         idProducto = dgvProducto.Rows(dgvProducto.CurrentRow.Index).Cells(0).Value
         Producto.idProducto = idProducto
-        sqlComando = "SELECT * FROM producto WHERE IdProducto='" & Producto.idProducto & "';"
+        sqlComando = "SELECT IdProducto, CodigoProducto as Codigo, GeneroProducto as Genero, NombreProducto as Producto, TalleProducto as Talle, TipoProducto as tipo, Proveedor, PrecioCompra, PrecioVenta, Stock, Activo FROM producto WHERE IdProducto='" & Producto.idProducto & "';"
         MySql.MiComandoSQL(sqlComando, Producto)
+
     End Sub
 
     Private Sub btnEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminar.Click
@@ -161,10 +186,12 @@ Public Class frmProducto
         llenardgProducto()
         btnActualizar.Visible = False
         btnGuardar.Visible = True
+        btnEliminar.Visible = False
         limpiar()
     End Sub
 
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
+
         Producto2.idProducto = Producto.idProducto
         Producto2.CodigoProducto = txtCodigo.Text
         Producto2.GeneroProducto = cboGenero.Text
@@ -175,17 +202,26 @@ Public Class frmProducto
         Producto2.PrecCompra = txtPreCompra.Text
         Producto2.PrecVenta = txtPreVenta.Text
         Producto2.Stock = txtStockInicial.Text
-        Producto2.activo = Producto.activo
+        Producto2.Activo = Producto.Activo
 
         sqlComando = MySql.MiComandoSQL("producto", Producto2, Producto)
-        MsgBox(sqlComando)
+
         If MySql.MiComandoSQL(sqlComando) Then
             MsgBox("El Producto ha sido actualizado")
         Else
             MsgBox("No Se registraron modificaciones")
         End If
+        btnEliminar.Visible = False
         llenardgProducto()
         limpiar()
     End Sub
    
+    Private Sub btnLimpiar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLimpiar.Click
+        limpiar()
+        btnEliminar.Visible = False
+    End Sub
+
+    Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
+        Me.Close()
+    End Sub
 End Class
