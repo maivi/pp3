@@ -125,4 +125,7 @@ Public Class frmVenta
     End Sub
 
 
+    Private Sub btnClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClientes.Click
+
+    End Sub
 End Class
