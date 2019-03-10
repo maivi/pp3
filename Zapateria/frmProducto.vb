@@ -46,6 +46,7 @@ Public Class frmProducto
         MySql.MiComandoSQL("SELECT IdTipoProducto, TipoProducto as Nombre FROM tipoproducto WHERE activo=1", tablaCategoria)
         bsCategoria.DataSource = tablaCategoria
         dgvTipo.DataSource = bsCategoria.DataSource
+        dgvTipo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvTipo.Columns("IdTipoProducto").Visible = False
     End Sub
 
@@ -59,6 +60,7 @@ Public Class frmProducto
         bsProveedor.DataSource = tablaProveedor
         dgvProveedor.DataSource = bsProveedor.DataSource
         dgvProveedor.Columns("idproveedor").Visible = False
+        dgvProveedor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvProveedor.Columns("activo").Visible = False
     End Sub
 
@@ -223,5 +225,13 @@ Public Class frmProducto
 
     Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
         Me.Close()
+    End Sub
+
+    Private Sub cboGenero_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboGenero.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub txtTipo_TextChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTipo.TextChanged
+
     End Sub
 End Class

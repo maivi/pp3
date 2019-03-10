@@ -22,6 +22,7 @@ Public Class frmProveedor
         MySql.MiComandoSQL("SELECT * FROM proveedor WHERE activo=1", tablaProveedor)
 
         bsProveedor.DataSource = tablaProveedor
+        dgvProveedor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvProveedor.DataSource = bsProveedor.DataSource
 
     End Sub
@@ -58,7 +59,7 @@ Public Class frmProveedor
     Private Sub btnEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminar.Click
         Dim Resultado As Short
         idProveedor = dgvProveedor.Rows(dgvProveedor.CurrentRow.Index).Cells(0).Value
-        NombreProveedor = dgvProveedor.Rows(dgvProveedor.CurrentRow.Index).Cells(3).Value
+        NombreProveedor = dgvProveedor.Rows(dgvProveedor.CurrentRow.Index).Cells(2).Value
 
         Resultado = MsgBox("Desea borrar el cliente : " & NombreProveedor, MsgBoxStyle.YesNo)
         Try
@@ -96,7 +97,7 @@ Public Class frmProveedor
         Proveedor2.activo = Proveedor.activo
 
         sqlComando = MySql.MiComandoSQL("proveedor", Proveedor2, Proveedor)
-        MsgBox(sqlComando)
+
         If MySql.MiComandoSQL(sqlComando) Then
             MsgBox("El Proveedor ha sido actualizado")
         Else
@@ -108,7 +109,7 @@ Public Class frmProveedor
 
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
 
-        sqlComando = "INSERT into `agenda`.`proveedor`(`CUIT`,`NombreProveedor`,`DireccionProveedor`,`TelefonoProveedor`,`PaginaWebProveedor`,`activo`) VALUES ('" & txtCUIT.Text & "','" & txtNombreProveedor.Text & "','" & txtDireccionProveedor.Text & "','" & txtTelefonoProveedor.Text & "','" & txtPaginaWeb.Text & "',1);"
+        sqlComando = "INSERT into `zapateria`.`proveedor`(`CUIT`,`NombreProveedor`,`DireccionProveedor`,`TelefonoProveedor`,`PaginaWebProveedor`,`activo`) VALUES ('" & txtCUIT.Text & "','" & txtNombreProveedor.Text & "','" & txtDireccionProveedor.Text & "','" & txtTelefonoProveedor.Text & "','" & txtPaginaWeb.Text & "',1);"
         MySql.MiComandoSQL(sqlComando)
         MsgBox("El Proveedor " & txtNombreProveedor.Text & " ha sido dado de alta ")
         ObtenerDatos()
