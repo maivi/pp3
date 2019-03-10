@@ -108,12 +108,67 @@ Public Class frmProveedor
     End Sub
 
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
+        Dim consulta As String
 
-        sqlComando = "INSERT into `zapateria`.`proveedor`(`CUIT`,`NombreProveedor`,`DireccionProveedor`,`TelefonoProveedor`,`PaginaWebProveedor`,`activo`) VALUES ('" & txtCUIT.Text & "','" & txtNombreProveedor.Text & "','" & txtDireccionProveedor.Text & "','" & txtTelefonoProveedor.Text & "','" & txtPaginaWeb.Text & "',1);"
-        MySql.MiComandoSQL(sqlComando)
-        MsgBox("El Proveedor " & txtNombreProveedor.Text & " ha sido dado de alta ")
-        ObtenerDatos()
-        limpiar()
+        If txtCUIT.Text = "  -        -" Then
+            MsgBox("Falta el ingreso de CUIL", MsgBoxStyle.Information, "Guardar Proveedor")
+            txtCUIT.Focus()
+            Exit Sub
+        ElseIf txtNombreProveedor.Text.Length = 0 Then
+            MsgBox("Falta Nombre del Proveedor ", MsgBoxStyle.Information, "Guardar Proveedor")
+            txtNombreProveedor.Focus()
+            Exit Sub
+        ElseIf txtDireccionProveedor.Text = "" Then
+            MsgBox("Falta Dirección del Proveedor", MsgBoxStyle.Information, "Guardar Proveedor")
+            txtDireccionProveedor.Focus()
+            Exit Sub
+        ElseIf txtTelefonoProveedor.Text = "" Then
+            MsgBox("Falta Telefono del Proveedor", MsgBoxStyle.Information, "Guardar Proveedor")
+            txtTelefonoProveedor.Focus()
+            Exit Sub
+        Else
+            Proveedor2 = New clsProveedor
+            sqlComando = "SELECT * FROM proveedor WHERE TelefonoProveedor='" & txtTelefonoProveedor.Text & "';"
+            MySql.MiComandoSQL(sqlComando, Proveedor2)
+            consulta = Proveedor2.NombreProveedor
+            Dim active As Integer = Proveedor2.activo
+            Try
+                If consulta = "" Then
+                    sqlComando = "INSERT into `zapateria`.`proveedor`(`CUIT`,`NombreProveedor`,`DireccionProveedor`,`TelefonoProveedor`,`PaginaWebProveedor`,`activo`) VALUES ('" & txtCUIT.Text & "','" & txtNombreProveedor.Text & "','" & txtDireccionProveedor.Text & "','" & txtTelefonoProveedor.Text & "','" & txtPaginaWeb.Text & "',1);"
+                    MySql.MiComandoSQL(sqlComando)
+                    MsgBox("El Proveedor " & txtNombreProveedor.Text & " ha sido dado de alta ")
+                    ObtenerDatos()
+                    limpiar()
+                Else
+                    If active = 1 Then
+                        MsgBox("Este teléfono ya existe en la base de datos")
+                        txtCUIT.Focus()
+                    Else
+                        Dim result As Integer = MessageBox.Show("¿El teléfono contiene información asociada. Desea recuperarla?", "Registro de Proveedores", MessageBoxButtons.YesNoCancel)
+                        If result = DialogResult.Yes Then
+
+                            If (MySql.MiComandoSQL("`zapateria`.`proveedor`", "Activo=1", "(TelefonoProveedor='" & txtTelefonoProveedor.Text & "' AND IdProveedor <> 0);")) Then
+                                MsgBox("El Proveedor " & txtNombreProveedor.Text & " ha sido recuperado!")
+                                ObtenerDatos()
+                                limpiar()
+                            Else
+                                MsgBox("Hubo un error recuperando los datos del Proveedor " & txtNombreProveedor.Text)
+                                ObtenerDatos()
+                                limpiar()
+                            End If
+                        Else
+                            txtCUIT.Focus()
+                        End If
+                        End If
+                End If
+
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+
+
+            
+        End If
 
     End Sub
 
