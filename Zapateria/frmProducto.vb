@@ -13,6 +13,7 @@ Public Class frmProducto
         llenardgProducto()
         dgvProducto.Columns("activo").Visible = False
         dgvProducto.Columns("IdProducto").Visible = False
+        dgvProducto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         btnGuardar.Visible = True
         btnActualizar.Visible = False
         btnEliminar.Visible = False
@@ -92,38 +93,82 @@ Public Class frmProducto
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
 
         Dim consulta As String
+
+        'If txtCodigo.Text = "" Then
+        '    MsgBox("Ingrese un código para el producto", MsgBoxStyle.Information, "Guardar Producto")
+        '    txtCodigo.Focus()
+        '    Exit Sub
+        'ElseIf cboGenero.Text.Length = 0 Then
+        '    MsgBox("Seleccione el Género del calzado ", MsgBoxStyle.Information, "Guardar Producto")
+        '    cboGenero.Focus()
+        '    Exit Sub
+        'ElseIf txtNombre.Text = "" Then
+        '    MsgBox("Ingrese la Marca del calzado", MsgBoxStyle.Information, "Guardar Producto")
+        '    txtNombre.Focus()
+        '    Exit Sub
+        'ElseIf txtTalle.Text = "" Then
+        '    MsgBox("Ingrese la Talla del calzado", MsgBoxStyle.Information, "Guardar Producto")
+        '    txtTalle.Focus()
+        '    Exit Sub
+        'ElseIf txtTipo.Text = "" Then
+        '    MsgBox("Seleccione el Tipo de calzado", MsgBoxStyle.Information, "Guardar Producto")
+        '    txtTipo.Focus()
+        '    Exit Sub
+        'ElseIf txtProveedor.Text = "" Then
+        '    MsgBox("Seleccione el Proveedor", MsgBoxStyle.Information, "Guardar Producto")
+        '    txtTipo.Focus()
+        '    Exit Sub
+        'ElseIf txtPreCompra.Text = "" Then
+        '    MsgBox("Ingrese el Precio de Compra", MsgBoxStyle.Information, "Guardar Producto")
+        '    txtTipo.Focus()
+        '    Exit Sub
+        'ElseIf txtPreVenta.Text = "" Then
+        '    MsgBox("Ingrese el Precio de Venta", MsgBoxStyle.Information, "Guardar Producto")
+        '    txtTipo.Focus()
+        '    Exit Sub
+        'ElseIf txtStockInicial.Text = "" Then
+        '    MsgBox("Ingrese la cantidad de pares que compro", MsgBoxStyle.Information, "Guardar Producto")
+        '    txtTipo.Focus()
+        '    Exit Sub
+        'Else
+
         sqlComando = "SELECT * FROM producto WHERE CodigoProducto='" & txtCodigo.Text & "';"
         MySql.MiComandoSQL(sqlComando, Producto)
         consulta = Producto.CodigoProducto
+        Dim active As Integer = Producto.Activo
 
         Try
             If consulta = "" Then
-
-                If Me.ValidateChildren And txtCodigo.Text <> String.Empty And txtNombre.Text <> String.Empty And txtPreCompra.Text <> String.Empty And txtPreVenta.Text <> String.Empty And txtProveedor.Text <> String.Empty And txtStockInicial.Text <> String.Empty And txtTalle.Text <> String.Empty And txtTipo.Text <> String.Empty Then
-
-                    sqlComando = "INSERT into `zapateria`.`producto`( `CodigoProducto` , `GeneroProducto` , `NombreProducto` , `TalleProducto` , `TipoProducto` , `Proveedor`, `PrecioCompra`, `PrecioVenta`,`Stock`, `Activo`) VALUES ('" & txtCodigo.Text & "','" & cboGenero.Text & "','" & txtNombre.Text & "','" & txtTalle.Text & "','" & txtTipo.Text & "','" & txtProveedor.Text & "','" & txtPreCompra.Text & "','" & txtPreVenta.Text & "','" & txtStockInicial.Text & "',1);"
-                    MySql.MiComandoSQL(sqlComando)
-                    MsgBox("El Producto " & txtNombre.Text & " ha sido dado de alta ", MessageBoxIcon.Error)
-                    llenardgProducto()
-                    limpiar()
-
+                sqlComando = "INSERT into `zapateria`.`producto`( `CodigoProducto` , `GeneroProducto` , `NombreProducto` , `TalleProducto` , `TipoProducto` , `Proveedor`, `PrecioCompra`, `PrecioVenta`,`Stock`, `Activo`) VALUES ('" & txtCodigo.Text & "','" & cboGenero.Text & "','" & txtNombre.Text & "','" & txtTalle.Text & "','" & txtTipo.Text & "','" & txtProveedor.Text & "','" & txtPreCompra.Text & "','" & txtPreVenta.Text & "','" & txtStockInicial.Text & "',1);"
+                MySql.MiComandoSQL(sqlComando)
+                MsgBox("El Producto " & txtNombre.Text & " ha sido dado de alta ", MessageBoxIcon.Information)
+                llenardgProducto()
+                limpiar()
+                dgvProducto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            Else
+                If active = 1 Then
+                    MsgBox("Esta Codigo ya existe en la base de datos")
+                    txtCodigo.Focus()
                 Else
-
-                    MessageBox.Show("Debe llenar todos los campos requeridos")
-
-                End If
-
-
+                    Dim result As Integer = MessageBox.Show("¿El código contiene información asociada. Desea recuperarla?", "Registro de Productos", MessageBoxButtons.YesNoCancel)
+                    If result = DialogResult.Yes Then
+                        'sqlComando = "UPDATE `zapateria`.`cliente` SET Activo=1 WHERE DocumentoCliente=" & consulta & ";"
+                        If MySql.MiComandoSQL("`zapateria`.`producto`", "Activo=1", "CodigoProducto='" & consulta & "'") Then
+                            MsgBox("El Producto de marca " & txtNombre.Text & " ha sido recuperado!")
+                            llenardgProducto()
+                            limpiar()
+                        Else
+                            MsgBox("Hubo un error recuperando la información del Producto de marca " & txtNombre.Text & "!")
+                        End If
+                    Else
+                        txtCodigo.Focus()
+                    End If
+                    End If
             End If
-                MsgBox("Esta Codigo ya existe en la base de datos")
-                txtCodigo.Text = ""
-                txtCodigo.Focus()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-
-
-
+        'End If
     End Sub
 
     Private Sub limpiar()
