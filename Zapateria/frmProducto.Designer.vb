@@ -147,7 +147,7 @@ Partial Class frmProducto
         Me.cboGenero.FormattingEnabled = True
         Me.cboGenero.Items.AddRange(New Object() {"Hombre", "Mujer", "Niño"})
         Me.cboGenero.Location = New System.Drawing.Point(273, 36)
-        Me.cboGenero.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboGenero.Margin = New System.Windows.Forms.Padding(2)
         Me.cboGenero.Name = "cboGenero"
         Me.cboGenero.Size = New System.Drawing.Size(112, 27)
         Me.cboGenero.TabIndex = 23
@@ -429,7 +429,6 @@ Partial Class frmProducto
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.PictureBox1.Image = Global.Zapateria.My.Resources.Resources.chica_probando_zapatos
         Me.PictureBox1.Location = New System.Drawing.Point(434, 6)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(218, 189)
@@ -452,7 +451,7 @@ Partial Class frmProducto
         '
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox1.Location = New System.Drawing.Point(151, 4)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(295, 28)
         Me.TextBox1.TabIndex = 1
@@ -484,7 +483,7 @@ Partial Class frmProducto
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgvProducto.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgvProducto.Location = New System.Drawing.Point(18, 46)
-        Me.dgvProducto.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.dgvProducto.Margin = New System.Windows.Forms.Padding(2)
         Me.dgvProducto.MultiSelect = False
         Me.dgvProducto.Name = "dgvProducto"
         Me.dgvProducto.ReadOnly = True
@@ -502,7 +501,7 @@ Partial Class frmProducto
         Me.panelProducto.Controls.Add(Me.TextBox1)
         Me.panelProducto.Controls.Add(Me.Label9)
         Me.panelProducto.Location = New System.Drawing.Point(672, 72)
-        Me.panelProducto.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.panelProducto.Margin = New System.Windows.Forms.Padding(2)
         Me.panelProducto.Name = "panelProducto"
         Me.panelProducto.Size = New System.Drawing.Size(429, 373)
         Me.panelProducto.TabIndex = 237
@@ -516,7 +515,7 @@ Partial Class frmProducto
         Me.panelProveedor.Controls.Add(Me.TextBox4)
         Me.panelProveedor.Controls.Add(Me.Label10)
         Me.panelProveedor.Location = New System.Drawing.Point(672, 72)
-        Me.panelProveedor.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.panelProveedor.Margin = New System.Windows.Forms.Padding(2)
         Me.panelProveedor.Name = "panelProveedor"
         Me.panelProveedor.Size = New System.Drawing.Size(429, 373)
         Me.panelProveedor.TabIndex = 240
@@ -548,7 +547,7 @@ Partial Class frmProducto
         DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgvProveedor.DefaultCellStyle = DataGridViewCellStyle4
         Me.dgvProveedor.Location = New System.Drawing.Point(2, 46)
-        Me.dgvProveedor.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.dgvProveedor.Margin = New System.Windows.Forms.Padding(2)
         Me.dgvProveedor.MultiSelect = False
         Me.dgvProveedor.Name = "dgvProveedor"
         Me.dgvProveedor.ReadOnly = True
@@ -564,7 +563,7 @@ Partial Class frmProducto
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox4.Location = New System.Drawing.Point(174, 4)
-        Me.TextBox4.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TextBox4.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.Size = New System.Drawing.Size(242, 28)
         Me.TextBox4.TabIndex = 1
@@ -589,7 +588,7 @@ Partial Class frmProducto
         Me.panelCategoria.Controls.Add(Me.TextBox5)
         Me.panelCategoria.Controls.Add(Me.Label11)
         Me.panelCategoria.Location = New System.Drawing.Point(672, 72)
-        Me.panelCategoria.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.panelCategoria.Margin = New System.Windows.Forms.Padding(2)
         Me.panelCategoria.Name = "panelCategoria"
         Me.panelCategoria.Size = New System.Drawing.Size(428, 373)
         Me.panelCategoria.TabIndex = 238
@@ -622,7 +621,7 @@ Partial Class frmProducto
         Me.dgvTipo.DefaultCellStyle = DataGridViewCellStyle6
         Me.dgvTipo.GridColor = System.Drawing.Color.ForestGreen
         Me.dgvTipo.Location = New System.Drawing.Point(1, 46)
-        Me.dgvTipo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.dgvTipo.Margin = New System.Windows.Forms.Padding(2)
         Me.dgvTipo.MultiSelect = False
         Me.dgvTipo.Name = "dgvTipo"
         Me.dgvTipo.ReadOnly = True
@@ -635,7 +634,7 @@ Partial Class frmProducto
         '
         Me.TextBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox5.Location = New System.Drawing.Point(96, 6)
-        Me.TextBox5.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TextBox5.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.Size = New System.Drawing.Size(228, 28)
         Me.TextBox5.TabIndex = 1
@@ -670,7 +669,7 @@ Partial Class frmProducto
         Me.Controls.Add(Me.panelProducto)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "frmProducto"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

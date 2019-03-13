@@ -20,6 +20,14 @@ Public Class frmProducto
 
     End Sub
 
+    Private Function isNumberFloat(ByVal e)
+        Return (Asc(e.KeyChar) <> 8 And (Asc(e.KeyChar) < 44 Or (Asc(e.KeyChar) > 44 And Asc(e.KeyChar) < 46) Or (Asc(e.KeyChar) > 46 And Asc(e.KeyChar) < 48) Or Asc(e.KeyChar) > 57))
+    End Function
+
+    Private Function isNumberInteger(ByVal e)
+        Return (Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57)
+    End Function
+
     Private Sub txtTipo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTipo.GotFocus
         llenardgCategoria()
     End Sub
@@ -163,7 +171,7 @@ Public Class frmProducto
                     Else
                         txtCodigo.Focus()
                     End If
-                    End If
+                End If
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -200,7 +208,7 @@ Public Class frmProducto
         txtPreCompra.Text = dgvProducto.SelectedCells.Item(7).Value
         txtPreVenta.Text = dgvProducto.SelectedCells.Item(8).Value
         txtStockInicial.Text = dgvProducto.SelectedCells.Item(9).Value
-    
+
         btnGuardar.Visible = False
         btnActualizar.Visible = True
         txtStockInicial.Enabled = False
@@ -262,7 +270,7 @@ Public Class frmProducto
         llenardgProducto()
         limpiar()
     End Sub
-   
+
     Private Sub btnLimpiar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLimpiar.Click
         limpiar()
         btnEliminar.Visible = False
@@ -278,5 +286,24 @@ Public Class frmProducto
 
     Private Sub txtTipo_TextChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTipo.TextChanged
 
+    End Sub
+
+    Private Sub txtPreCompra_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtPreCompra.KeyPress
+        e.Handled = isNumberFloat(e)
+    End Sub
+
+
+
+    Private Sub txtPreCompra_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPreCompra.TextChanged
+
+    End Sub
+
+    Private Sub txtPreVenta_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtPreVenta.KeyPress
+        e.Handled = isNumberFloat(e)
+    End Sub
+
+
+    Private Sub txtStockInicial_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtStockInicial.KeyPress
+        e.Handled = isNumberInteger(e)
     End Sub
 End Class

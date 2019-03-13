@@ -100,7 +100,7 @@ Public Class frmVenta
         txtPrecioProducto.Text = ""
     End Sub
 
-    Private Sub txtDescuento_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtDescuento.TextChanged
+    Private Sub txtDescuento_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs)
         If txtDescuento.Text = "" Or txtTotalVenta.Text = "" Then
             txtTotalVenta.Text = 0
             Exit Sub
@@ -114,7 +114,7 @@ Public Class frmVenta
 
     End Sub
 
-    Private Sub chBoxDescuento_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chBoxDescuento.CheckedChanged
+    Private Sub chBoxDescuento_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
         If chBoxDescuento.CheckState = CheckState.Checked Then
             txtDescuento.Enabled = True
@@ -126,6 +126,10 @@ Public Class frmVenta
 
 
     Private Sub btnClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClientes.Click
+
+    End Sub
+
+    Private Sub Label12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label12.Click
 
     End Sub
 End Class
