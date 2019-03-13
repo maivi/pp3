@@ -100,31 +100,6 @@ Public Class frmVenta
         txtPrecioProducto.Text = ""
     End Sub
 
-    Private Sub txtDescuento_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs)
-        If txtDescuento.Text = "" Or txtTotalVenta.Text = "" Then
-            txtTotalVenta.Text = 0
-            Exit Sub
-
-        End If
-        Dim totalDescuento As Integer
-        Dim TotalVenta As Integer
-        totalDescuento = CInt(txtDescuento.Text) * CInt(txtTotalVenta.Text) / (100)
-        TotalVenta = txtTotalVenta.Text
-        txtTotalVenta.Text = TotalVenta - totalDescuento
-
-    End Sub
-
-    Private Sub chBoxDescuento_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-        If chBoxDescuento.CheckState = CheckState.Checked Then
-            txtDescuento.Enabled = True
-        Else
-            txtDescuento.Enabled = False
-        End If
-
-    End Sub
-
-
     Private Sub btnClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClientes.Click
 
     End Sub
