@@ -118,7 +118,6 @@ Public Class frmTipo
 
         Tipo2.idTipo = Tipo.idTipo
         Tipo2.nombre = txtTipo.Text
-        Tipo2.descripcion = txtDescripcionTipo.Text
         Tipo2.activo = Tipo.activo
 
         sqlComando = MySql.MiComandoSQL("tipoproducto", Tipo2, Tipo)

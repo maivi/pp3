@@ -2,12 +2,16 @@
 Imports MySql.Data.MySqlClient
 
 Public Class frmProducto
-    Dim MySql As New Utilidades_MySQL
-    Dim Producto As New clsProducto
-    Dim Producto2 As New clsProducto
-    Dim idProducto As Integer
-    Dim NombreProducto As String
-    Dim sqlComando As String
+    Private MySql As New Utilidades_MySQL
+    Private Producto As New clsProducto
+    Private Producto2 As New clsProducto
+    Private idProducto As Integer
+    Private idTipoProducto As Integer
+    Private idProveedor As Integer
+    Private NombreProducto As String
+    Private sqlComando As String
+
+
 
     Private Sub frmProducto_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         llenardgProducto()
@@ -40,8 +44,11 @@ Public Class frmProducto
         panelCategoria.Hide()
         panelProveedor.Hide()
         Dim tablaProducto As New DataTable
-        MySql.MiComandoSQL("SELECT IdProducto, CodigoProducto as Codigo, GeneroProducto as Genero, NombreProducto as Producto, TalleProducto as Talle, TipoProducto as tipo, Proveedor, PrecioCompra, PrecioVenta, Stock, Activo FROM producto WHERE activo=1", tablaProducto)
+        MySql.MiComandoSQL("SELECT p.IdProducto, p.CodigoProducto as Codigo, p.GeneroProducto as Genero, NombreProducto as Producto, p.TalleProducto as Talle, tp.TipoProducto as tipo, NombreProveedor as Proveedor, p.PrecioCompra, p.PrecioVenta, p.Stock, p.Activo FROM producto p LEFT JOIN proveedor prov ON p.Proveedor=prov.IdProveedor LEFT JOIN tipoproducto tp ON p.TipoProducto=tp.IdTipoProducto WHERE p.activo=1", tablaProducto)
+        'MySql.MiComandoSQL("SELECT IdProducto, CodigoProducto as Codigo, GeneroProducto as Genero, NombreProducto as Producto, TalleProducto as Talle, TipoProducto as tipo, Proveedor, PrecioCompra, PrecioVenta, Stock, Activo FROM producto WHERE activo=1", tablaProducto)
         bsProductos.DataSource = tablaProducto
+
+        'Dim string As String = "(SELECT NombreProveedor FROM proveedor WHERE idProveedor=" & Proveedor & ";)"
         dgvProducto.DataSource = bsProductos.DataSource
 
     End Sub
@@ -75,25 +82,22 @@ Public Class frmProducto
 
 
     Private Sub dgvTipo_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvTipo.CellClick
-        Dim idTipo As String
         Dim Tipo As New clsTipo
 
         txtTipo.Text = dgvTipo.SelectedCells.Item(1).Value
-        idTipo = dgvTipo.Rows(dgvTipo.CurrentRow.Index).Cells(0).Value
-        Tipo.idTipo = idTipo
-        sqlComando = "SELECT * FROM tipoproducto WHERE IdTipoProducto='" & Tipo.idTipo & "';"
+        idTipoProducto = dgvTipo.SelectedCells.Item(0).Value
+        'idTipo = dgvTipo.Rows(dgvTipo.CurrentRow.Index).Cells(0).Value
+        sqlComando = "SELECT * FROM tipoproducto WHERE IdTipoProducto=" & idTipoProducto.ToString & ";"
         MySql.MiComandoSQL(sqlComando, Tipo)
     End Sub
 
 
     Private Sub dgvProveedor_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvProveedor.CellClick
-        Dim idProveedor As String
         Dim Proveedor As New clsProveedor
 
         txtProveedor.Text = dgvProveedor.SelectedCells.Item(2).Value
-        idProveedor = dgvProveedor.Rows(dgvProveedor.CurrentRow.Index).Cells(0).Value
-        Proveedor.idProveedor = idProveedor
-        sqlComando = "SELECT * FROM proveedor WHERE IdProveedor='" & Proveedor.idProveedor & "';"
+        idProveedor = dgvProveedor.SelectedCells.Item(0).Value
+        sqlComando = "SELECT * FROM proveedor WHERE IdProveedor=" & idProveedor.ToString & ";"
         MySql.MiComandoSQL(sqlComando, Proveedor)
 
     End Sub
@@ -147,7 +151,7 @@ Public Class frmProducto
 
         Try
             If consulta = "" Then
-                sqlComando = "INSERT into `zapateria`.`producto`( `CodigoProducto` , `GeneroProducto` , `NombreProducto` , `TalleProducto` , `TipoProducto` , `Proveedor`, `PrecioCompra`, `PrecioVenta`,`Stock`, `Activo`) VALUES ('" & txtCodigo.Text & "','" & cboGenero.Text & "','" & txtNombre.Text & "','" & txtTalle.Text & "','" & txtTipo.Text & "','" & txtProveedor.Text & "','" & txtPreCompra.Text & "','" & txtPreVenta.Text & "','" & txtStockInicial.Text & "',1);"
+                sqlComando = "INSERT into `zapateria`.`producto`( `CodigoProducto` , `GeneroProducto` , `NombreProducto` , `TalleProducto` , `TipoProducto` , `Proveedor`, `PrecioCompra`, `PrecioVenta`,`Stock`, `Activo`) VALUES ('" & txtCodigo.Text & "','" & cboGenero.Text & "','" & txtNombre.Text & "','" & txtTalle.Text & "'," & idTipoProducto.ToString & "," & idProveedor.ToString & ",'" & txtPreCompra.Text & "','" & txtPreVenta.Text & "','" & txtStockInicial.Text & "',1);"
                 MySql.MiComandoSQL(sqlComando)
                 MsgBox("El Producto " & txtNombre.Text & " ha sido dado de alta ", MessageBoxIcon.Information)
                 llenardgProducto()
