@@ -57,6 +57,7 @@ CREATE TABLE `cuentacorriente` (
   `IdCuentaCorriente` int(11) NOT NULL AUTO_INCREMENT,
   `Activo` int(11) NOT NULL,
   `IdCliente` int(11) NOT NULL,
+  `Deuda` float DEFAULT NULL,
   PRIMARY KEY (`IdCuentaCorriente`),
   KEY `IdCliente_idx` (`IdCliente`),
   CONSTRAINT `IdCliente` FOREIGN KEY (`IdCliente`) REFERENCES `cliente` (`IdCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -85,16 +86,10 @@ CREATE TABLE `detalleventa` (
   `Producto` int(11) NOT NULL,
   `CantidadProducto` int(11) NOT NULL,
   `TotalProducto` float NOT NULL,
-  `CantidadEfectivo` float DEFAULT NULL,
-  `CantidadCuentaCorriente` float DEFAULT NULL,
-  `UltimaActualizacionUsuario` int(11) DEFAULT NULL,
-  `FechaModificacion` date DEFAULT NULL,
   PRIMARY KEY (`IdDetalleventa`),
   KEY `VentaAsociada_idx` (`VentaAsociada`),
   KEY `Producto_idx` (`Producto`),
-  KEY `UltimaActualizacionUsuario_idx` (`UltimaActualizacionUsuario`),
   CONSTRAINT `Producto` FOREIGN KEY (`Producto`) REFERENCES `producto` (`IdProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `UltimaActualizacionUsuario` FOREIGN KEY (`UltimaActualizacionUsuario`) REFERENCES `usuario` (`IdUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `VentaAsociada` FOREIGN KEY (`VentaAsociada`) REFERENCES `venta` (`IdVenta`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -106,6 +101,35 @@ CREATE TABLE `detalleventa` (
 LOCK TABLES `detalleventa` WRITE;
 /*!40000 ALTER TABLE `detalleventa` DISABLE KEYS */;
 /*!40000 ALTER TABLE `detalleventa` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `movimientos_cc`
+--
+
+DROP TABLE IF EXISTS `movimientos_cc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `movimientos_cc` (
+  `idMovimientosCC` int(11) NOT NULL AUTO_INCREMENT,
+  `idCC` int(11) DEFAULT NULL,
+  `SaldoPrevio` float DEFAULT NULL,
+  `SaldoCalculado` float DEFAULT NULL,
+  `Movimiento` float DEFAULT NULL,
+  `FechaActualizacion` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`idMovimientosCC`),
+  KEY `idCuentaCorriente_idx` (`idCC`),
+  CONSTRAINT `idCuentaCorriente` FOREIGN KEY (`idCC`) REFERENCES `cuentacorriente` (`IdCuentaCorriente`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `movimientos_cc`
+--
+
+LOCK TABLES `movimientos_cc` WRITE;
+/*!40000 ALTER TABLE `movimientos_cc` DISABLE KEYS */;
+/*!40000 ALTER TABLE `movimientos_cc` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -132,7 +156,7 @@ CREATE TABLE `producto` (
   KEY `TipoProducto_idx` (`TipoProducto`),
   CONSTRAINT `Proveedor` FOREIGN KEY (`Proveedor`) REFERENCES `proveedor` (`IdProveedor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `TipoProducto` FOREIGN KEY (`TipoProducto`) REFERENCES `tipoproducto` (`IdTipoProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,6 +165,7 @@ CREATE TABLE `producto` (
 
 LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
+INSERT INTO `producto` VALUES (1,'M1','Rebook','Hombre','35',4,3,'200','300','12',1),(2,'','','Hombre','',4,3,'','','',1),(3,'','','Hombre','',4,3,'','','',1);
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +194,7 @@ CREATE TABLE `proveedor` (
 
 LOCK TABLES `proveedor` WRITE;
 /*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
-INSERT INTO `proveedor` VALUES (3,'22-        -','2','2','2','2',1);
+INSERT INTO `proveedor` VALUES (3,'22-        -','TEST','2','2','2',1);
 /*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,7 +254,6 @@ DROP TABLE IF EXISTS `tipoproducto`;
 CREATE TABLE `tipoproducto` (
   `IdTipoProducto` int(11) NOT NULL AUTO_INCREMENT,
   `TipoProducto` varchar(255) NOT NULL,
-  `Descripcion` varchar(45) DEFAULT NULL,
   `Activo` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`IdTipoProducto`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
@@ -241,7 +265,7 @@ CREATE TABLE `tipoproducto` (
 
 LOCK TABLES `tipoproducto` WRITE;
 /*!40000 ALTER TABLE `tipoproducto` DISABLE KEYS */;
-INSERT INTO `tipoproducto` VALUES (1,'Mocasin','',1),(2,'Zapatos Taco Chino','',1),(3,'Zapatos de Fiesta','',1),(4,'Botines','',1),(5,'Zapatos','',1),(6,'Botines','',0),(7,'botines','',0);
+INSERT INTO `tipoproducto` VALUES (1,'Mocasin',1),(2,'Zapatos Taco Chino',1),(3,'Zapatos de Fiesta',1),(4,'Botines',1),(5,'Zapatos',1),(6,'Botines',0),(7,'botines',0);
 /*!40000 ALTER TABLE `tipoproducto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,6 +310,8 @@ CREATE TABLE `venta` (
   `Cliente` int(11) NOT NULL,
   `Usuario` int(11) DEFAULT NULL,
   `TipoPago` int(11) DEFAULT NULL,
+  `CantidadEfectivo` float DEFAULT NULL,
+  `CantidadCuentaCorriente` float DEFAULT NULL,
   `Total` float NOT NULL,
   `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`IdVenta`),
@@ -314,4 +340,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-12 23:07:52
+-- Dump completed on 2019-03-13  0:43:57
