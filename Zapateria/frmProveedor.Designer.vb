@@ -65,7 +65,6 @@ Partial Class frmProveedor
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.PictureBox1.Image = Global.Zapateria.My.Resources.Resources.Proveedores
         Me.PictureBox1.Location = New System.Drawing.Point(359, 11)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(150, 128)
@@ -122,7 +121,7 @@ Partial Class frmProveedor
         Me.txtCUIT.BeepOnError = True
         Me.txtCUIT.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCUIT.Location = New System.Drawing.Point(103, 26)
-        Me.txtCUIT.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtCUIT.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCUIT.Mask = "00-00000000-0"
         Me.txtCUIT.Name = "txtCUIT"
         Me.txtCUIT.Size = New System.Drawing.Size(164, 27)
@@ -330,7 +329,7 @@ Partial Class frmProveedor
         Me.panelProveedor.Controls.Add(Me.txtFiltro)
         Me.panelProveedor.Controls.Add(Me.Label7)
         Me.panelProveedor.Location = New System.Drawing.Point(544, 67)
-        Me.panelProveedor.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.panelProveedor.Margin = New System.Windows.Forms.Padding(2)
         Me.panelProveedor.Name = "panelProveedor"
         Me.panelProveedor.Size = New System.Drawing.Size(543, 373)
         Me.panelProveedor.TabIndex = 239
@@ -344,7 +343,7 @@ Partial Class frmProveedor
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvProveedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvProveedor.Location = New System.Drawing.Point(0, 48)
-        Me.dgvProveedor.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.dgvProveedor.Margin = New System.Windows.Forms.Padding(2)
         Me.dgvProveedor.MultiSelect = False
         Me.dgvProveedor.Name = "dgvProveedor"
         Me.dgvProveedor.ReadOnly = True
@@ -357,7 +356,7 @@ Partial Class frmProveedor
         '
         Me.txtFiltro.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtFiltro.Location = New System.Drawing.Point(174, 4)
-        Me.txtFiltro.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtFiltro.Margin = New System.Windows.Forms.Padding(2)
         Me.txtFiltro.Name = "txtFiltro"
         Me.txtFiltro.Size = New System.Drawing.Size(356, 28)
         Me.txtFiltro.TabIndex = 1
@@ -365,13 +364,13 @@ Partial Class frmProveedor
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Minion Pro", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(2, 6)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(146, 26)
+        Me.Label7.Size = New System.Drawing.Size(165, 24)
         Me.Label7.TabIndex = 0
-        Me.Label7.Text = "Proveedor/CUIT"
+        Me.Label7.Text = "Proveedor/CUIT:"
         '
         'dgbProveedor
         '
@@ -393,7 +392,7 @@ Partial Class frmProveedor
         Me.Controls.Add(Me.panelProveedor)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "frmProveedor"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
