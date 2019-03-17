@@ -57,8 +57,6 @@ Public Class frmCliente
         Else
             Me.Close()
         End If
-
-
     End Sub
 
     Private Sub limpiar()
@@ -114,10 +112,11 @@ Public Class frmCliente
 
         If MySql.MiComandoSQL(sqlComando) Then
             MsgBox("El Cliente ha sido actualizado")
+            ObtenerDatos()
         Else
             MsgBox("No Se registraron modificaciones")
         End If
-        ObtenerDatos()
+
         btnEliminar.Visible = False
         btnActualizar.Visible = False
 
