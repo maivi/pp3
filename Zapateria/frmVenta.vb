@@ -6,12 +6,17 @@ Public Class frmVenta
     Dim NombreProducto As String
     Dim sqlComando As String
     Dim Producto As New clsProducto
+    Dim cantStock As New Integer
+
+
 
     Private Sub frmVenta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        cantStock = -1
         llenarProducto()
         dgvProducto.Columns("IdProducto").Visible = False
         dgvProducto.Columns("PrecioCompra").Visible = False
         dgvProducto.Columns("Activo").Visible = False
+        dgvProducto.Columns("Stock").Visible = False
         txtTotalVenta.Text = "0"
     End Sub
 
@@ -31,13 +36,20 @@ Public Class frmVenta
         txtNombreProducto.Text = dgvProducto.SelectedCells.Item(3).Value
         txtTalleProducto.Text = dgvProducto.SelectedCells.Item(4).Value
         txtPrecioProducto.Text = dgvProducto.SelectedCells.Item(8).Value
-        txtStock.Text = dgvProducto.SelectedCells.Item(9).Value
+
+        If Me.cantStock = -1 Then
+            Me.cantStock = Integer.Parse(dgvProducto.SelectedCells.Item(9).Value)
+            txtStock.Text = dgvProducto.SelectedCells.Item(9).Value
+        Else
+            txtStock.Text = Me.cantStock
+        End If
+
         txtCantidad.Text = ""
 
 
         idProducto = dgvProducto.Rows(dgvProducto.CurrentRow.Index).Cells(0).Value
         Producto.idProducto = idProducto
-        sqlComando = "SELECT * FROM producto WHERE idProducto='" & Producto.idProducto & "';"
+        sqlComando = "SELECT * FROM producto WHERE IdProducto='" & Producto.idProducto & "';"
         MySql.MiComandoSQL(sqlComando, Producto)
 
     End Sub
