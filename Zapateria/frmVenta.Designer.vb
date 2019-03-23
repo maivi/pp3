@@ -28,6 +28,7 @@ Partial Class frmVenta
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lblCajero = New System.Windows.Forms.Label()
@@ -89,6 +90,8 @@ Partial Class frmVenta
         Me.txtCantidadProductos = New System.Windows.Forms.TextBox()
         Me.cmbCANTIDADProductos = New System.Windows.Forms.ComboBox()
         Me.panProducto = New System.Windows.Forms.Panel()
+        Me.dgvCliente = New System.Windows.Forms.DataGridView()
+        Me.bsCliente = New System.Windows.Forms.BindingSource(Me.components)
         Me.txtBusquedaCodigo = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
@@ -105,6 +108,8 @@ Partial Class frmVenta
         Me.Panel3.SuspendLayout()
         CType(Me.dgvVenta, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panProducto.SuspendLayout()
+        CType(Me.dgvCliente, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.bsCliente, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvProducto, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -466,8 +471,7 @@ Partial Class frmVenta
         'txtNombreCliente
         '
         Me.txtNombreCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtNombreCliente.Cursor = System.Windows.Forms.Cursors.No
-        Me.txtNombreCliente.Enabled = False
+        Me.txtNombreCliente.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.txtNombreCliente.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNombreCliente.Location = New System.Drawing.Point(97, 38)
         Me.txtNombreCliente.Margin = New System.Windows.Forms.Padding(2)
@@ -503,6 +507,7 @@ Partial Class frmVenta
         '
         Me.txtDocumentoCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtDocumentoCliente.Cursor = System.Windows.Forms.Cursors.Default
+        Me.txtDocumentoCliente.Enabled = False
         Me.txtDocumentoCliente.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDocumentoCliente.Location = New System.Drawing.Point(453, 38)
         Me.txtDocumentoCliente.Margin = New System.Windows.Forms.Padding(2)
@@ -877,6 +882,7 @@ Partial Class frmVenta
         '
         Me.panProducto.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panProducto.Controls.Add(Me.dgvCliente)
         Me.panProducto.Controls.Add(Me.txtBusquedaCodigo)
         Me.panProducto.Controls.Add(Me.Label14)
         Me.panProducto.Controls.Add(Me.Label13)
@@ -890,6 +896,31 @@ Partial Class frmVenta
         Me.panProducto.Name = "panProducto"
         Me.panProducto.Size = New System.Drawing.Size(471, 506)
         Me.panProducto.TabIndex = 229
+        '
+        'dgvCliente
+        '
+        Me.dgvCliente.AllowUserToAddRows = False
+        Me.dgvCliente.AllowUserToDeleteRows = False
+        Me.dgvCliente.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dgvCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 10.8!)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvCliente.DefaultCellStyle = DataGridViewCellStyle3
+        Me.dgvCliente.Location = New System.Drawing.Point(3, 54)
+        Me.dgvCliente.MultiSelect = False
+        Me.dgvCliente.Name = "dgvCliente"
+        Me.dgvCliente.ReadOnly = True
+        Me.dgvCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvCliente.Size = New System.Drawing.Size(465, 447)
+        Me.dgvCliente.TabIndex = 201
+        Me.dgvCliente.Visible = False
         '
         'txtBusquedaCodigo
         '
@@ -928,31 +959,31 @@ Partial Class frmVenta
         '
         Me.dgvProducto.AllowUserToAddRows = False
         Me.dgvProducto.AllowUserToDeleteRows = False
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgvProducto.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvProducto.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.dgvProducto.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvProducto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.dgvProducto.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvProducto.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
-        Me.dgvProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvProducto.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvProducto.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        Me.dgvProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvProducto.DefaultCellStyle = DataGridViewCellStyle6
         Me.dgvProducto.Location = New System.Drawing.Point(2, 132)
         Me.dgvProducto.Margin = New System.Windows.Forms.Padding(2)
         Me.dgvProducto.MultiSelect = False
@@ -1030,6 +1061,8 @@ Partial Class frmVenta
         CType(Me.dgvVenta, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panProducto.ResumeLayout(False)
         Me.panProducto.PerformLayout()
+        CType(Me.dgvCliente, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.bsCliente, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvProducto, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.bsProductos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -1106,4 +1139,6 @@ Partial Class frmVenta
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents txtCajaAhorro As System.Windows.Forms.TextBox
     Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
+    Friend WithEvents dgvCliente As System.Windows.Forms.DataGridView
+    Friend WithEvents bsCliente As System.Windows.Forms.BindingSource
 End Class

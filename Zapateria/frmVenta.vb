@@ -7,6 +7,7 @@ Public Class frmVenta
     Dim sqlComando As String
     Dim Producto As New clsProducto
     Dim cantStock As New Integer
+    Dim idCliente As New Integer
 
 
 
@@ -112,11 +113,51 @@ Public Class frmVenta
         txtPrecioProducto.Text = ""
     End Sub
 
-    Private Sub btnClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClientes.Click
+    Private Sub ObtenerDatos()
+        Dim tablaContactos As New DataTable
 
+        MySql.MiComandoSQL("SELECT IdCliente, TipoDocumento, DocumentoCliente as Documento, NombreCliente  as Nombre, DireccionCliente as Direccion, TelefonoCliente as Telefono, Activo FROM cliente WHERE activo=1", tablaContactos)
+
+        bsCliente.DataSource = tablaContactos
+        dgvCliente.DataSource = bsCliente.DataSource
+        dgvCliente.Columns("IdCliente").Visible = False
+    End Sub
+
+    Private Sub btnClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClientes.Click
+        If txtNombreCliente.Text = "" Then
+            txtNombreCliente.Select()
+            ObtenerDatos()
+        Else
+            Dim tablaClientes As New DataTable
+
+            MySql.MiComandoSQL("SELECT * FROM cliente WHERE NombreCliente Like'%" & txtNombreCliente.Text & "%' and activo=1 || DocumentoCliente Like'%" & txtNombreCliente.Text & "%' and activo=1", tablaClientes)
+            bsCliente.DataSource = tablaClientes
+            dgvCliente.DataSource = bsCliente.DataSource
+
+        End If
     End Sub
 
     Private Sub Label12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label12.Click
 
+    End Sub
+
+    Private Sub txtNombreCliente_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtNombreCliente.Click
+        dgvCliente.Visible = True
+        dgvProducto.Visible = False
+        Label13.Text = "Clientes"
+        ObtenerDatos()
+    End Sub
+
+    Private Sub dgvCliente_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvCliente.CellClick
+        Dim Cliente As New clsContactos
+
+        txtNombreCliente.Text = dgvCliente.SelectedCells.Item(3).Value
+        txtDocumentoCliente.Text = dgvCliente.SelectedCells.Item(2).Value
+        idCliente = dgvCliente.SelectedCells.Item(0).Value
+        txtDireccionCliente.Text = dgvCliente.SelectedCells.Item(4).Value
+        txtTelefonoCliente.Text = dgvCliente.SelectedCells.Item(5).Value
+        'idTipo = dgvTipo.Rows(dgvTipo.CurrentRow.Index).Cells(0).Value
+        sqlComando = "SELECT * FROM cliente WHERE IdCliente=" & idCliente.ToString & ";"
+        MySql.MiComandoSQL(sqlComando, Cliente)
     End Sub
 End Class
