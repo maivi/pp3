@@ -81,6 +81,7 @@
     <Compile Include="clsProducto.vb" />
     <Compile Include="clsProveedor.vb" />
     <Compile Include="clsTipo.vb" />
+    <Compile Include="clsUsuario.vb" />
     <Compile Include="clsVantas.vb" />
     <Compile Include="frmStock.Designer.vb">
       <DependentUpon>frmStock.vb</DependentUpon>
@@ -255,67 +256,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\clientes.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Usuarios.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Compras.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Proveedores.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\categoria.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\historial.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\productos.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\login.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cerrar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\c3c4c510da819bd2d2aef803a2c7939a.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ZAPATERIA-DAYMA-EN-ZAFRA-tienda.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\chica-probando-zapatos.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\caja-registradora-sharp-xe-a102.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\caja-registradora-sharp-xe-a102.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\a93d88da73ece22f8e333111bb65bedd-3d-suministros-de-oficina-modelo-03-vector.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\kisspng-emoji-domain-bank-text-messaging-money-bank-5abb192f649096.6211639715222111194119.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\descarga.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\admin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cajero.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Stock-1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

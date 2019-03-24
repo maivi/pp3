@@ -23,6 +23,7 @@ Partial Class frmCliente
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCliente))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -70,9 +71,10 @@ Partial Class frmCliente
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(340, 9)
+        Me.Label1.Location = New System.Drawing.Point(453, 11)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(134, 29)
+        Me.Label1.Size = New System.Drawing.Size(163, 36)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "CLIENTES"
         '
@@ -85,9 +87,10 @@ Partial Class frmCliente
         Me.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnSalir.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalir.Location = New System.Drawing.Point(110, 80)
+        Me.btnSalir.Location = New System.Drawing.Point(147, 98)
+        Me.btnSalir.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(101, 31)
+        Me.btnSalir.Size = New System.Drawing.Size(135, 38)
         Me.btnSalir.TabIndex = 11
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = False
@@ -101,9 +104,10 @@ Partial Class frmCliente
         Me.btnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnLimpiar.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLimpiar.Location = New System.Drawing.Point(6, 80)
+        Me.btnLimpiar.Location = New System.Drawing.Point(8, 98)
+        Me.btnLimpiar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnLimpiar.Name = "btnLimpiar"
-        Me.btnLimpiar.Size = New System.Drawing.Size(101, 31)
+        Me.btnLimpiar.Size = New System.Drawing.Size(135, 38)
         Me.btnLimpiar.TabIndex = 10
         Me.btnLimpiar.Text = "Limpiar"
         Me.btnLimpiar.UseVisualStyleBackColor = False
@@ -117,9 +121,10 @@ Partial Class frmCliente
         Me.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnEliminar.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEliminar.Location = New System.Drawing.Point(6, 30)
+        Me.btnEliminar.Location = New System.Drawing.Point(8, 37)
+        Me.btnEliminar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnEliminar.Name = "btnEliminar"
-        Me.btnEliminar.Size = New System.Drawing.Size(101, 31)
+        Me.btnEliminar.Size = New System.Drawing.Size(135, 38)
         Me.btnEliminar.TabIndex = 8
         Me.btnEliminar.Text = "Eliminar"
         Me.btnEliminar.UseVisualStyleBackColor = False
@@ -133,9 +138,10 @@ Partial Class frmCliente
         Me.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnGuardar.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardar.Location = New System.Drawing.Point(110, 30)
+        Me.btnGuardar.Location = New System.Drawing.Point(147, 37)
+        Me.btnGuardar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(101, 31)
+        Me.btnGuardar.Size = New System.Drawing.Size(135, 38)
         Me.btnGuardar.TabIndex = 6
         Me.btnGuardar.Text = "Guardar"
         Me.btnGuardar.UseVisualStyleBackColor = False
@@ -147,9 +153,10 @@ Partial Class frmCliente
         Me.Panel2.BackColor = System.Drawing.Color.Teal
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.Label1)
-        Me.Panel2.Location = New System.Drawing.Point(10, 11)
+        Me.Panel2.Location = New System.Drawing.Point(13, 14)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1131, 51)
+        Me.Panel2.Size = New System.Drawing.Size(1507, 62)
         Me.Panel2.TabIndex = 233
         '
         'GroupClientes
@@ -166,37 +173,41 @@ Partial Class frmCliente
         Me.GroupClientes.Controls.Add(Me.Label2)
         Me.GroupClientes.Controls.Add(Me.cmbDocCliente)
         Me.GroupClientes.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupClientes.Location = New System.Drawing.Point(6, 11)
+        Me.GroupClientes.Location = New System.Drawing.Point(8, 14)
+        Me.GroupClientes.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupClientes.Name = "GroupClientes"
-        Me.GroupClientes.Size = New System.Drawing.Size(351, 285)
+        Me.GroupClientes.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupClientes.Size = New System.Drawing.Size(468, 351)
         Me.GroupClientes.TabIndex = 4
         Me.GroupClientes.TabStop = False
         '
         'txtTelefonoCliente
         '
         Me.txtTelefonoCliente.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTelefonoCliente.Location = New System.Drawing.Point(122, 171)
-        Me.txtTelefonoCliente.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtTelefonoCliente.Location = New System.Drawing.Point(163, 210)
+        Me.txtTelefonoCliente.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtTelefonoCliente.Mask = "(999)000-0000"
         Me.txtTelefonoCliente.Name = "txtTelefonoCliente"
-        Me.txtTelefonoCliente.Size = New System.Drawing.Size(120, 27)
+        Me.txtTelefonoCliente.Size = New System.Drawing.Size(159, 32)
         Me.txtTelefonoCliente.TabIndex = 59
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(6, 174)
+        Me.Label6.Location = New System.Drawing.Point(8, 214)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(87, 19)
+        Me.Label6.Size = New System.Drawing.Size(104, 24)
         Me.Label6.TabIndex = 11
         Me.Label6.Text = "Telefono:"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 138)
+        Me.Label5.Location = New System.Drawing.Point(8, 170)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(90, 19)
+        Me.Label5.Size = New System.Drawing.Size(112, 24)
         Me.Label5.TabIndex = 9
         Me.Label5.Text = "Direccion:"
         '
@@ -204,28 +215,31 @@ Partial Class frmCliente
         '
         Me.txtDniCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtDniCliente.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDniCliente.Location = New System.Drawing.Point(122, 67)
+        Me.txtDniCliente.Location = New System.Drawing.Point(163, 82)
+        Me.txtDniCliente.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDniCliente.MaxLength = 8
         Me.txtDniCliente.Name = "txtDniCliente"
-        Me.txtDniCliente.Size = New System.Drawing.Size(147, 27)
+        Me.txtDniCliente.Size = New System.Drawing.Size(195, 32)
         Me.txtDniCliente.TabIndex = 1
         '
         'txtDireccionCliente
         '
         Me.txtDireccionCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtDireccionCliente.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDireccionCliente.Location = New System.Drawing.Point(122, 135)
+        Me.txtDireccionCliente.Location = New System.Drawing.Point(163, 166)
+        Me.txtDireccionCliente.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDireccionCliente.MaxLength = 35
         Me.txtDireccionCliente.Name = "txtDireccionCliente"
-        Me.txtDireccionCliente.Size = New System.Drawing.Size(216, 27)
+        Me.txtDireccionCliente.Size = New System.Drawing.Size(287, 32)
         Me.txtDireccionCliente.TabIndex = 4
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(6, 103)
+        Me.Label4.Location = New System.Drawing.Point(8, 127)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(79, 19)
+        Me.Label4.Size = New System.Drawing.Size(97, 24)
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Nombre:"
         '
@@ -233,27 +247,30 @@ Partial Class frmCliente
         '
         Me.txtNombreCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtNombreCliente.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNombreCliente.Location = New System.Drawing.Point(122, 100)
+        Me.txtNombreCliente.Location = New System.Drawing.Point(163, 123)
+        Me.txtNombreCliente.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNombreCliente.MaxLength = 35
         Me.txtNombreCliente.Name = "txtNombreCliente"
-        Me.txtNombreCliente.Size = New System.Drawing.Size(216, 27)
+        Me.txtNombreCliente.Size = New System.Drawing.Size(287, 32)
         Me.txtNombreCliente.TabIndex = 3
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 68)
+        Me.Label3.Location = New System.Drawing.Point(8, 84)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(107, 19)
+        Me.Label3.Size = New System.Drawing.Size(132, 24)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Documento:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 33)
+        Me.Label2.Location = New System.Drawing.Point(8, 41)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(86, 19)
+        Me.Label2.Size = New System.Drawing.Size(104, 24)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Tipo Doc:"
         '
@@ -264,9 +281,10 @@ Partial Class frmCliente
         Me.cmbDocCliente.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbDocCliente.FormattingEnabled = True
         Me.cmbDocCliente.Items.AddRange(New Object() {"DNI", "CEDULA IDENTIDAD", "PASAPORTE", "LIBRETA DE ENROLAMIENTO"})
-        Me.cmbDocCliente.Location = New System.Drawing.Point(122, 30)
+        Me.cmbDocCliente.Location = New System.Drawing.Point(163, 37)
+        Me.cmbDocCliente.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbDocCliente.Name = "cmbDocCliente"
-        Me.cmbDocCliente.Size = New System.Drawing.Size(216, 27)
+        Me.cmbDocCliente.Size = New System.Drawing.Size(287, 32)
         Me.cmbDocCliente.TabIndex = 0
         '
         'Panel1
@@ -277,19 +295,21 @@ Partial Class frmCliente
         Me.Panel1.Controls.Add(Me.GroupClientes)
         Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Controls.Add(Me.GroupOpciones)
-        Me.Panel1.Location = New System.Drawing.Point(10, 67)
+        Me.Panel1.Location = New System.Drawing.Point(13, 82)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(597, 373)
+        Me.Panel1.Size = New System.Drawing.Size(795, 459)
         Me.Panel1.TabIndex = 235
         '
         'PictureBox1
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.PictureBox1.Image = Global.Zapateria.My.Resources.Resources.clientes
-        Me.PictureBox1.Location = New System.Drawing.Point(384, 26)
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(512, 32)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(161, 123)
+        Me.PictureBox1.Size = New System.Drawing.Size(215, 151)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.PictureBox1.TabIndex = 58
         Me.PictureBox1.TabStop = False
@@ -304,9 +324,11 @@ Partial Class frmCliente
         Me.GroupOpciones.Controls.Add(Me.btnGuardar)
         Me.GroupOpciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.GroupOpciones.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupOpciones.Location = New System.Drawing.Point(363, 178)
+        Me.GroupOpciones.Location = New System.Drawing.Point(484, 219)
+        Me.GroupOpciones.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupOpciones.Name = "GroupOpciones"
-        Me.GroupOpciones.Size = New System.Drawing.Size(217, 119)
+        Me.GroupOpciones.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupOpciones.Size = New System.Drawing.Size(289, 146)
         Me.GroupOpciones.TabIndex = 57
         Me.GroupOpciones.TabStop = False
         '
@@ -319,9 +341,10 @@ Partial Class frmCliente
         Me.btnActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnActualizar.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnActualizar.Location = New System.Drawing.Point(110, 30)
+        Me.btnActualizar.Location = New System.Drawing.Point(147, 37)
+        Me.btnActualizar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnActualizar.Name = "btnActualizar"
-        Me.btnActualizar.Size = New System.Drawing.Size(101, 31)
+        Me.btnActualizar.Size = New System.Drawing.Size(135, 38)
         Me.btnActualizar.TabIndex = 7
         Me.btnActualizar.Text = "Actualizar"
         Me.btnActualizar.UseVisualStyleBackColor = False
@@ -334,10 +357,10 @@ Partial Class frmCliente
         Me.Panel3.Controls.Add(Me.dgvContactos)
         Me.Panel3.Controls.Add(Me.txtFiltroCliente)
         Me.Panel3.Controls.Add(Me.Label7)
-        Me.Panel3.Location = New System.Drawing.Point(609, 67)
-        Me.Panel3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel3.Location = New System.Drawing.Point(812, 82)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(532, 373)
+        Me.Panel3.Size = New System.Drawing.Size(709, 459)
         Me.Panel3.TabIndex = 236
         '
         'dgvContactos
@@ -366,8 +389,8 @@ Partial Class frmCliente
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgvContactos.DefaultCellStyle = DataGridViewCellStyle2
-        Me.dgvContactos.Location = New System.Drawing.Point(2, 46)
-        Me.dgvContactos.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.dgvContactos.Location = New System.Drawing.Point(3, 57)
+        Me.dgvContactos.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.dgvContactos.MultiSelect = False
         Me.dgvContactos.Name = "dgvContactos"
         Me.dgvContactos.ReadOnly = True
@@ -382,26 +405,25 @@ Partial Class frmCliente
         Me.dgvContactos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.dgvContactos.RowTemplate.Height = 24
         Me.dgvContactos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvContactos.Size = New System.Drawing.Size(527, 325)
+        Me.dgvContactos.Size = New System.Drawing.Size(703, 400)
         Me.dgvContactos.TabIndex = 2
         '
         'txtFiltroCliente
         '
         Me.txtFiltroCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFiltroCliente.Location = New System.Drawing.Point(174, 4)
-        Me.txtFiltroCliente.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtFiltroCliente.Location = New System.Drawing.Point(232, 5)
+        Me.txtFiltroCliente.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtFiltroCliente.Name = "txtFiltroCliente"
-        Me.txtFiltroCliente.Size = New System.Drawing.Size(356, 28)
+        Me.txtFiltroCliente.Size = New System.Drawing.Size(473, 34)
         Me.txtFiltroCliente.TabIndex = 1
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Minion Pro", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(2, 6)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label7.Location = New System.Drawing.Point(3, 7)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(183, 26)
+        Me.Label7.Size = New System.Drawing.Size(231, 33)
         Me.Label7.TabIndex = 0
         Me.Label7.Text = "Documento/Nombre:"
         '
@@ -411,13 +433,13 @@ Partial Class frmCliente
         '
         'frmCliente
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1150, 451)
+        Me.ClientSize = New System.Drawing.Size(1533, 555)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "frmCliente"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

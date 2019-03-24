@@ -87,7 +87,6 @@ Public Class frmVenta
             txtCantidad.Text = 0
             txtCantidad.Select()
             limpiarProducto()
-            'ObtenerDatos()
         End If
     End Sub
 

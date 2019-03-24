@@ -419,7 +419,6 @@ Partial Class frmCuentaCorriente
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Panel2)
         Me.Name = "frmCuentaCorriente"
-        Me.Text = "frmCuentaCorriente"
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()

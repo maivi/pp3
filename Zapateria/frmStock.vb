@@ -3,8 +3,8 @@
     Dim sqlComando As String
 
     Private Sub frmStock_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        llenardgvAlertaStock()
-        llenardgvStock()
+        'llenardgvAlertaStock()
+        'llenardgvStock()
     End Sub
 
     Private Sub llenardgvAlertaStock()

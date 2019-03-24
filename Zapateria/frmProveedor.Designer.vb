@@ -23,6 +23,7 @@ Partial Class frmProveedor
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmProveedor))
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -65,10 +66,11 @@ Partial Class frmProveedor
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.PictureBox1.Image = Global.Zapateria.My.Resources.Resources.Proveedores
-        Me.PictureBox1.Location = New System.Drawing.Point(359, 11)
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(479, 14)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(150, 128)
+        Me.PictureBox1.Size = New System.Drawing.Size(200, 158)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.PictureBox1.TabIndex = 235
         Me.PictureBox1.TabStop = False
@@ -80,9 +82,10 @@ Partial Class frmProveedor
         Me.Panel2.BackColor = System.Drawing.Color.Teal
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.Label6)
-        Me.Panel2.Location = New System.Drawing.Point(10, 11)
+        Me.Panel2.Location = New System.Drawing.Point(13, 14)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1078, 51)
+        Me.Panel2.Size = New System.Drawing.Size(1437, 62)
         Me.Panel2.TabIndex = 236
         '
         'Label6
@@ -91,9 +94,10 @@ Partial Class frmProveedor
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Tahoma", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(314, 10)
+        Me.Label6.Location = New System.Drawing.Point(419, 12)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(193, 29)
+        Me.Label6.Size = New System.Drawing.Size(241, 36)
         Me.Label6.TabIndex = 7
         Me.Label6.Text = "PROVEEDORES"
         '
@@ -111,9 +115,11 @@ Partial Class frmProveedor
         Me.GroupClientes.Controls.Add(Me.Label2)
         Me.GroupClientes.Controls.Add(Me.Label1)
         Me.GroupClientes.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupClientes.Location = New System.Drawing.Point(3, 3)
+        Me.GroupClientes.Location = New System.Drawing.Point(4, 4)
+        Me.GroupClientes.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupClientes.Name = "GroupClientes"
-        Me.GroupClientes.Size = New System.Drawing.Size(338, 257)
+        Me.GroupClientes.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupClientes.Size = New System.Drawing.Size(451, 316)
         Me.GroupClientes.TabIndex = 233
         Me.GroupClientes.TabStop = False
         '
@@ -121,11 +127,11 @@ Partial Class frmProveedor
         '
         Me.txtCUIT.BeepOnError = True
         Me.txtCUIT.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCUIT.Location = New System.Drawing.Point(103, 26)
-        Me.txtCUIT.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtCUIT.Location = New System.Drawing.Point(137, 32)
+        Me.txtCUIT.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtCUIT.Mask = "00-00000000-0"
         Me.txtCUIT.Name = "txtCUIT"
-        Me.txtCUIT.Size = New System.Drawing.Size(164, 27)
+        Me.txtCUIT.Size = New System.Drawing.Size(217, 32)
         Me.txtCUIT.TabIndex = 1
         Me.txtCUIT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -133,18 +139,20 @@ Partial Class frmProveedor
         '
         Me.txtNombreProveedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtNombreProveedor.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNombreProveedor.Location = New System.Drawing.Point(103, 68)
+        Me.txtNombreProveedor.Location = New System.Drawing.Point(137, 84)
+        Me.txtNombreProveedor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtNombreProveedor.MaxLength = 25
         Me.txtNombreProveedor.Name = "txtNombreProveedor"
-        Me.txtNombreProveedor.Size = New System.Drawing.Size(217, 27)
+        Me.txtNombreProveedor.Size = New System.Drawing.Size(289, 32)
         Me.txtNombreProveedor.TabIndex = 1
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(13, 194)
+        Me.Label5.Location = New System.Drawing.Point(17, 239)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(184, 19)
+        Me.Label5.Size = New System.Drawing.Size(226, 24)
         Me.Label5.TabIndex = 9
         Me.Label5.Text = "Pagina WEB o E-Mail:"
         '
@@ -152,18 +160,20 @@ Partial Class frmProveedor
         '
         Me.txtPaginaWeb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtPaginaWeb.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPaginaWeb.Location = New System.Drawing.Point(17, 216)
+        Me.txtPaginaWeb.Location = New System.Drawing.Point(23, 266)
+        Me.txtPaginaWeb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtPaginaWeb.MaxLength = 150
         Me.txtPaginaWeb.Name = "txtPaginaWeb"
-        Me.txtPaginaWeb.Size = New System.Drawing.Size(303, 27)
+        Me.txtPaginaWeb.Size = New System.Drawing.Size(403, 32)
         Me.txtPaginaWeb.TabIndex = 4
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(13, 158)
+        Me.Label4.Location = New System.Drawing.Point(17, 194)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(87, 19)
+        Me.Label4.Size = New System.Drawing.Size(104, 24)
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Telefono:"
         '
@@ -171,18 +181,20 @@ Partial Class frmProveedor
         '
         Me.txtTelefonoProveedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtTelefonoProveedor.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTelefonoProveedor.Location = New System.Drawing.Point(103, 155)
+        Me.txtTelefonoProveedor.Location = New System.Drawing.Point(137, 191)
+        Me.txtTelefonoProveedor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTelefonoProveedor.MaxLength = 12
         Me.txtTelefonoProveedor.Name = "txtTelefonoProveedor"
-        Me.txtTelefonoProveedor.Size = New System.Drawing.Size(217, 27)
+        Me.txtTelefonoProveedor.Size = New System.Drawing.Size(289, 32)
         Me.txtTelefonoProveedor.TabIndex = 3
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(13, 116)
+        Me.Label3.Location = New System.Drawing.Point(17, 143)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(90, 19)
+        Me.Label3.Size = New System.Drawing.Size(112, 24)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Dirección:"
         '
@@ -190,27 +202,30 @@ Partial Class frmProveedor
         '
         Me.txtDireccionProveedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtDireccionProveedor.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDireccionProveedor.Location = New System.Drawing.Point(103, 113)
+        Me.txtDireccionProveedor.Location = New System.Drawing.Point(137, 139)
+        Me.txtDireccionProveedor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtDireccionProveedor.MaxLength = 45
         Me.txtDireccionProveedor.Name = "txtDireccionProveedor"
-        Me.txtDireccionProveedor.Size = New System.Drawing.Size(217, 27)
+        Me.txtDireccionProveedor.Size = New System.Drawing.Size(289, 32)
         Me.txtDireccionProveedor.TabIndex = 2
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(13, 71)
+        Me.Label2.Location = New System.Drawing.Point(17, 87)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(79, 19)
+        Me.Label2.Size = New System.Drawing.Size(97, 24)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Nombre:"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 29)
+        Me.Label1.Location = New System.Drawing.Point(16, 36)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(56, 19)
+        Me.Label1.Size = New System.Drawing.Size(67, 24)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "CUIT:"
         '
@@ -220,9 +235,10 @@ Partial Class frmProveedor
         Me.Panel1.Controls.Add(Me.GroupBox1)
         Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Controls.Add(Me.GroupClientes)
-        Me.Panel1.Location = New System.Drawing.Point(10, 67)
+        Me.Panel1.Location = New System.Drawing.Point(13, 82)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(529, 371)
+        Me.Panel1.Size = New System.Drawing.Size(705, 456)
         Me.Panel1.TabIndex = 238
         '
         'GroupBox1
@@ -235,9 +251,11 @@ Partial Class frmProveedor
         Me.GroupBox1.Controls.Add(Me.btnActualizar)
         Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.GroupBox1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(306, 264)
+        Me.GroupBox1.Location = New System.Drawing.Point(408, 325)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(218, 102)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(291, 126)
         Me.GroupBox1.TabIndex = 239
         Me.GroupBox1.TabStop = False
         '
@@ -250,9 +268,10 @@ Partial Class frmProveedor
         Me.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnSalir.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalir.Location = New System.Drawing.Point(111, 60)
+        Me.btnSalir.Location = New System.Drawing.Point(148, 74)
+        Me.btnSalir.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(101, 31)
+        Me.btnSalir.Size = New System.Drawing.Size(135, 38)
         Me.btnSalir.TabIndex = 10
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = False
@@ -266,9 +285,10 @@ Partial Class frmProveedor
         Me.btnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnLimpiar.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLimpiar.Location = New System.Drawing.Point(6, 60)
+        Me.btnLimpiar.Location = New System.Drawing.Point(8, 74)
+        Me.btnLimpiar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnLimpiar.Name = "btnLimpiar"
-        Me.btnLimpiar.Size = New System.Drawing.Size(101, 31)
+        Me.btnLimpiar.Size = New System.Drawing.Size(135, 38)
         Me.btnLimpiar.TabIndex = 9
         Me.btnLimpiar.Text = "Limpiar"
         Me.btnLimpiar.UseVisualStyleBackColor = False
@@ -282,9 +302,10 @@ Partial Class frmProveedor
         Me.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnEliminar.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEliminar.Location = New System.Drawing.Point(6, 23)
+        Me.btnEliminar.Location = New System.Drawing.Point(8, 28)
+        Me.btnEliminar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnEliminar.Name = "btnEliminar"
-        Me.btnEliminar.Size = New System.Drawing.Size(101, 31)
+        Me.btnEliminar.Size = New System.Drawing.Size(135, 38)
         Me.btnEliminar.TabIndex = 7
         Me.btnEliminar.Text = "Eliminar"
         Me.btnEliminar.UseVisualStyleBackColor = False
@@ -298,9 +319,10 @@ Partial Class frmProveedor
         Me.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnGuardar.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardar.Location = New System.Drawing.Point(111, 23)
+        Me.btnGuardar.Location = New System.Drawing.Point(148, 28)
+        Me.btnGuardar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(101, 31)
+        Me.btnGuardar.Size = New System.Drawing.Size(135, 38)
         Me.btnGuardar.TabIndex = 5
         Me.btnGuardar.Text = "Guardar"
         Me.btnGuardar.UseVisualStyleBackColor = False
@@ -314,9 +336,10 @@ Partial Class frmProveedor
         Me.btnActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnActualizar.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnActualizar.Location = New System.Drawing.Point(110, 23)
+        Me.btnActualizar.Location = New System.Drawing.Point(147, 28)
+        Me.btnActualizar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnActualizar.Name = "btnActualizar"
-        Me.btnActualizar.Size = New System.Drawing.Size(101, 31)
+        Me.btnActualizar.Size = New System.Drawing.Size(135, 38)
         Me.btnActualizar.TabIndex = 6
         Me.btnActualizar.Text = "Actualizar"
         Me.btnActualizar.UseVisualStyleBackColor = False
@@ -329,10 +352,10 @@ Partial Class frmProveedor
         Me.panelProveedor.Controls.Add(Me.dgvProveedor)
         Me.panelProveedor.Controls.Add(Me.txtFiltro)
         Me.panelProveedor.Controls.Add(Me.Label7)
-        Me.panelProveedor.Location = New System.Drawing.Point(544, 67)
-        Me.panelProveedor.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.panelProveedor.Location = New System.Drawing.Point(725, 82)
+        Me.panelProveedor.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.panelProveedor.Name = "panelProveedor"
-        Me.panelProveedor.Size = New System.Drawing.Size(543, 373)
+        Me.panelProveedor.Size = New System.Drawing.Size(724, 459)
         Me.panelProveedor.TabIndex = 239
         '
         'dgvProveedor
@@ -343,33 +366,32 @@ Partial Class frmProveedor
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvProveedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvProveedor.Location = New System.Drawing.Point(0, 48)
-        Me.dgvProveedor.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.dgvProveedor.Location = New System.Drawing.Point(0, 59)
+        Me.dgvProveedor.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.dgvProveedor.MultiSelect = False
         Me.dgvProveedor.Name = "dgvProveedor"
         Me.dgvProveedor.ReadOnly = True
         Me.dgvProveedor.RowTemplate.Height = 24
         Me.dgvProveedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvProveedor.Size = New System.Drawing.Size(538, 325)
+        Me.dgvProveedor.Size = New System.Drawing.Size(717, 400)
         Me.dgvProveedor.TabIndex = 2
         '
         'txtFiltro
         '
         Me.txtFiltro.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFiltro.Location = New System.Drawing.Point(174, 4)
-        Me.txtFiltro.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtFiltro.Location = New System.Drawing.Point(232, 5)
+        Me.txtFiltro.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtFiltro.Name = "txtFiltro"
-        Me.txtFiltro.Size = New System.Drawing.Size(356, 28)
+        Me.txtFiltro.Size = New System.Drawing.Size(473, 34)
         Me.txtFiltro.TabIndex = 1
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Minion Pro", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(2, 6)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label7.Location = New System.Drawing.Point(3, 7)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(146, 26)
+        Me.Label7.Size = New System.Drawing.Size(184, 33)
         Me.Label7.TabIndex = 0
         Me.Label7.Text = "Proveedor/CUIT"
         '
@@ -387,13 +409,13 @@ Partial Class frmProveedor
         '
         'frmProveedor
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1096, 478)
+        Me.ClientSize = New System.Drawing.Size(1461, 588)
         Me.Controls.Add(Me.panelProveedor)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "frmProveedor"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
