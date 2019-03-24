@@ -119,7 +119,7 @@ Public Class Utilidades_MySQL
                 MySQLConexion.Open()
                 _MiDataAdapter.SelectCommand = comando
                 _MiDataAdapter.Fill(Tabla)
-                MySQLConexion.Close()
+                'MySQLConexion.Close()
             End Using
         Catch e As MySqlException
             MsgBox("Mensaje de Error:" & Chr(13) & e.Message, MsgBoxStyle.Critical, "Error en la operación MySQL")

@@ -11,9 +11,9 @@ Public Class frmTipo
 
     Private Sub frmCategoria_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ObtenerDatos()
-        dgvTipo.Columns("Descripcion").Visible = False
-        dgvTipo.Columns("activo").Visible = False
-        dgvTipo.Columns("IdTipoProducto").Visible = False
+        'dgvTipo.Columns("Descripcion").Visible = False
+        'dgvTipo.Columns("activo").Visible = False
+        'dgvTipo.Columns("IdTipoProducto").Visible = False
         btnGuardar.Visible = True
         btnActualizar.Visible = False
         btnEliminar.Visible = False

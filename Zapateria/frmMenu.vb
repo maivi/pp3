@@ -64,7 +64,7 @@ Public Class frmMenu
         Try
             ' MysqlCommand.Connection = MysqlConexion
             'MysqlCommand.CommandType = CommandType.Text
-            sSql = "SELECT Nombre,Nivel FROM usuario WHERE Usuario ='" & frmLogin.txtUsuario.Text & "' and Contrasenia='" & frmLogin.txtContraseña.Text & "' "
+            sSql = "SELECT usuario.Nombre,tipo_usuario.NivelUsuario FROM usuario,tipo_usuario WHERE idTipoUsuario=Nivel and Usuario ='" & frmLogin.txtUsuario.Text & "' and Contrasenia='" & frmLogin.txtContraseña.Text & "' "
             'MysqlCommand.CommandText = sSql
             'Conectar()
             'dr = MysqlCommand.ExecuteReader
@@ -97,12 +97,11 @@ Public Class frmMenu
                 PictureBox2.Visible = True
 
                 Me.btnUsuarios.Enabled = False
-                Me.btnReportes.Enabled = False
                 btnCategorias.Visible = False
                 btnProductos.Visible = False
                 btnProveedores.Visible = False
                 btnUsuarios.Visible = False
-                btnReportes.Visible = False
+
 
 
             End If
@@ -116,5 +115,9 @@ Public Class frmMenu
     Private Sub Timer1_Tick(ByVal sender As Object, ByVal e As EventArgs) Handles Timer1.Tick
         LblHora.Text = Now.ToLongTimeString
         LblFecha.Text = Now.ToLongDateString
+    End Sub
+
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        frmStock.ShowDialog()
     End Sub
 End Class

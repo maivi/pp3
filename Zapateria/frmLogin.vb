@@ -38,13 +38,13 @@ Public Class frmLogin
             MsgBox("Debe Lenar todos los campos", vbInformation, "Sistema!")
         ElseIf (txtUsuario.Text <> "" And txtContraseña.Text <> "") <> (txtUsuario.Text = "" And txtContraseña.Text = "") Then
 
-            Dim sql As String = "SELECT * FROM usuario WHERE Usuario='" & txtUsuario.Text & "' AND Contrasenia='" & txtContraseña.Text & "'"
+            Dim sql As String = "SELECT * FROM usuario WHERE Usuario='" & txtUsuario.Text & "' AND Contrasenia='" & txtContraseña.Text & "' AND Activo= 1 "
             Dim cantReg As Integer = MySql.cantReg(sql)
             If cantReg > 0 Then
                 frmMenu.Show()
                 Me.Hide()
             Else
-                MsgBox("No REGISTRADO", vbCritical, "Invalid Login")
+                MsgBox("USUARIO NO REGISTRADO", vbCritical, "Invalid Login")
             End If
         End If
     End Sub
