@@ -1,11 +1,11 @@
 ﻿Public Class clsProducto
-    Private _idProducto As Integer
-    Public Property idProducto() As Integer
+    Private _IdProducto As Integer
+    Public Property IdProducto() As Integer
         Get
-            Return _idProducto
+            Return _IdProducto
         End Get
         Set(ByVal value As Integer)
-            _idProducto = value
+            _IdProducto = value
         End Set
     End Property
 
@@ -50,21 +50,21 @@
         End Set
     End Property
 
-    Private _TipoProducto As String
-    Public Property TipoProducto() As String
+    Private _TipoProducto As Integer
+    Public Property TipoProducto() As Integer
         Get
             Return _TipoProducto
         End Get
-        Set(ByVal value As String)
+        Set(ByVal value As Integer)
             _TipoProducto = value
         End Set
     End Property
-    Private _Proveedor As String
-    Public Property Proveedor() As String
+    Private _Proveedor As Integer
+    Public Property Proveedor() As Integer
         Get
             Return _Proveedor
         End Get
-        Set(ByVal value As String)
+        Set(ByVal value As Integer)
             _Proveedor = value
         End Set
     End Property

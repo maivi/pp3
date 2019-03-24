@@ -44,7 +44,7 @@ Public Class frmLogin
                 frmMenu.Show()
                 Me.Hide()
             Else
-                MsgBox("No REGISTRADO", vbCritical, "Invalid Login")
+                MsgBox("USUARIO NO REGISTRADO", vbCritical, "Invalid Login")
             End If
         End If
     End Sub

@@ -6,12 +6,18 @@ Public Class frmVenta
     Dim NombreProducto As String
     Dim sqlComando As String
     Dim Producto As New clsProducto
+    Dim cantStock As New Integer
+    Dim idCliente As New Integer
+
+
 
     Private Sub frmVenta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        cantStock = -1
         llenarProducto()
         dgvProducto.Columns("IdProducto").Visible = False
         dgvProducto.Columns("PrecioCompra").Visible = False
         dgvProducto.Columns("Activo").Visible = False
+        dgvProducto.Columns("Stock").Visible = False
         txtTotalVenta.Text = "0"
     End Sub
 
@@ -31,13 +37,20 @@ Public Class frmVenta
         txtNombreProducto.Text = dgvProducto.SelectedCells.Item(3).Value
         txtTalleProducto.Text = dgvProducto.SelectedCells.Item(4).Value
         txtPrecioProducto.Text = dgvProducto.SelectedCells.Item(8).Value
-        txtStock.Text = dgvProducto.SelectedCells.Item(9).Value
+
+        If Me.cantStock = -1 Then
+            Me.cantStock = Integer.Parse(dgvProducto.SelectedCells.Item(9).Value)
+            txtStock.Text = dgvProducto.SelectedCells.Item(9).Value
+        Else
+            txtStock.Text = Me.cantStock
+        End If
+
         txtCantidad.Text = ""
 
 
         idProducto = dgvProducto.Rows(dgvProducto.CurrentRow.Index).Cells(0).Value
         Producto.idProducto = idProducto
-        sqlComando = "SELECT * FROM producto WHERE idProducto='" & Producto.idProducto & "';"
+        sqlComando = "SELECT * FROM producto WHERE IdProducto='" & Producto.idProducto & "';"
         MySql.MiComandoSQL(sqlComando, Producto)
 
     End Sub
@@ -99,11 +112,73 @@ Public Class frmVenta
         txtPrecioProducto.Text = ""
     End Sub
 
-    Private Sub btnClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClientes.Click
+    Private Sub ObtenerDatos()
+        Dim tablaContactos As New DataTable
 
+        MySql.MiComandoSQL("SELECT IdCliente, TipoDocumento, DocumentoCliente as Documento, NombreCliente  as Nombre, DireccionCliente as Direccion, TelefonoCliente as Telefono, Activo FROM cliente WHERE activo=1", tablaContactos)
+
+        bsCliente.DataSource = tablaContactos
+        dgvCliente.DataSource = bsCliente.DataSource
+        dgvCliente.Columns("IdCliente").Visible = False
+    End Sub
+
+    Private Sub btnClientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        If txtNombreCliente.Text = "" Then
+            txtNombreCliente.Select()
+            ObtenerDatos()
+        Else
+            Dim tablaClientes As New DataTable
+
+            MySql.MiComandoSQL("SELECT * FROM cliente WHERE NombreCliente Like'%" & txtNombreCliente.Text & "%' and activo=1 || DocumentoCliente Like'%" & txtNombreCliente.Text & "%' and activo=1", tablaClientes)
+            bsCliente.DataSource = tablaClientes
+            dgvCliente.DataSource = bsCliente.DataSource
+
+        End If
     End Sub
 
     Private Sub Label12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label12.Click
 
+    End Sub
+
+    Private Sub txtNombreCliente_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtNombreCliente.Click
+        dgvCliente.Visible = True
+        dgvProducto.Visible = False
+        Label13.Text = "Clientes"
+        ObtenerDatos()
+    End Sub
+
+    Private Sub dgvCliente_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvCliente.CellClick
+        Dim Cliente As New clsContactos
+
+        txtNombreCliente.Text = dgvCliente.SelectedCells.Item(3).Value
+        txtDocumentoCliente.Text = dgvCliente.SelectedCells.Item(2).Value
+        idCliente = dgvCliente.SelectedCells.Item(0).Value
+        txtDireccionCliente.Text = dgvCliente.SelectedCells.Item(4).Value
+        txtTelefonoCliente.Text = dgvCliente.SelectedCells.Item(5).Value
+        'idTipo = dgvTipo.Rows(dgvTipo.CurrentRow.Index).Cells(0).Value
+        sqlComando = "SELECT * FROM cliente WHERE IdCliente=" & idCliente.ToString & ";"
+        MySql.MiComandoSQL(sqlComando, Cliente)
+
+        dgvCliente.Visible = False
+        dgvProducto.Visible = True
+        Label13.Text = "Productos"
+        'ObtenerDatos()
+    End Sub
+
+    Private Sub txtNombreCliente_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtNombreCliente.LostFocus
+
+    End Sub
+
+    Private Sub txtNombreCliente_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtNombreCliente.TextChanged
+        
+    End Sub
+
+    Private Sub TextBox5_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox5.TextChanged
+        Dim tablaProductos As New DataTable
+        Dim consultaSQL As String
+        consultaSQL = "SELECT * FROM producto WHERE NombreProducto Like'%" & TextBox5.Text & "%' and activo=1 || TalleProducto Like'%" & TextBox5.Text & "%' and activo=1"
+        MySql.MiComandoSQL(consultaSQL, tablaProductos)
+        bsProductos.DataSource = tablaProductos
+        dgvProducto.DataSource = bsProductos.DataSource
     End Sub
 End Class

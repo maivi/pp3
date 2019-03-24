@@ -66,9 +66,11 @@ Partial Class frmProveedor
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(479, 14)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(200, 158)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
@@ -127,8 +129,10 @@ Partial Class frmProveedor
         '
         Me.txtCUIT.BeepOnError = True
         Me.txtCUIT.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+
         Me.txtCUIT.Location = New System.Drawing.Point(137, 32)
         Me.txtCUIT.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+
         Me.txtCUIT.Mask = "00-00000000-0"
         Me.txtCUIT.Name = "txtCUIT"
         Me.txtCUIT.Size = New System.Drawing.Size(217, 32)
@@ -352,8 +356,10 @@ Partial Class frmProveedor
         Me.panelProveedor.Controls.Add(Me.dgvProveedor)
         Me.panelProveedor.Controls.Add(Me.txtFiltro)
         Me.panelProveedor.Controls.Add(Me.Label7)
+
         Me.panelProveedor.Location = New System.Drawing.Point(725, 82)
         Me.panelProveedor.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+
         Me.panelProveedor.Name = "panelProveedor"
         Me.panelProveedor.Size = New System.Drawing.Size(724, 459)
         Me.panelProveedor.TabIndex = 239
@@ -366,8 +372,10 @@ Partial Class frmProveedor
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvProveedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+
         Me.dgvProveedor.Location = New System.Drawing.Point(0, 59)
         Me.dgvProveedor.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+
         Me.dgvProveedor.MultiSelect = False
         Me.dgvProveedor.Name = "dgvProveedor"
         Me.dgvProveedor.ReadOnly = True
@@ -379,8 +387,10 @@ Partial Class frmProveedor
         'txtFiltro
         '
         Me.txtFiltro.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+
         Me.txtFiltro.Location = New System.Drawing.Point(232, 5)
         Me.txtFiltro.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+
         Me.txtFiltro.Name = "txtFiltro"
         Me.txtFiltro.Size = New System.Drawing.Size(473, 34)
         Me.txtFiltro.TabIndex = 1
@@ -388,12 +398,14 @@ Partial Class frmProveedor
         'Label7
         '
         Me.Label7.AutoSize = True
+
         Me.Label7.Font = New System.Drawing.Font("Minion Pro", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(3, 7)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(184, 33)
+
         Me.Label7.TabIndex = 0
-        Me.Label7.Text = "Proveedor/CUIT"
+        Me.Label7.Text = "Proveedor/CUIT:"
         '
         'dgbProveedor
         '
@@ -415,7 +427,9 @@ Partial Class frmProveedor
         Me.Controls.Add(Me.panelProveedor)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
+
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+
         Me.Name = "frmProveedor"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)

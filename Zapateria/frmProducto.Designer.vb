@@ -471,10 +471,12 @@ Partial Class frmProducto
         'Label9
         '
         Me.Label9.AutoSize = True
+
         Me.Label9.Font = New System.Drawing.Font("Minion Pro", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.Location = New System.Drawing.Point(3, 7)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(180, 33)
+
         Me.Label9.TabIndex = 0
         Me.Label9.Text = "Nombre/Codigo"
         '
@@ -602,10 +604,12 @@ Partial Class frmProducto
         'Label10
         '
         Me.Label10.AutoSize = True
+
         Me.Label10.Font = New System.Drawing.Font("Minion Pro", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.Location = New System.Drawing.Point(3, 7)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(184, 33)
+
         Me.Label10.TabIndex = 0
         Me.Label10.Text = "Proveedor/CUIT"
         '
@@ -672,10 +676,12 @@ Partial Class frmProducto
         'Label11
         '
         Me.Label11.AutoSize = True
+
         Me.Label11.Font = New System.Drawing.Font("Minion Pro", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.Location = New System.Drawing.Point(3, 7)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(119, 33)
+
         Me.Label11.TabIndex = 0
         Me.Label11.Text = "Categoria:"
         '
