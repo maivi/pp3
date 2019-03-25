@@ -18,15 +18,19 @@ Public Class frmVenta
     Dim cantStock As New Integer
     Dim idCliente As New Integer
     Dim TipoPago As New Integer
+    Dim TotalCompra As New Double
 
     Dim isAdded As Boolean = False
     Dim isClientSelected As Boolean = False
     Dim isProductSelected As Boolean = False
     Dim isInfoCashStablished As Boolean = False
 
+    Dim StatusSQL As Integer = 0
+
     Private Sub frmVenta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         cantStock = -1
         cantStockSelected = -1
+        TotalCompra = 0.0
         llenarProducto()
         dgvProducto.Columns("IdProducto").Visible = False
         dgvProducto.Columns("PrecioCompra").Visible = False
@@ -125,6 +129,15 @@ Public Class frmVenta
             cantStockSelected = Integer.Parse(txtCantidad.Text)
             cantStockArray.Add(cantStockSelected)
             Productos.Add(Producto)
+            TotalCompra = TotalCompra + Double.Parse(txtTotalProducto.Text)
+            If (txtPago.Text <> "") Then
+                If TotalCompra < Double.Parse(txtPago.Text) Then
+                    txtCambioPago.Text = Math.Abs(TotalCompra - Double.Parse(txtPago.Text))
+                Else
+                    txtCambioPago.Text = 0
+                End If
+            End If
+            
 
             txtCantidad.Text = ""
             txtCantidad.Enabled = False
@@ -240,6 +253,15 @@ Public Class frmVenta
     End Sub
 
     Private Sub txtPago_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPago.TextChanged
+        If (cbxFormaPago.SelectedIndex = 0) Then
+            If (TotalCompra <> 0.0) Then
+                If TotalCompra < Double.Parse(txtPago.Text) Then
+                    txtCambioPago.Text = Math.Abs(TotalCompra - Double.Parse(txtPago.Text))
+                Else
+                    txtCambioPago.Text = 0
+                End If
+            End If
+        End If
         If ((txtPago.Text <> "") And (txtCajaAhorro.Text <> "") And (txtCambioPago.Text <> "")) Then
             isInfoCashStablished = True
             btnGuardar.Enabled = controlTrueValue()
@@ -267,7 +289,29 @@ Public Class frmVenta
         Venta.IdUsuario = Integer.Parse(lblID.Text)
         Venta.Fecha = Date.Now.Year & "/" & Date.Now.Month & "/" & Date.Now.Day & " " & Date.Now.Hour & ":" & Date.Now.Minute & ":" & Date.Now.Second
         sqlComando = "INSERT INTO `zapateria`.`venta`(`Cliente`,`Usuario`,`TipoPago`,`CantidadEfectivo`,`CantidadCuentaCorriente`,`Total`,`Fecha`) VALUES ('" & Venta.IdCliente & "','" & Venta.IdUsuario & "','" & Venta.IdTipoPago & "','" & Venta.CantidadEfectivo & "','" & Venta.CantidadCuentaCorriente & "','" & Venta.Total & "','" & Venta.Fecha & "' );"
-        MySql.MiComandoSQL(sqlComando)
-        MsgBox("La venta fue almacenada satisfactoriamente")
+        If MySql.MiComandoSQL(sqlComando) Then
+            sqlComando = "SELECT * FROM `zapateria`.`venta` ORDER BY IdVenta DESC LIMIT 1"
+            Dim ventas2 As New clsVentas
+            Dim detalleVenta As New clsDetalleVentas
+            MySql.MiComandoSQL(sqlComando, ventas2)
+
+            For index As Integer = 0 To Productos.Count - 1
+                detalleVenta.IdVentaAsociada = ventas2.IdVentas
+                detalleVenta.IdProducto = Productos.Item(index).IdProducto
+                detalleVenta.CantProducto = cantStockArray.Item(index)
+                detalleVenta.TotalProducto = Double.Parse(txtTotalVenta.Text)
+
+                sqlComando = "INSERT INTO `zapateria`.`detalleventa`(`VentaAsociada`,`Producto`,`CantidadProducto`,`TotalProducto`) VALUES ('" & detalleVenta.IdVentaAsociada & "','" & detalleVenta.IdProducto & "','" & detalleVenta.CantProducto & "','" & detalleVenta.TotalProducto & "' );"
+                StatusSQL = MySql.MiComandoSQL(sqlComando)
+            Next
+            If (StatusSQL) Then
+                MsgBox("La venta fue almacenada satisfactoriamente")
+            Else
+                MsgBox("La venta fallo al almacenarse")
+            End If
+
+
+        End If
+
     End Sub
 End Class
