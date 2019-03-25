@@ -338,7 +338,7 @@ Partial Class frmUsuario
         Me.Panel3.Controls.Add(Me.TextBox1)
         Me.Panel3.Controls.Add(Me.Label7)
         Me.Panel3.Location = New System.Drawing.Point(569, 67)
-        Me.Panel3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(553, 373)
         Me.Panel3.TabIndex = 237
@@ -352,7 +352,7 @@ Partial Class frmUsuario
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvUsuario.Location = New System.Drawing.Point(2, 46)
-        Me.dgvUsuario.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.dgvUsuario.Margin = New System.Windows.Forms.Padding(2)
         Me.dgvUsuario.MultiSelect = False
         Me.dgvUsuario.Name = "dgvUsuario"
         Me.dgvUsuario.ReadOnly = True
@@ -364,10 +364,10 @@ Partial Class frmUsuario
         'TextBox1
         '
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(210, 4)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TextBox1.Location = New System.Drawing.Point(97, 4)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(320, 28)
+        Me.TextBox1.Size = New System.Drawing.Size(433, 28)
         Me.TextBox1.TabIndex = 1
         '
         'Label7
@@ -377,9 +377,9 @@ Partial Class frmUsuario
         Me.Label7.Location = New System.Drawing.Point(2, 6)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(204, 24)
+        Me.Label7.Size = New System.Drawing.Size(91, 24)
         Me.Label7.TabIndex = 0
-        Me.Label7.Text = "Nombre/Documento:"
+        Me.Label7.Text = "Nombre:"
         '
         'ZapateriaDataSet
         '
@@ -405,7 +405,7 @@ Partial Class frmUsuario
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.GroupOpciones)
         Me.Controls.Add(Me.Panel1)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "frmUsuario"
         Me.Text = "frmUsuario"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()

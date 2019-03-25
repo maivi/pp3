@@ -259,7 +259,7 @@ Public Class frmCliente
         Else
             Dim tablaProductos As New DataTable
 
-            MySql.MiComandoSQL("SELECT * FROM cliente where NombreCliente Like'%" & txtFiltroCliente.Text & "%' and activo=1 || DocumentoCliente Like'%" & txtFiltroCliente.Text & "%' and activo=1", tablaProductos)
+            MySql.MiComandoSQL("SELECT * FROM cliente WHERE NombreCliente Like'%" & txtFiltroCliente.Text & "%' and activo=1 || DocumentoCliente Like'%" & txtFiltroCliente.Text & "%' and activo=1", tablaProductos)
             bsContactos.DataSource = tablaProductos
             dgvContactos.DataSource = bsContactos.DataSource
 

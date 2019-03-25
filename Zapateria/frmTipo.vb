@@ -17,6 +17,7 @@ Public Class frmTipo
         btnGuardar.Visible = True
         btnActualizar.Visible = False
         btnEliminar.Visible = False
+        Me.WindowState = FormWindowState.Maximized
     End Sub
 
 
@@ -24,14 +25,14 @@ Public Class frmTipo
         Dim consulta As String
         sqlComando = "SELECT * FROM tipoproducto WHERE TipoProducto='" & txtTipo.Text & "';"
         MySql.MiComandoSQL(sqlComando, Tipo)
-        consulta = Tipo.nombre
+        consulta = Tipo.TipoProducto
 
         Try
             If consulta = txtTipo.Text Then
                 MsgBox("Este Tipo de calzado ya existe en la base de datos")
 
             Else
-                sqlComando = "INSERT into `zapateria`.`tipoproducto`(`TipoProducto`,`Descripcion`,`Activo`) VALUES ('" & txtTipo.Text & "','" & txtDescripcionTipo.Text & "',1);"
+                sqlComando = "INSERT into `zapateria`.`tipoproducto`(`TipoProducto`,`Activo`) VALUES ('" & txtTipo.Text & "',1);"
                 MySql.MiComandoSQL(sqlComando)
                 MsgBox("El Tipo de calzado " & txtTipo.Text & " ha sido dado de alta ")
                 ObtenerDatos()
@@ -42,40 +43,35 @@ Public Class frmTipo
             MsgBox(ex.Message)
         End Try
 
-
-        'sqlComando = "INSERT into `zapateria`.`tipoproducto`(`TipoProducto`,`Descripcion`,`Activo`) VALUES ('" & txtTipo.Text & "','" & txtDescripcionTipo.Text & "',1);"
-        'MySql.MiComandoSQL(sqlComando)
-        'MsgBox("El Tipo de calzado " & txtTipo.Text & " ha sido dado de alta ")
-        'ObtenerDatos()
-        'limpiar()
     End Sub
 
     Private Sub ObtenerDatos()
 
         Dim tablaTipo As New DataTable
-        MySql.MiComandoSQL("SELECT IdTipoProducto, TipoProducto as categoria, Descripcion, Activo FROM tipoproducto WHERE Activo=1", tablaTipo)
+        MySql.MiComandoSQL("SELECT IdTipoProducto, TipoProducto as categoria, Activo FROM tipoproducto WHERE Activo=1", tablaTipo)
         bscategoria.DataSource = tablaTipo
         dgvTipo.DataSource = bscategoria.DataSource
+        dgvTipo.Columns("IdTipoProducto").Visible = False
+        dgvTipo.Columns("Activo").Visible = False
+        dgvTipo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
 
     End Sub
 
     Private Sub dgvCategoria_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvTipo.CellClick
         txtTipo.Text = dgvTipo.SelectedCells.Item(1).Value
-        txtDescripcionTipo.Text = dgvTipo.SelectedCells.Item(2).Value.ToString
 
         btnGuardar.Visible = False
         btnActualizar.Visible = True
         btnEliminar.Visible = True
         idTipo = dgvTipo.Rows(dgvTipo.CurrentRow.Index).Cells(0).Value
-        Tipo.idTipo = idTipo
-        sqlComando = "SELECT * FROM tipoproducto WHERE IdTipoProducto='" & Tipo.idTipo & "';"
+        Tipo.idTipoProducto = idTipo
+        sqlComando = "SELECT * FROM tipoproducto WHERE IdTipoProducto='" & Tipo.idTipoProducto & "';"
         MySql.MiComandoSQL(sqlComando, Tipo)
 
     End Sub
 
     Private Sub limpiar()
         txtTipo.Text = ""
-        txtDescripcionTipo.Text = ""
     End Sub
 
     Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
@@ -116,8 +112,8 @@ Public Class frmTipo
 
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click
 
-        Tipo2.idTipo = Tipo.idTipo
-        Tipo2.nombre = txtTipo.Text
+        Tipo2.idTipoProducto = Tipo.idTipoProducto
+        Tipo2.TipoProducto = txtTipo.Text
         Tipo2.activo = Tipo.activo
 
         sqlComando = MySql.MiComandoSQL("tipoproducto", Tipo2, Tipo)
@@ -132,4 +128,17 @@ Public Class frmTipo
     End Sub
 
 
+    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
+        If TextBox1.Text = "" Then
+            TextBox1.Select()
+            ObtenerDatos()
+        Else
+            Dim tablaTipo As New DataTable
+
+            MySql.MiComandoSQL("SELECT * FROM tipoproducto WHERE TipoProducto Like'%" & TextBox1.Text & "%' and activo=1", tablaTipo)
+            bscategoria.DataSource = tablaTipo
+            dgvTipo.DataSource = bscategoria.DataSource
+
+        End If
+    End Sub
 End Class
