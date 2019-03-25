@@ -13,6 +13,7 @@ Public Class frmVenta
 
     Dim Productos As New List(Of clsProducto)
     Dim cantStockArray As New List(Of Integer)
+    Dim productsId As New List(Of Integer)
 
     Dim cantStockSelected As New Integer
     Dim cantStock As New Integer
@@ -129,6 +130,7 @@ Public Class frmVenta
             cantStockSelected = Integer.Parse(txtCantidad.Text)
             cantStockArray.Add(cantStockSelected)
             Productos.Add(Producto)
+            Producto = New clsProducto
             TotalCompra = TotalCompra + Double.Parse(txtTotalProducto.Text)
             If (txtPago.Text <> "") Then
                 If TotalCompra < Double.Parse(txtPago.Text) Then
@@ -248,6 +250,7 @@ Public Class frmVenta
             TipoPago = 0
         Else
             TipoPago = 1
+            txtCambioPago.Text = 0
         End If
         Venta.IdTipoPago = TipoPago
     End Sub
@@ -255,10 +258,27 @@ Public Class frmVenta
     Private Sub txtPago_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPago.TextChanged
         If (cbxFormaPago.SelectedIndex = 0) Then
             If (TotalCompra <> 0.0) Then
-                If TotalCompra < Double.Parse(txtPago.Text) Then
-                    txtCambioPago.Text = Math.Abs(TotalCompra - Double.Parse(txtPago.Text))
+                If txtPago.Text <> "" Then
+                    If TotalCompra < Double.Parse(txtPago.Text) Then
+                        txtCambioPago.Text = Math.Abs(TotalCompra - Double.Parse(txtPago.Text))
+                    Else
+                        txtCambioPago.Text = 0
+                    End If
                 Else
                     txtCambioPago.Text = 0
+                End If
+                
+            End If
+        Else
+            If (TotalCompra <> 0.0) Then
+                If txtPago.Text <> "" Then
+                    If TotalCompra > Double.Parse(txtPago.Text) Then
+                        txtCajaAhorro.Text = Math.Abs(TotalCompra - Double.Parse(txtPago.Text))
+                    Else
+                        txtCajaAhorro.Text = TotalCompra
+                    End If
+                Else
+                    txtCajaAhorro.Text = TotalCompra
                 End If
             End If
         End If
@@ -299,7 +319,7 @@ Public Class frmVenta
                 detalleVenta.IdVentaAsociada = ventas2.IdVentas
                 detalleVenta.IdProducto = Productos.Item(index).IdProducto
                 detalleVenta.CantProducto = cantStockArray.Item(index)
-                detalleVenta.TotalProducto = Double.Parse(txtTotalVenta.Text)
+                detalleVenta.TotalProducto = Double.Parse(Productos.Item(index).PrecVenta) * detalleVenta.CantProducto
 
                 sqlComando = "INSERT INTO `zapateria`.`detalleventa`(`VentaAsociada`,`Producto`,`CantidadProducto`,`TotalProducto`) VALUES ('" & detalleVenta.IdVentaAsociada & "','" & detalleVenta.IdProducto & "','" & detalleVenta.CantProducto & "','" & detalleVenta.TotalProducto & "' );"
                 StatusSQL = MySql.MiComandoSQL(sqlComando)
