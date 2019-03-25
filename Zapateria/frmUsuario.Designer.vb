@@ -31,6 +31,8 @@ Partial Class frmUsuario
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.lblNombre = New System.Windows.Forms.Label()
         Me.cmbRoll = New System.Windows.Forms.ComboBox()
+        Me.TipousuarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ZapateriaDataSet2 = New Zapateria.zapateriaDataSet2()
         Me.txtPass2 = New System.Windows.Forms.TextBox()
         Me.lblRepetContraseña = New System.Windows.Forms.Label()
         Me.txtPass1 = New System.Windows.Forms.TextBox()
@@ -38,6 +40,7 @@ Partial Class frmUsuario
         Me.txtUsuario = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.bsUsuarios = New System.Windows.Forms.BindingSource(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.btnActualizar = New System.Windows.Forms.Button()
@@ -49,15 +52,21 @@ Partial Class frmUsuario
         Me.dgvUsuario = New System.Windows.Forms.DataGridView()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.bsUsuarios = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ZapateriaDataSet = New Zapateria.zapateriaDataSet()
+        Me.ZapateriaDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Tipo_usuarioTableAdapter = New Zapateria.zapateriaDataSet2TableAdapters.tipo_usuarioTableAdapter()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.GroupCategoria.SuspendLayout()
+        CType(Me.TipousuarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ZapateriaDataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.bsUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.GroupOpciones.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.dgvUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.bsUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ZapateriaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ZapateriaDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PictureBox1
@@ -145,15 +154,27 @@ Partial Class frmUsuario
         '
         'cmbRoll
         '
+        Me.cmbRoll.DataSource = Me.TipousuarioBindingSource
+        Me.cmbRoll.DisplayMember = "NivelUsuario"
         Me.cmbRoll.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbRoll.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbRoll.FormattingEnabled = True
-        Me.cmbRoll.Items.AddRange(New Object() {"ADMINISTRADOR", "CAJERO"})
         Me.cmbRoll.Location = New System.Drawing.Point(179, 68)
         Me.cmbRoll.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbRoll.Name = "cmbRoll"
         Me.cmbRoll.Size = New System.Drawing.Size(235, 31)
         Me.cmbRoll.TabIndex = 1
+        Me.cmbRoll.ValueMember = "IdTipoUsuario"
+        '
+        'TipousuarioBindingSource
+        '
+        Me.TipousuarioBindingSource.DataMember = "tipo_usuario"
+        Me.TipousuarioBindingSource.DataSource = Me.ZapateriaDataSet2
+        '
+        'ZapateriaDataSet2
+        '
+        Me.ZapateriaDataSet2.DataSetName = "zapateriaDataSet2"
+        Me.ZapateriaDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'txtPass2
         '
@@ -379,6 +400,20 @@ Partial Class frmUsuario
         Me.Label7.TabIndex = 0
         Me.Label7.Text = "Nombre/Documento:"
         '
+        'ZapateriaDataSet
+        '
+        Me.ZapateriaDataSet.DataSetName = "zapateriaDataSet"
+        Me.ZapateriaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ZapateriaDataSetBindingSource
+        '
+        Me.ZapateriaDataSetBindingSource.DataSource = Me.ZapateriaDataSet
+        Me.ZapateriaDataSetBindingSource.Position = 0
+        '
+        'Tipo_usuarioTableAdapter
+        '
+        Me.Tipo_usuarioTableAdapter.ClearBeforeFill = True
+        '
         'frmUsuario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -396,12 +431,16 @@ Partial Class frmUsuario
         Me.Panel2.PerformLayout()
         Me.GroupCategoria.ResumeLayout(False)
         Me.GroupCategoria.PerformLayout()
+        CType(Me.TipousuarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ZapateriaDataSet2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.bsUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.GroupOpciones.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         CType(Me.dgvUsuario, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.bsUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ZapateriaDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ZapateriaDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -431,4 +470,9 @@ Partial Class frmUsuario
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents bsUsuarios As System.Windows.Forms.BindingSource
+    Friend WithEvents ZapateriaDataSet As Zapateria.zapateriaDataSet
+    Friend WithEvents ZapateriaDataSetBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents ZapateriaDataSet2 As Zapateria.zapateriaDataSet2
+    Friend WithEvents TipousuarioBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Tipo_usuarioTableAdapter As Zapateria.zapateriaDataSet2TableAdapters.tipo_usuarioTableAdapter
 End Class

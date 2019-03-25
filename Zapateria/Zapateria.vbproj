@@ -177,6 +177,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>zapateriaDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="zapateriaDataSet2.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>zapateriaDataSet2.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmStock.resx">
@@ -254,6 +259,17 @@
     </None>
     <None Include="zapateriaDataSet1.xss">
       <DependentUpon>zapateriaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="zapateriaDataSet2.xsc">
+      <DependentUpon>zapateriaDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="zapateriaDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>zapateriaDataSet2.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="zapateriaDataSet2.xss">
+      <DependentUpon>zapateriaDataSet2.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
