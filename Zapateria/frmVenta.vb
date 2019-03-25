@@ -313,7 +313,7 @@ Public Class frmVenta
         Dim Segundos As String = Date.Now.Second
 
         Dim Dia As String = Date.Now.Day
-        Dim Mes As String = Date.Now.Year
+        Dim Mes As String = Date.Now.Month
 
         If (Dia < 10) Then
             If Not Dia.Contains(0) Then
@@ -361,6 +361,15 @@ Public Class frmVenta
 
                 sqlComando = "INSERT INTO `zapateria`.`detalleventa`(`VentaAsociada`,`Producto`,`CantidadProducto`,`TotalProducto`) VALUES ('" & detalleVenta.IdVentaAsociada & "','" & detalleVenta.IdProducto & "','" & detalleVenta.CantProducto & "','" & detalleVenta.TotalProducto & "' );"
                 StatusSQL = MySql.MiComandoSQL(sqlComando)
+
+                sqlComando = "SELECT * FROM `zapateria`.`producto` WHERE IdProducto = '" & detalleVenta.IdProducto & "';"
+                MySql.MiComandoSQL(sqlComando, Producto)
+                Dim restaStock = Integer.Parse(Producto.Stock) - Integer.Parse(detalleVenta.CantProducto)
+
+                If MySql.MiComandoSQL("producto", "Stock=" & restaStock, "IdProducto=" & detalleVenta.IdProducto) Then
+
+                End If
+
             Next
 
             If (StatusSQL) Then
@@ -399,6 +408,7 @@ Public Class frmVenta
                     End If
                 End If
                 MsgBox("La venta fue almacenada satisfactoriamente")
+                Me.Dispose()
             Else
                 MsgBox("La venta fallo al almacenarse")
             End If
