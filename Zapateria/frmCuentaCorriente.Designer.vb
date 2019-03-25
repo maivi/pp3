@@ -34,13 +34,6 @@ Partial Class frmCuentaCorriente
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -183,77 +176,6 @@ Partial Class frmCuentaCorriente
         Me.DateTimePicker1.Size = New System.Drawing.Size(128, 26)
         Me.DateTimePicker1.TabIndex = 233
         '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(9, 363)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(138, 24)
-        Me.Label6.TabIndex = 234
-        Me.Label6.Text = "Datos Factura"
-        '
-        'DateTimePicker2
-        '
-        Me.DateTimePicker2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker2.Location = New System.Drawing.Point(595, 394)
-        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(128, 26)
-        Me.DateTimePicker2.TabIndex = 240
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(528, 396)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(59, 20)
-        Me.Label8.TabIndex = 239
-        Me.Label8.Text = "Fecha"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(10, 396)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(95, 20)
-        Me.Label9.TabIndex = 238
-        Me.Label9.Text = "Nº Factura"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(114, 393)
-        Me.TextBox2.MaxLength = 35
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(168, 27)
-        Me.TextBox2.TabIndex = 236
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(292, 396)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(54, 20)
-        Me.Label10.TabIndex = 237
-        Me.Label10.Text = "Total:"
-        '
-        'TextBox3
-        '
-        Me.TextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(354, 393)
-        Me.TextBox3.MaxLength = 12
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(150, 27)
-        Me.TextBox3.TabIndex = 235
-        '
         'Label11
         '
         Me.Label11.AutoSize = True
@@ -278,7 +200,7 @@ Partial Class frmCuentaCorriente
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(9, 439)
+        Me.Label12.Location = New System.Drawing.Point(9, 375)
         Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(172, 24)
@@ -396,13 +318,6 @@ Partial Class frmCuentaCorriente
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.TextBox4)
-        Me.Controls.Add(Me.DateTimePicker2)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.TextBox3)
-        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label2)
@@ -435,13 +350,6 @@ Partial Class frmCuentaCorriente
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents DateTimePicker2 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label

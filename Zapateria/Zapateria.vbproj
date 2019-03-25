@@ -77,6 +77,8 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsMovimientoCC.vb" />
+    <Compile Include="clsCuentaCorriente.vb" />
     <Compile Include="clsDetalleVentas.vb" />
     <Compile Include="frmVistaVentas.Designer.vb">
       <DependentUpon>frmVistaVentas.vb</DependentUpon>

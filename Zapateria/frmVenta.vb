@@ -10,6 +10,7 @@ Public Class frmVenta
     Dim Cliente As New clsContactos
     Dim Venta As New clsVentas
     Dim DetalleVenta As New clsDetalleVentas
+    Dim CuentaCorriente As New clsCuentaCorriente
 
     Dim Productos As New List(Of clsProducto)
     Dim cantStockArray As New List(Of Integer)
@@ -324,7 +325,42 @@ Public Class frmVenta
                 sqlComando = "INSERT INTO `zapateria`.`detalleventa`(`VentaAsociada`,`Producto`,`CantidadProducto`,`TotalProducto`) VALUES ('" & detalleVenta.IdVentaAsociada & "','" & detalleVenta.IdProducto & "','" & detalleVenta.CantProducto & "','" & detalleVenta.TotalProducto & "' );"
                 StatusSQL = MySql.MiComandoSQL(sqlComando)
             Next
+
             If (StatusSQL) Then
+                If (TipoPago = 1) Then
+                    'txtCajaAhorro.Text
+                    'sqlComando = "INSERT INTO `zapateria`.`cuentacorriente`(Activo)"
+                    sqlComando = "SELECT * FROM `zapateria`.`cuentacorriente` WHERE IdCliente='" & Venta.IdCliente & "';"
+                    MySql.cantReg(sqlComando)
+                    If MySql.cantReg(sqlComando) > 0 Then
+                        'Si existe ya la cuenta corriente solo le actualizamos el valor
+                        sqlComando = "SELECT * FROM `zapateria`.`cuentacorriente` WHERE IdCliente='" & Venta.IdCliente & "';"
+                        MySql.MiComandoSQL(sqlComando, CuentaCorriente)
+                        Dim deuda As Double = Double.Parse(CuentaCorriente.Deuda)
+                        Dim saldoPrevio As Double = deuda
+                        Dim movimiento As Double = Venta.CantidadCuentaCorriente
+                        deuda = deuda + Venta.CantidadCuentaCorriente
+                        If MySql.MiComandoSQL("cuentacorriente", "Deuda=" & deuda, "IdCliente=" & Venta.IdCliente) Then
+                            'Aca ingresamos los datos del movimiento de la cuenta corriente
+                            sqlComando = "INSERT INTO `zapateria`.`movimientos_cc`(`idCC`,`SaldoPrevio`,`SaldoCalculado`,`Movimiento`,`FechaActualizacion`) VALUES ('" & CuentaCorriente.IdCuentaCorriente & "','" & saldoPrevio & "','" & deuda & "', '" & movimiento & "', '" & Venta.Fecha & "');"
+                            StatusSQL = MySql.MiComandoSQL(sqlComando)
+                        End If
+                    Else
+                        'Si la cuenta no existe la creamos
+                        sqlComando = "INSERT INTO `zapateria`.`cuentacorriente`(`Activo`,`IdCliente`,`Deuda`) VALUES ('1','" & Venta.IdCliente & "','" & Venta.CantidadCuentaCorriente & "');"
+                        If MySql.MiComandoSQL(sqlComando) Then
+                            'Aca ingresamos los datos del movimiento de la cuenta corriente
+
+                            'hacer el select 1 para sacar el ID
+                            sqlComando = "SELECT * FROM `zapateria`.`cuentacorriente` ORDER BY IdCuentaCorriente DESC LIMIT 1"
+                            CuentaCorriente = New clsCuentaCorriente
+                            MySql.MiComandoSQL(sqlComando, CuentaCorriente)
+
+                            sqlComando = "INSERT INTO `zapateria`.`movimientos_cc`(`idCC`,`SaldoPrevio`,`SaldoCalculado`,`Movimiento`,`FechaActualizacion`) VALUES ('" & CuentaCorriente.IdCuentaCorriente & "','0','" & Venta.CantidadCuentaCorriente & "', '" & Venta.CantidadCuentaCorriente & "', '" & Venta.Fecha & "');"
+                            StatusSQL = MySql.MiComandoSQL(sqlComando)
+                        End If
+                    End If
+                End If
                 MsgBox("La venta fue almacenada satisfactoriamente")
             Else
                 MsgBox("La venta fallo al almacenarse")
