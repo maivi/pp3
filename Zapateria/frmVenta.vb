@@ -308,7 +308,7 @@ Public Class frmVenta
         Venta.CantidadEfectivo = Double.Parse(txtPago.Text)
         Venta.IdUsuario = Integer.Parse(lblID.Text)
         Venta.Fecha = Date.Now.Year & "/" & Date.Now.Month & "/" & Date.Now.Day & " " & Date.Now.Hour & ":" & Date.Now.Minute & ":" & Date.Now.Second
-        sqlComando = "INSERT INTO `zapateria`.`venta`(`Cliente`,`Usuario`,`TipoPago`,`CantidadEfectivo`,`CantidadCuentaCorriente`,`Total`,`Fecha`) VALUES ('" & Venta.IdCliente & "','" & Venta.IdUsuario & "','" & Venta.IdTipoPago & "','" & Venta.CantidadEfectivo & "','" & Venta.CantidadCuentaCorriente & "','" & Venta.Total & "','" & Venta.Fecha & "' );"
+        sqlComando = "INSERT INTO `zapateria`.`venta`(`Cliente`,`Usuario`,`TipoPago`,`CantidadEfectivo`,`CantidadCuentaCorriente`,`Total`,`Fecha`) VALUES ('" & Venta.IdCliente & "','" & Venta.IdUsuario & "','" & (Venta.IdTipoPago + 1) & "','" & Venta.CantidadEfectivo & "','" & Venta.CantidadCuentaCorriente & "','" & Venta.Total & "','" & Venta.Fecha & "' );"
         If MySql.MiComandoSQL(sqlComando) Then
             sqlComando = "SELECT * FROM `zapateria`.`venta` ORDER BY IdVenta DESC LIMIT 1"
             Dim ventas2 As New clsVentas
