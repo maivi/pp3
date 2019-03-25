@@ -11,9 +11,9 @@ Public Class frmTipo
 
     Private Sub frmCategoria_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ObtenerDatos()
-        dgvTipo.Columns("Descripcion").Visible = False
-        dgvTipo.Columns("activo").Visible = False
-        dgvTipo.Columns("IdTipoProducto").Visible = False
+        'dgvTipo.Columns("Descripcion").Visible = False
+        'dgvTipo.Columns("activo").Visible = False
+        'dgvTipo.Columns("IdTipoProducto").Visible = False
         btnGuardar.Visible = True
         btnActualizar.Visible = False
         btnEliminar.Visible = False
@@ -118,7 +118,6 @@ Public Class frmTipo
 
         Tipo2.idTipo = Tipo.idTipo
         Tipo2.nombre = txtTipo.Text
-        Tipo2.descripcion = txtDescripcionTipo.Text
         Tipo2.activo = Tipo.activo
 
         sqlComando = MySql.MiComandoSQL("tipoproducto", Tipo2, Tipo)

@@ -2,12 +2,16 @@
 Imports MySql.Data.MySqlClient
 
 Public Class frmProducto
-    Dim MySql As New Utilidades_MySQL
-    Dim Producto As New clsProducto
-    Dim Producto2 As New clsProducto
-    Dim idProducto As Integer
-    Dim NombreProducto As String
-    Dim sqlComando As String
+    Private MySql As New Utilidades_MySQL
+    Private Producto As New clsProducto
+    Private Producto2 As New clsProducto
+    Private idProducto As Integer
+    Private idTipoProducto As Integer
+    Private idProveedor As Integer
+    Private NombreProducto As String
+    Private sqlComando As String
+
+
 
     Private Sub frmProducto_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         llenardgProducto()
@@ -19,6 +23,16 @@ Public Class frmProducto
         btnEliminar.Visible = False
 
     End Sub
+
+    Private Function isNumberFloat(ByVal e)
+        Return (Asc(e.KeyChar) <> 8 And (Asc(e.KeyChar) < 44 Or (Asc(e.KeyChar) > 44 And Asc(e.KeyChar) < 46) Or (Asc(e.KeyChar) > 46 And Asc(e.KeyChar) < 48) Or Asc(e.KeyChar) > 57))
+    End Function
+
+
+
+    Private Function isNumberInteger(ByVal e)
+        Return (Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57)
+    End Function
 
     Private Sub txtTipo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTipo.GotFocus
         llenardgCategoria()
@@ -32,8 +46,11 @@ Public Class frmProducto
         panelCategoria.Hide()
         panelProveedor.Hide()
         Dim tablaProducto As New DataTable
-        MySql.MiComandoSQL("SELECT IdProducto, CodigoProducto as Codigo, GeneroProducto as Genero, NombreProducto as Producto, TalleProducto as Talle, TipoProducto as tipo, Proveedor, PrecioCompra, PrecioVenta, Stock, Activo FROM producto WHERE activo=1", tablaProducto)
+        MySql.MiComandoSQL("SELECT p.IdProducto, p.CodigoProducto as Codigo, p.GeneroProducto as Genero, NombreProducto as Producto, p.TalleProducto as Talle, tp.TipoProducto as tipo, NombreProveedor as Proveedor, p.PrecioCompra, p.PrecioVenta, p.Stock, p.Activo FROM producto p LEFT JOIN proveedor prov ON p.Proveedor=prov.IdProveedor LEFT JOIN tipoproducto tp ON p.TipoProducto=tp.IdTipoProducto WHERE p.activo=1", tablaProducto)
+        'MySql.MiComandoSQL("SELECT IdProducto, CodigoProducto as Codigo, GeneroProducto as Genero, NombreProducto as Producto, TalleProducto as Talle, TipoProducto as tipo, Proveedor, PrecioCompra, PrecioVenta, Stock, Activo FROM producto WHERE activo=1", tablaProducto)
         bsProductos.DataSource = tablaProducto
+
+        'Dim string As String = "(SELECT NombreProveedor FROM proveedor WHERE idProveedor=" & Proveedor & ";)"
         dgvProducto.DataSource = bsProductos.DataSource
 
     End Sub
@@ -67,25 +84,22 @@ Public Class frmProducto
 
 
     Private Sub dgvTipo_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvTipo.CellClick
-        Dim idTipo As String
         Dim Tipo As New clsTipo
 
         txtTipo.Text = dgvTipo.SelectedCells.Item(1).Value
-        idTipo = dgvTipo.Rows(dgvTipo.CurrentRow.Index).Cells(0).Value
-        Tipo.idTipo = idTipo
-        sqlComando = "SELECT * FROM tipoproducto WHERE IdTipoProducto='" & Tipo.idTipo & "';"
+        idTipoProducto = dgvTipo.SelectedCells.Item(0).Value
+        'idTipo = dgvTipo.Rows(dgvTipo.CurrentRow.Index).Cells(0).Value
+        sqlComando = "SELECT * FROM tipoproducto WHERE IdTipoProducto=" & idTipoProducto.ToString & ";"
         MySql.MiComandoSQL(sqlComando, Tipo)
     End Sub
 
 
     Private Sub dgvProveedor_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvProveedor.CellClick
-        Dim idProveedor As String
         Dim Proveedor As New clsProveedor
 
         txtProveedor.Text = dgvProveedor.SelectedCells.Item(2).Value
-        idProveedor = dgvProveedor.Rows(dgvProveedor.CurrentRow.Index).Cells(0).Value
-        Proveedor.idProveedor = idProveedor
-        sqlComando = "SELECT * FROM proveedor WHERE IdProveedor='" & Proveedor.idProveedor & "';"
+        idProveedor = dgvProveedor.SelectedCells.Item(0).Value
+        sqlComando = "SELECT * FROM proveedor WHERE IdProveedor=" & idProveedor.ToString & ";"
         MySql.MiComandoSQL(sqlComando, Proveedor)
 
     End Sub
@@ -139,7 +153,7 @@ Public Class frmProducto
 
         Try
             If consulta = "" Then
-                sqlComando = "INSERT into `zapateria`.`producto`( `CodigoProducto` , `GeneroProducto` , `NombreProducto` , `TalleProducto` , `TipoProducto` , `Proveedor`, `PrecioCompra`, `PrecioVenta`,`Stock`, `Activo`) VALUES ('" & txtCodigo.Text & "','" & cboGenero.Text & "','" & txtNombre.Text & "','" & txtTalle.Text & "','" & txtTipo.Text & "','" & txtProveedor.Text & "','" & txtPreCompra.Text & "','" & txtPreVenta.Text & "','" & txtStockInicial.Text & "',1);"
+                sqlComando = "INSERT into `zapateria`.`producto`( `CodigoProducto` , `GeneroProducto` , `NombreProducto` , `TalleProducto` , `TipoProducto` , `Proveedor`, `PrecioCompra`, `PrecioVenta`,`Stock`, `Activo`) VALUES ('" & txtCodigo.Text & "','" & cboGenero.Text & "','" & txtNombre.Text & "','" & txtTalle.Text & "'," & idTipoProducto.ToString & "," & idProveedor.ToString & ",'" & txtPreCompra.Text & "','" & txtPreVenta.Text & "','" & txtStockInicial.Text & "',1);"
                 MySql.MiComandoSQL(sqlComando)
                 MsgBox("El Producto " & txtNombre.Text & " ha sido dado de alta ", MessageBoxIcon.Information)
                 llenardgProducto()
@@ -163,7 +177,7 @@ Public Class frmProducto
                     Else
                         txtCodigo.Focus()
                     End If
-                    End If
+                End If
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -200,7 +214,7 @@ Public Class frmProducto
         txtPreCompra.Text = dgvProducto.SelectedCells.Item(7).Value
         txtPreVenta.Text = dgvProducto.SelectedCells.Item(8).Value
         txtStockInicial.Text = dgvProducto.SelectedCells.Item(9).Value
-    
+
         btnGuardar.Visible = False
         btnActualizar.Visible = True
         txtStockInicial.Enabled = False
@@ -262,7 +276,7 @@ Public Class frmProducto
         llenardgProducto()
         limpiar()
     End Sub
-   
+
     Private Sub btnLimpiar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLimpiar.Click
         limpiar()
         btnEliminar.Visible = False
@@ -277,6 +291,29 @@ Public Class frmProducto
     End Sub
 
     Private Sub txtTipo_TextChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTipo.TextChanged
+
+    End Sub
+
+    Private Sub txtPreCompra_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtPreCompra.KeyPress
+        e.Handled = isNumberFloat(e)
+    End Sub
+
+
+
+    Private Sub txtPreCompra_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPreCompra.TextChanged
+
+    End Sub
+
+    Private Sub txtPreVenta_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtPreVenta.KeyPress
+        e.Handled = Utils.isNumberFloat(e)
+    End Sub
+
+
+    Private Sub txtStockInicial_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtStockInicial.KeyPress
+        e.Handled = Utils.isNumberInteger(e)
+    End Sub
+
+    Private Sub TextBox4_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox4.TextChanged
 
     End Sub
 End Class

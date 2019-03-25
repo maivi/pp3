@@ -23,7 +23,7 @@ Public Class Utilidades_MySQL
                 CantRegIns = Comando.ExecuteNonQuery()
             End Using
         Catch e As MySqlException
-            'MsgBox("Mensaje de Error:" & Chr(13) & e.Message, MsgBoxStyle.Critical, "Error en la operación MySQL")
+            MsgBox("Mensaje de Error:" & Chr(13) & e.Message, MsgBoxStyle.Critical, "Error en la operación MySQL")
         Catch ex As Exception
             MsgBox("Mensaje de Error:" & Chr(13) & ex.Message, MsgBoxStyle.Critical, "Error en la operaciónL")
         Finally
@@ -119,7 +119,7 @@ Public Class Utilidades_MySQL
                 MySQLConexion.Open()
                 _MiDataAdapter.SelectCommand = comando
                 _MiDataAdapter.Fill(Tabla)
-                MySQLConexion.Close()
+                'MySQLConexion.Close()
             End Using
         Catch e As MySqlException
             MsgBox("Mensaje de Error:" & Chr(13) & e.Message, MsgBoxStyle.Critical, "Error en la operación MySQL")
@@ -280,6 +280,7 @@ Public Class Utilidades_MySQL
                 If dr.Read Then
                     fila.Add(dr(0).ToString)
                     fila.Add(dr(1).ToString)
+                    fila.Add(dr(2).ToString)
                     tipoUsuarios.Add(fila)
                 End If
             End Using

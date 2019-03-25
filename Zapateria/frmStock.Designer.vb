@@ -41,10 +41,14 @@ Partial Class frmStock
         Me.btnActualizar = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtPrecVenta = New System.Windows.Forms.TextBox()
+        Me.txtPrecCompra = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtBuscar2 = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtBuscar1 = New System.Windows.Forms.TextBox()
         CType(Me.dgvAlertaStock, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvStock, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsProductos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,7 +73,7 @@ Partial Class frmStock
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(48, 87)
+        Me.Label1.Location = New System.Drawing.Point(48, 90)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(187, 34)
         Me.Label1.TabIndex = 1
@@ -137,6 +141,7 @@ Partial Class frmStock
         Me.txtCodigo.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCodigo.Location = New System.Drawing.Point(150, 540)
         Me.txtCodigo.Name = "txtCodigo"
+        Me.txtCodigo.ReadOnly = True
         Me.txtCodigo.Size = New System.Drawing.Size(100, 32)
         Me.txtCodigo.TabIndex = 7
         '
@@ -145,6 +150,7 @@ Partial Class frmStock
         Me.txtStock.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStock.Location = New System.Drawing.Point(831, 540)
         Me.txtStock.Name = "txtStock"
+        Me.txtStock.ReadOnly = True
         Me.txtStock.Size = New System.Drawing.Size(100, 32)
         Me.txtStock.TabIndex = 8
         '
@@ -153,6 +159,7 @@ Partial Class frmStock
         Me.txtProducto.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtProducto.Location = New System.Drawing.Point(395, 540)
         Me.txtProducto.Name = "txtProducto"
+        Me.txtProducto.ReadOnly = True
         Me.txtProducto.Size = New System.Drawing.Size(292, 32)
         Me.txtProducto.TabIndex = 9
         '
@@ -243,21 +250,21 @@ Partial Class frmStock
         Me.Panel1.Size = New System.Drawing.Size(1254, 69)
         Me.Panel1.TabIndex = 18
         '
-        'TextBox1
+        'txtPrecVenta
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(360, 600)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 32)
-        Me.TextBox1.TabIndex = 21
+        Me.txtPrecVenta.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPrecVenta.Location = New System.Drawing.Point(360, 600)
+        Me.txtPrecVenta.Name = "txtPrecVenta"
+        Me.txtPrecVenta.Size = New System.Drawing.Size(100, 32)
+        Me.txtPrecVenta.TabIndex = 21
         '
-        'TextBox2
+        'txtPrecCompra
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(150, 600)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 32)
-        Me.TextBox2.TabIndex = 20
+        Me.txtPrecCompra.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPrecCompra.Location = New System.Drawing.Point(150, 600)
+        Me.txtPrecCompra.Name = "txtPrecCompra"
+        Me.txtPrecCompra.Size = New System.Drawing.Size(100, 32)
+        Me.txtPrecCompra.TabIndex = 20
         '
         'Label9
         '
@@ -279,14 +286,54 @@ Partial Class frmStock
         Me.Label8.TabIndex = 22
         Me.Label8.Text = "Precio" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Venta:"
         '
+        'txtBuscar2
+        '
+        Me.txtBuscar2.Font = New System.Drawing.Font("Tahoma", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscar2.Location = New System.Drawing.Point(593, 303)
+        Me.txtBuscar2.Name = "txtBuscar2"
+        Me.txtBuscar2.Size = New System.Drawing.Size(363, 40)
+        Me.txtBuscar2.TabIndex = 23
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Tahoma", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(336, 306)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(251, 34)
+        Me.Label10.TabIndex = 24
+        Me.Label10.Text = "Codigo/Nombre:"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Tahoma", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(336, 90)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(251, 34)
+        Me.Label11.TabIndex = 26
+        Me.Label11.Text = "Codigo/Nombre:"
+        '
+        'txtBuscar1
+        '
+        Me.txtBuscar1.Font = New System.Drawing.Font("Tahoma", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuscar1.Location = New System.Drawing.Point(593, 87)
+        Me.txtBuscar1.Name = "txtBuscar1"
+        Me.txtBuscar1.Size = New System.Drawing.Size(363, 40)
+        Me.txtBuscar1.TabIndex = 25
+        '
         'frmStock
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1278, 651)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.txtBuscar1)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.txtBuscar2)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.txtPrecVenta)
+        Me.Controls.Add(Me.txtPrecCompra)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnSalir)
@@ -305,7 +352,6 @@ Partial Class frmStock
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.dgvAlertaStock)
         Me.Name = "frmStock"
-        Me.Text = "frmStock"
         CType(Me.dgvAlertaStock, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvStock, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.bsProductos, System.ComponentModel.ISupportInitialize).EndInit()
@@ -333,8 +379,12 @@ Partial Class frmStock
     Friend WithEvents btnActualizar As System.Windows.Forms.Button
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents txtPrecVenta As System.Windows.Forms.TextBox
+    Friend WithEvents txtPrecCompra As System.Windows.Forms.TextBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents txtBuscar2 As System.Windows.Forms.TextBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents txtBuscar1 As System.Windows.Forms.TextBox
 End Class
