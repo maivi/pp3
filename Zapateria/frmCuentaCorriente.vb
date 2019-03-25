@@ -75,4 +75,18 @@ Public Class frmCuentaCorriente
         End If
 
     End Sub
+
+    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
+        If TextBox1.Text = "" Then
+            TextBox1.Select()
+            llenarCC()
+        Else
+            Dim tablaCuentas As New DataTable
+
+            MySql.MiComandoSQL("SELECT IdCuentaCorriente, cc.Activo, c.NombreCliente AS Nombre, Deuda FROM cuentacorriente cc LEFT JOIN cliente c ON c.IdCliente=cc.IdCliente where c.NombreCliente Like'%" & TextBox1.Text & "%'", tablaCuentas)
+            bsCuentaCorriente.DataSource = tablaCuentas
+            dgvCuentaCorriente.DataSource = bsCuentaCorriente.DataSource
+
+        End If
+    End Sub
 End Class
