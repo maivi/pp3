@@ -5,9 +5,19 @@ Public Class frmVenta
     Dim idProducto As Integer
     Dim NombreProducto As String
     Dim sqlComando As String
+
     Dim Producto As New clsProducto
+    Dim Cliente As New clsContactos
+    Dim Venta As New clsVentas
+    Dim DetalleVenta As New clsDetalleVentas
+
+    Dim Productos As New List(Of clsProducto)
+    Dim cantStockArray As New List(Of Integer)
+
+    Dim cantStockSelected As New Integer
     Dim cantStock As New Integer
     Dim idCliente As New Integer
+    Dim TipoPago As New Integer
 
     Dim isAdded As Boolean = False
     Dim isClientSelected As Boolean = False
@@ -16,6 +26,7 @@ Public Class frmVenta
 
     Private Sub frmVenta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         cantStock = -1
+        cantStockSelected = -1
         llenarProducto()
         dgvProducto.Columns("IdProducto").Visible = False
         dgvProducto.Columns("PrecioCompra").Visible = False
@@ -111,11 +122,18 @@ Public Class frmVenta
                 End If
             End If
             dgvVenta.Rows.Add(txtCodigoProducto.Text, txtNombreProducto.Text, txtTalleProducto.Text, txtPrecioProducto.Text, txtCantidad.Text, txtTotalProducto.Text)
+            cantStockSelected = Integer.Parse(txtCantidad.Text)
+            cantStockArray.Add(cantStockSelected)
+            Productos.Add(Producto)
+
             txtCantidad.Text = ""
             txtCantidad.Enabled = False
             limpiarProducto()
             isAdded = True
             btnGuardar.Enabled = controlTrueValue()
+
+
+
         End If
     End Sub
 
@@ -166,7 +184,7 @@ Public Class frmVenta
     End Sub
 
     Private Sub dgvCliente_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvCliente.CellClick
-        Dim Cliente As New clsContactos
+        'Dim Clientes As New clsContactos
 
         txtNombreCliente.Text = dgvCliente.SelectedCells.Item(3).Value
         txtDocumentoCliente.Text = dgvCliente.SelectedCells.Item(2).Value
@@ -184,6 +202,7 @@ Public Class frmVenta
         TextBox5.Visible = True
         isClientSelected = True
         btnGuardar.Enabled = controlTrueValue()
+        Venta.IdCliente = Cliente.IdCliente
     End Sub
 
     Private Sub txtNombreCliente_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtNombreCliente.LostFocus
@@ -208,6 +227,16 @@ Public Class frmVenta
             isInfoCashStablished = True
             btnGuardar.Enabled = controlTrueValue()
         End If
+
+        If (cbxFormaPago.SelectedItem.Equals("Contado")) Then
+            txtCambioPago.Text = 0
+            txtCajaAhorro.Text = 0
+            txtCajaAhorro.Enabled = False
+            TipoPago = 0
+        Else
+            TipoPago = 1
+        End If
+        Venta.IdTipoPago = TipoPago
     End Sub
 
     Private Sub txtPago_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPago.TextChanged
@@ -229,5 +258,12 @@ Public Class frmVenta
             isInfoCashStablished = True
             btnGuardar.Enabled = controlTrueValue()
         End If
+    End Sub
+
+    Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
+        Venta.Total = Double.Parse(txtTotalVenta.Text)
+        Venta.CantidadCuentaCorriente = Double.Parse(txtCajaAhorro.Text)
+        Venta.CantidadEfectivo = Double.Parse(txtPago.Text)
+        Venta.Fecha = DateTime.Now
     End Sub
 End Class
