@@ -22,9 +22,10 @@ Partial Class frmCuentaCorriente
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dgvCuentaCorriente = New System.Windows.Forms.DataGridView()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -32,8 +33,6 @@ Partial Class frmCuentaCorriente
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtRutCli = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -43,10 +42,10 @@ Partial Class frmCuentaCorriente
         Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.btnGuardar = New System.Windows.Forms.Button()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
-        Me.Label15 = New System.Windows.Forms.Label()
+        Me.bsCuentaCorriente = New System.Windows.Forms.BindingSource(Me.components)
         Me.Panel2.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvCuentaCorriente, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.bsCuentaCorriente, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel2
@@ -57,7 +56,7 @@ Partial Class frmCuentaCorriente
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.Label3)
         Me.Panel2.Location = New System.Drawing.Point(9, 10)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(920, 42)
         Me.Panel2.TabIndex = 223
@@ -75,21 +74,25 @@ Partial Class frmCuentaCorriente
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "CUENTAS CORRIENTES"
         '
-        'DataGridView1
+        'dgvCuentaCorriente
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(9, 86)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(919, 195)
-        Me.DataGridView1.TabIndex = 224
+        Me.dgvCuentaCorriente.AllowUserToAddRows = False
+        Me.dgvCuentaCorriente.AllowUserToDeleteRows = False
+        Me.dgvCuentaCorriente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvCuentaCorriente.Location = New System.Drawing.Point(9, 86)
+        Me.dgvCuentaCorriente.Margin = New System.Windows.Forms.Padding(2)
+        Me.dgvCuentaCorriente.Name = "dgvCuentaCorriente"
+        Me.dgvCuentaCorriente.ReadOnly = True
+        Me.dgvCuentaCorriente.RowTemplate.Height = 24
+        Me.dgvCuentaCorriente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvCuentaCorriente.Size = New System.Drawing.Size(919, 195)
+        Me.dgvCuentaCorriente.TabIndex = 224
         '
         'TextBox1
         '
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(187, 54)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TextBox1.Location = New System.Drawing.Point(222, 54)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(356, 28)
         Me.TextBox1.TabIndex = 226
@@ -118,6 +121,7 @@ Partial Class frmCuentaCorriente
         'txtNombreCli
         '
         Me.txtNombreCli.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtNombreCli.Enabled = False
         Me.txtNombreCli.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNombreCli.Location = New System.Drawing.Point(92, 325)
         Me.txtNombreCli.MaxLength = 35
@@ -138,6 +142,7 @@ Partial Class frmCuentaCorriente
         'txtRutCli
         '
         Me.txtRutCli.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtRutCli.Enabled = False
         Me.txtRutCli.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtRutCli.Location = New System.Drawing.Point(416, 325)
         Me.txtRutCli.MaxLength = 12
@@ -156,26 +161,6 @@ Partial Class frmCuentaCorriente
         Me.Label2.TabIndex = 231
         Me.Label2.Text = "Datos Cliente"
         '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(459, 482)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(158, 20)
-        Me.Label5.TabIndex = 232
-        Me.Label5.Text = "Fecha de Entrega:"
-        '
-        'DateTimePicker1
-        '
-        Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(622, 479)
-        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(128, 26)
-        Me.DateTimePicker1.TabIndex = 233
-        '
         'Label11
         '
         Me.Label11.AutoSize = True
@@ -189,6 +174,7 @@ Partial Class frmCuentaCorriente
         'TextBox4
         '
         Me.TextBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TextBox4.Enabled = False
         Me.TextBox4.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox4.Location = New System.Drawing.Point(658, 325)
         Me.TextBox4.MaxLength = 12
@@ -211,7 +197,7 @@ Partial Class frmCuentaCorriente
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(207, 482)
+        Me.Label13.Location = New System.Drawing.Point(207, 420)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(60, 20)
         Me.Label13.TabIndex = 245
@@ -220,8 +206,9 @@ Partial Class frmCuentaCorriente
         'TextBox5
         '
         Me.TextBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TextBox5.Enabled = False
         Me.TextBox5.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox5.Location = New System.Drawing.Point(272, 479)
+        Me.TextBox5.Location = New System.Drawing.Point(272, 418)
         Me.TextBox5.MaxLength = 35
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.Size = New System.Drawing.Size(168, 27)
@@ -231,7 +218,7 @@ Partial Class frmCuentaCorriente
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(10, 482)
+        Me.Label14.Location = New System.Drawing.Point(10, 419)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(78, 20)
         Me.Label14.TabIndex = 247
@@ -241,7 +228,7 @@ Partial Class frmCuentaCorriente
         '
         Me.TextBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox6.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox6.Location = New System.Drawing.Point(92, 480)
+        Me.TextBox6.Location = New System.Drawing.Point(92, 418)
         Me.TextBox6.MaxLength = 35
         Me.TextBox6.Name = "TextBox6"
         Me.TextBox6.Size = New System.Drawing.Size(78, 27)
@@ -257,8 +244,8 @@ Partial Class frmCuentaCorriente
         Me.btnCancelar.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancelar.ForeColor = System.Drawing.Color.Black
         Me.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCancelar.Location = New System.Drawing.Point(826, 560)
-        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnCancelar.Location = New System.Drawing.Point(826, 485)
+        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(2)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(101, 25)
         Me.btnCancelar.TabIndex = 249
@@ -269,46 +256,26 @@ Partial Class frmCuentaCorriente
         '
         Me.btnGuardar.BackColor = System.Drawing.Color.Teal
         Me.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnGuardar.Enabled = False
         Me.btnGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnGuardar.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnGuardar.ForeColor = System.Drawing.Color.Black
         Me.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnGuardar.Location = New System.Drawing.Point(721, 560)
-        Me.btnGuardar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnGuardar.Location = New System.Drawing.Point(721, 485)
+        Me.btnGuardar.Margin = New System.Windows.Forms.Padding(2)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(101, 25)
         Me.btnGuardar.TabIndex = 248
         Me.btnGuardar.Text = "GUARDAR"
         Me.btnGuardar.UseVisualStyleBackColor = False
         '
-        'TextBox7
-        '
-        Me.TextBox7.Location = New System.Drawing.Point(123, 525)
-        Me.TextBox7.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.TextBox7.Multiline = True
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(420, 61)
-        Me.TextBox7.TabIndex = 250
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(10, 542)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(108, 20)
-        Me.Label15.TabIndex = 251
-        Me.Label15.Text = "Descripcion:"
-        '
         'frmCuentaCorriente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(938, 595)
-        Me.Controls.Add(Me.Label15)
-        Me.Controls.Add(Me.TextBox7)
+        Me.ClientSize = New System.Drawing.Size(938, 518)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.Label14)
@@ -318,8 +285,6 @@ Partial Class frmCuentaCorriente
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.TextBox4)
-        Me.Controls.Add(Me.DateTimePicker1)
-        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.txtNombreCli)
@@ -327,20 +292,21 @@ Partial Class frmCuentaCorriente
         Me.Controls.Add(Me.txtRutCli)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.dgvCuentaCorriente)
         Me.Controls.Add(Me.Panel2)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "frmCuentaCorriente"
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvCuentaCorriente, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.bsCuentaCorriente, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents dgvCuentaCorriente As System.Windows.Forms.DataGridView
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
@@ -348,8 +314,6 @@ Partial Class frmCuentaCorriente
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents txtRutCli As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
@@ -359,6 +323,5 @@ Partial Class frmCuentaCorriente
     Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
     Friend WithEvents btnCancelar As System.Windows.Forms.Button
     Friend WithEvents btnGuardar As System.Windows.Forms.Button
-    Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
-    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents bsCuentaCorriente As System.Windows.Forms.BindingSource
 End Class
