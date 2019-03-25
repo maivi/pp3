@@ -18,6 +18,7 @@ Public Class frmUsuario
         btnGuardar.Visible = True
         btnActualizar.Visible = False
         btnEliminar.Visible = False
+        dgvUsuario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
     End Sub
 
     Private Sub ObtenerDatos()
@@ -142,4 +143,17 @@ Public Class frmUsuario
 
     End Sub
 
+    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
+        If TextBox1.Text = "" Then
+            TextBox1.Select()
+            ObtenerDatos()
+        Else
+            Dim tablaUsuarios As New DataTable
+
+            MySql.MiComandoSQL("SELECT * FROM usuario WHERE Nombre Like'%" & TextBox1.Text & "%' and activo=1", tablaUsuarios)
+            bsUsuarios.DataSource = tablaUsuarios
+            dgvUsuario.DataSource = bsUsuarios.DataSource
+
+        End If
+    End Sub
 End Class

@@ -173,4 +173,16 @@ Public Class frmProveedor
     End Sub
 
 
+    Private Sub txtFiltro_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFiltro.TextChanged
+        If txtFiltro.Text = "" Then
+            txtFiltro.Select()
+            ObtenerDatos()
+        Else
+            Dim tablaProveedor As New DataTable
+            MySql.MiComandoSQL("SELECT * FROM proveedor where NombreProveedor Like'%" & txtFiltro.Text & "%' and activo=1", tablaProveedor)
+            bsProveedor.DataSource = tablaProveedor
+            dgvProveedor.DataSource = bsProveedor.DataSource
+
+        End If
+    End Sub
 End Class
