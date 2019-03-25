@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5B9457E1-DF14-4018-A867-3BB996523EC5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Zapateria.frmVistaVentas</StartupObject>
+    <StartupObject>Zapateria.frmMenu</StartupObject>
     <RootNamespace>Zapateria</RootNamespace>
     <AssemblyName>Zapateria</AssemblyName>
     <FileAlignment>512</FileAlignment>
