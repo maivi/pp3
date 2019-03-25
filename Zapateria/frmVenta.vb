@@ -264,6 +264,10 @@ Public Class frmVenta
         Venta.Total = Double.Parse(txtTotalVenta.Text)
         Venta.CantidadCuentaCorriente = Double.Parse(txtCajaAhorro.Text)
         Venta.CantidadEfectivo = Double.Parse(txtPago.Text)
-        Venta.Fecha = DateTime.Now
+        Venta.IdUsuario = Integer.Parse(lblID.Text)
+        Venta.Fecha = Date.Now.Year & "/" & Date.Now.Month & "/" & Date.Now.Day & " " & Date.Now.Hour & ":" & Date.Now.Minute & ":" & Date.Now.Second
+        sqlComando = "INSERT INTO `zapateria`.`venta`(`Cliente`,`Usuario`,`TipoPago`,`CantidadEfectivo`,`CantidadCuentaCorriente`,`Total`,`Fecha`) VALUES ('" & Venta.IdCliente & "','" & Venta.IdUsuario & "','" & Venta.IdTipoPago & "','" & Venta.CantidadEfectivo & "','" & Venta.CantidadCuentaCorriente & "','" & Venta.Total & "','" & Venta.Fecha & "' );"
+        MySql.MiComandoSQL(sqlComando)
+        MsgBox("La venta fue almacenada satisfactoriamente")
     End Sub
 End Class

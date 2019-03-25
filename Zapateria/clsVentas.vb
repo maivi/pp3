@@ -69,12 +69,12 @@
         End Set
     End Property
 
-    Private _Fecha As Date
-    Public Property Fecha As Date
+    Private _Fecha As String
+    Public Property Fecha As String
         Get
             Return _Fecha
         End Get
-        Set(ByVal value As Date)
+        Set(ByVal value As String)
             _Fecha = value
         End Set
     End Property

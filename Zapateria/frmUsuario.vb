@@ -126,12 +126,10 @@ Public Class frmUsuario
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
 
         If txtPass1.Text <> String.Empty And txtPass2.Text <> String.Empty And txtUsuario.Text <> String.Empty And txtNombre.Text <> String.Empty Then
-
-
             If txtPass1.Text = txtPass2.Text Then
-                sqlComando = "INSERT into `zapateria`.`usuario`('Nombre','Nivel','Usuario','Contrasenia','Activo') VALUES ('" & txtNombre.Text & "','" & cmbRoll.SelectedValue & "','" & txtUsuario.Text & "','" & txtPass1.Text & "',1);"
+                sqlComando = "INSERT into `zapateria`.`usuario`(`Nombre`,`Nivel`,`Usuario`,`Contrasenia`,`Activo`) VALUES ('" & txtNombre.Text & "','" & cmbRoll.SelectedValue & "','" & txtUsuario.Text & "','" & txtPass1.Text & "',1);"
                 MySql.MiComandoSQL(sqlComando)
-                MsgBox("El usuario dado de alta")
+                MsgBox("El usuario " & txtUsuario.Text & " fue dado de alta")
                 ObtenerDatos()
                 limpiar()
             Else

@@ -8,7 +8,7 @@ Public Class frmMenu
     Public dr As MySqlDataReader
     Public sSql As String
     Private tipoUsuarios As New List(Of ArrayList)
-
+    Public IDUsuario As Integer
 
 
     Private Sub Menu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -52,6 +52,9 @@ Public Class frmMenu
     End Sub
 
     Private Sub btnVentas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVentas.Click
+        'frmVenta.lblRoll.Text = lblRoll.Text
+        frmVenta.lblID.Text = IDUsuario
+        frmVenta.lblCajero.Text = lblUsuario.Text
         frmVenta.ShowDialog()
     End Sub
 
@@ -64,7 +67,7 @@ Public Class frmMenu
         Try
             ' MysqlCommand.Connection = MysqlConexion
             'MysqlCommand.CommandType = CommandType.Text
-            sSql = "SELECT usuario.Nombre,tipo_usuario.NivelUsuario FROM usuario,tipo_usuario WHERE idTipoUsuario=Nivel and Usuario ='" & frmLogin.txtUsuario.Text & "' and Contrasenia='" & frmLogin.txtContraseña.Text & "' "
+            sSql = "SELECT usuario.Nombre,tipo_usuario.NivelUsuario, usuario.IdUsuario FROM usuario,tipo_usuario WHERE idTipoUsuario=Nivel and Usuario ='" & frmLogin.txtUsuario.Text & "' and Contrasenia='" & frmLogin.txtContraseña.Text & "' "
             'MysqlCommand.CommandText = sSql
             'Conectar()
             'dr = MysqlCommand.ExecuteReader
@@ -72,6 +75,7 @@ Public Class frmMenu
             For i = 0 To tipoUsuarios.Count() - 1
                 Me.lblUsuario.Text = tipoUsuarios(i).Item(0)
                 Me.lblRoll.Text = tipoUsuarios(i).Item(1)
+                IDUsuario = tipoUsuarios(i).Item(2)
             Next
 
 
@@ -92,7 +96,7 @@ Public Class frmMenu
             PictureBox2.Visible = False
 
         Else
-            If Me.lblRoll.Text = "Cajero" Then
+            If Me.lblRoll.Text = "Usuario" Then
                 PictureBox1.Visible = False
                 PictureBox2.Visible = True
 
@@ -106,11 +110,6 @@ Public Class frmMenu
 
             End If
         End If
-        'If (lblRoll.Text = "Cajero") Then
-
-        '    btnUsuarios.Enabled = False
-
-        'End If
     End Sub
     Private Sub Timer1_Tick(ByVal sender As Object, ByVal e As EventArgs) Handles Timer1.Tick
         LblHora.Text = Now.ToLongTimeString

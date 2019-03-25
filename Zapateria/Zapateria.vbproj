@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5B9457E1-DF14-4018-A867-3BB996523EC5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Zapateria.frmVenta</StartupObject>
+    <StartupObject>Zapateria.frmLogin</StartupObject>
     <RootNamespace>Zapateria</RootNamespace>
     <AssemblyName>Zapateria</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -77,7 +77,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.vb" />
+    <Compile Include="clsDetalleVentas.vb" />
     <Compile Include="Utils.vb" />
     <Compile Include="clsContactos.vb" />
     <Compile Include="clsProducto.vb" />
