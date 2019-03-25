@@ -10,6 +10,8 @@ Public Class frmUsuario
 
 
     Private Sub frmUsuario_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'ZapateriaDataSet2.tipo_usuario' Puede moverla o quitarla según sea necesario.
+        Me.Tipo_usuarioTableAdapter.Fill(Me.ZapateriaDataSet2.tipo_usuario)
         ObtenerDatos()
         limpiar()
         dgvUsuario.Columns("idUsuario").Visible = False
@@ -29,18 +31,14 @@ Public Class frmUsuario
     End Sub
 
 
-    Private Sub dgvUsuario_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvUsuario.CellContentClick
+    Private Sub dgvUsuario_CellClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvUsuario.CellClick
         cmbRoll.Text = dgvUsuario.SelectedCells.Item(3).Value
         txtNombre.Text = dgvUsuario.SelectedCells.Item(1).Value
         txtUsuario.Text = dgvUsuario.SelectedCells.Item(2).Value
-        
+
         btnGuardar.Visible = False
         btnActualizar.Visible = True
         btnEliminar.Visible = True
-        lblContraseña.Visible = False
-        lblRepetContraseña.Visible = False
-        txtPass1.Visible = False
-        txtPass2.Visible = False
         IdUsuario = dgvUsuario.Rows(dgvUsuario.CurrentRow.Index).Cells(0).Value
         Usuario.IdUsuario = IdUsuario
     End Sub
@@ -66,10 +64,6 @@ Public Class frmUsuario
         txtPass1.Text = ""
         txtPass2.Text = ""
         cmbRoll.Text = ""
-        lblContraseña.Visible = True
-        lblRepetContraseña.Visible = True
-        txtPass1.Visible = True
-        txtPass2.Visible = True
     End Sub
 
     Private Sub btnLimpiar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLimpiar.Click
@@ -118,29 +112,33 @@ Public Class frmUsuario
         sqlComando = MySql.MiComandoSQL("usuario", Usuario2, Usuario)
         MsgBox(sqlComando)
         If MySql.MiComandoSQL(sqlComando) Then
-            MsgBox("El Cliente ha sido actualizado")
+            MsgBox("El Usuario ha sido actualizado")
         Else
             MsgBox("No Se registraron modificaciones")
         End If
         ObtenerDatos()
         btnEliminar.Visible = False
         btnActualizar.Visible = False
-
+        btnGuardar.Visible = True
         limpiar()
     End Sub
 
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
 
-        If txtPass1.Text <> String.Empty And txtPass2.Text <> String.Empty Then
+        If txtPass1.Text <> String.Empty And txtPass2.Text <> String.Empty And txtUsuario.Text <> String.Empty And txtNombre.Text <> String.Empty Then
 
 
             If txtPass1.Text = txtPass2.Text Then
-                MsgBox("Son iguales gil")
+                sqlComando = "INSERT into `zapateria`.`usuario`('Nombre','Nivel','Usuario','Contrasenia','Activo') VALUES ('" & txtNombre.Text & "','" & cmbRoll.SelectedValue & "','" & txtUsuario.Text & "','" & txtPass1.Text & "',1);"
+                MySql.MiComandoSQL(sqlComando)
+                MsgBox("El usuario dado de alta")
+                ObtenerDatos()
+                limpiar()
             Else
-                MsgBox("NO Son iguales gil")
+                MsgBox("No coinciden las contraseñas")
             End If
         Else
-            MsgBox("LLena todo gil")
+            MsgBox("Debe llenar todos los campos")
         End If
 
 
