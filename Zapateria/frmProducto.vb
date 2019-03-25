@@ -28,6 +28,8 @@ Public Class frmProducto
         Return (Asc(e.KeyChar) <> 8 And (Asc(e.KeyChar) < 44 Or (Asc(e.KeyChar) > 44 And Asc(e.KeyChar) < 46) Or (Asc(e.KeyChar) > 46 And Asc(e.KeyChar) < 48) Or Asc(e.KeyChar) > 57))
     End Function
 
+
+
     Private Function isNumberInteger(ByVal e)
         Return (Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57)
     End Function
@@ -303,12 +305,12 @@ Public Class frmProducto
     End Sub
 
     Private Sub txtPreVenta_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtPreVenta.KeyPress
-        e.Handled = isNumberFloat(e)
+        e.Handled = Utils.isNumberFloat(e)
     End Sub
 
 
     Private Sub txtStockInicial_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtStockInicial.KeyPress
-        e.Handled = isNumberInteger(e)
+        e.Handled = Utils.isNumberInteger(e)
     End Sub
 
     Private Sub TextBox4_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox4.TextChanged

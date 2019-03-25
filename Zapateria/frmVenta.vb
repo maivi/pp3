@@ -9,7 +9,10 @@ Public Class frmVenta
     Dim cantStock As New Integer
     Dim idCliente As New Integer
 
-
+    Dim isAdded As Boolean = False
+    Dim isClientSelected As Boolean = False
+    Dim isProductSelected As Boolean = False
+    Dim isInfoCashStablished As Boolean = False
 
     Private Sub frmVenta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         cantStock = -1
@@ -21,8 +24,16 @@ Public Class frmVenta
         txtTotalVenta.Text = "0"
     End Sub
 
+    Private Function controlTrueValue()
+        Return (isAdded And isClientSelected And isProductSelected And isInfoCashStablished)
+    End Function
 
-
+    Private Sub resetControls()
+        isAdded = False
+        isClientSelected = False
+        isProductSelected = False
+        isInfoCashStablished = False
+    End Sub
 
     Private Sub llenarProducto()
         Dim tablaProducto As New DataTable
@@ -40,32 +51,36 @@ Public Class frmVenta
 
         If Me.cantStock = -1 Then
             Me.cantStock = Integer.Parse(dgvProducto.SelectedCells.Item(9).Value)
-            txtStock.Text = dgvProducto.SelectedCells.Item(9).Value
-        Else
-            txtStock.Text = Me.cantStock
         End If
 
         txtCantidad.Text = ""
 
-
         idProducto = dgvProducto.Rows(dgvProducto.CurrentRow.Index).Cells(0).Value
-        Producto.idProducto = idProducto
-        sqlComando = "SELECT * FROM producto WHERE IdProducto='" & Producto.idProducto & "';"
+        Producto.IdProducto = idProducto
+        sqlComando = "SELECT * FROM producto WHERE IdProducto='" & Producto.IdProducto & "';"
         MySql.MiComandoSQL(sqlComando, Producto)
+        txtCantidad.Enabled = True
+        btnGuardar.Enabled = controlTrueValue()
+    End Sub
 
+    Private Sub txtCantidad_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCantidad.KeyPress
+        e.Handled = Utils.isNumberInteger(e)
     End Sub
 
     Private Sub txtCantidad_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtCantidad.TextChanged
         If txtCantidad.Text = "" Or txtPrecioProducto.Text = "" Then
-
+            btnAgregarProducto.Enabled = False
             txtTotalProducto.Text = 0
             Exit Sub
-
         End If
-
+        If (Integer.Parse(txtCantidad.Text) > cantStock) Then
+            txtCantidad.Text = cantStock
+        End If
+        btnAgregarProducto.Enabled = True
         Dim total As Integer = CInt(txtCantidad.Text) * CInt(txtPrecioProducto.Text)
-
+        isProductSelected = True
         txtTotalProducto.Text = total
+        btnGuardar.Enabled = controlTrueValue()
     End Sub
 
     Private Sub btnAgregarProducto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAgregarProducto.Click
@@ -93,13 +108,14 @@ Public Class frmVenta
                     txtTotalVenta.Text = resultado + resultadoTotal
                 Else
                     txtTotalProducto.Text = ""
-
                 End If
             End If
             dgvVenta.Rows.Add(txtCodigoProducto.Text, txtNombreProducto.Text, txtTalleProducto.Text, txtPrecioProducto.Text, txtCantidad.Text, txtTotalProducto.Text)
-            txtCantidad.Text = 0
-            txtCantidad.Select()
+            txtCantidad.Text = ""
+            txtCantidad.Enabled = False
             limpiarProducto()
+            isAdded = True
+            btnGuardar.Enabled = controlTrueValue()
         End If
     End Sub
 
@@ -144,6 +160,8 @@ Public Class frmVenta
         dgvCliente.Visible = True
         dgvProducto.Visible = False
         Label13.Text = "Clientes"
+        Nombre.Visible = False
+        TextBox5.Visible = False
         ObtenerDatos()
     End Sub
 
@@ -162,7 +180,10 @@ Public Class frmVenta
         dgvCliente.Visible = False
         dgvProducto.Visible = True
         Label13.Text = "Productos"
-        'ObtenerDatos()
+        Nombre.Visible = True
+        TextBox5.Visible = True
+        isClientSelected = True
+        btnGuardar.Enabled = controlTrueValue()
     End Sub
 
     Private Sub txtNombreCliente_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtNombreCliente.LostFocus
@@ -170,7 +191,7 @@ Public Class frmVenta
     End Sub
 
     Private Sub txtNombreCliente_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtNombreCliente.TextChanged
-        
+
     End Sub
 
     Private Sub TextBox5_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox5.TextChanged
@@ -180,5 +201,33 @@ Public Class frmVenta
         MySql.MiComandoSQL(consultaSQL, tablaProductos)
         bsProductos.DataSource = tablaProductos
         dgvProducto.DataSource = bsProductos.DataSource
+    End Sub
+
+    Private Sub cbxFormaPago_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbxFormaPago.SelectedIndexChanged
+        If ((txtPago.Text <> "") And (txtCajaAhorro.Text <> "") And (txtCambioPago.Text <> "")) Then
+            isInfoCashStablished = True
+            btnGuardar.Enabled = controlTrueValue()
+        End If
+    End Sub
+
+    Private Sub txtPago_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPago.TextChanged
+        If ((txtPago.Text <> "") And (txtCajaAhorro.Text <> "") And (txtCambioPago.Text <> "")) Then
+            isInfoCashStablished = True
+            btnGuardar.Enabled = controlTrueValue()
+        End If
+    End Sub
+
+    Private Sub txtCajaAhorro_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCajaAhorro.TextChanged
+        If ((txtPago.Text <> "") And (txtCajaAhorro.Text <> "") And (txtCambioPago.Text <> "")) Then
+            isInfoCashStablished = True
+            btnGuardar.Enabled = controlTrueValue()
+        End If
+    End Sub
+
+    Private Sub txtCambioPago_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCambioPago.TextChanged
+        If ((txtPago.Text <> "") And (txtCajaAhorro.Text <> "") And (txtCambioPago.Text <> "")) Then
+            isInfoCashStablished = True
+            btnGuardar.Enabled = controlTrueValue()
+        End If
     End Sub
 End Class
