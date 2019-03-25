@@ -205,7 +205,7 @@ Partial Class frmMenu
         '
         'btnCerrarSesion
         '
-        Me.btnCerrarSesion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnCerrarSesion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnCerrarSesion.AutoSize = True
         Me.btnCerrarSesion.BackColor = System.Drawing.Color.Transparent
         Me.btnCerrarSesion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
@@ -216,7 +216,7 @@ Partial Class frmMenu
         Me.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCerrarSesion.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrarSesion.Image = CType(resources.GetObject("btnCerrarSesion.Image"), System.Drawing.Image)
-        Me.btnCerrarSesion.Location = New System.Drawing.Point(784, 435)
+        Me.btnCerrarSesion.Location = New System.Drawing.Point(2, 439)
         Me.btnCerrarSesion.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.btnCerrarSesion.Name = "btnCerrarSesion"
         Me.btnCerrarSesion.Size = New System.Drawing.Size(156, 138)
@@ -323,7 +323,7 @@ Partial Class frmMenu
         Me.btnSalir.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSalir.Image = CType(resources.GetObject("btnSalir.Image"), System.Drawing.Image)
         Me.btnSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnSalir.Location = New System.Drawing.Point(945, 435)
+        Me.btnSalir.Location = New System.Drawing.Point(867, 439)
         Me.btnSalir.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(142, 138)

@@ -1,21 +1,21 @@
 ﻿Public Class clsTipo
-    Private _idTipo As Integer
-    Public Property idTipo() As Integer
+    Private _idTipoProducto As Integer
+    Public Property idTipoProducto() As Integer
         Get
-            Return _idTipo
+            Return _idTipoProducto
         End Get
         Set(ByVal value As Integer)
-            _idTipo = value
+            _idTipoProducto = value
         End Set
     End Property
 
-    Private _nombre As String
-    Public Property nombre() As String
+    Private _TipoProducto As String
+    Public Property TipoProducto() As String
         Get
-            Return _nombre
+            Return _TipoProducto
         End Get
         Set(ByVal value As String)
-            _nombre = value
+            _TipoProducto = value
         End Set
     End Property
 

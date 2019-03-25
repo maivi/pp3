@@ -24,13 +24,11 @@ Partial Class frmTipo
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTipo))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupCategoria = New System.Windows.Forms.GroupBox()
         Me.txtTipo = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtDescripcionTipo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -61,15 +59,11 @@ Partial Class frmTipo
         '
         Me.GroupCategoria.BackColor = System.Drawing.Color.Transparent
         Me.GroupCategoria.Controls.Add(Me.txtTipo)
-        Me.GroupCategoria.Controls.Add(Me.Label3)
-        Me.GroupCategoria.Controls.Add(Me.txtDescripcionTipo)
         Me.GroupCategoria.Controls.Add(Me.Label2)
         Me.GroupCategoria.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupCategoria.Location = New System.Drawing.Point(4, 4)
-        Me.GroupCategoria.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupCategoria.Location = New System.Drawing.Point(3, 3)
         Me.GroupCategoria.Name = "GroupCategoria"
-        Me.GroupCategoria.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupCategoria.Size = New System.Drawing.Size(557, 373)
+        Me.GroupCategoria.Size = New System.Drawing.Size(418, 303)
         Me.GroupCategoria.TabIndex = 7
         Me.GroupCategoria.TabStop = False
         '
@@ -77,42 +71,18 @@ Partial Class frmTipo
         '
         Me.txtTipo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtTipo.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTipo.Location = New System.Drawing.Point(163, 67)
-        Me.txtTipo.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtTipo.Location = New System.Drawing.Point(122, 54)
         Me.txtTipo.MaxLength = 20
         Me.txtTipo.Name = "txtTipo"
-        Me.txtTipo.Size = New System.Drawing.Size(329, 32)
+        Me.txtTipo.Size = New System.Drawing.Size(247, 27)
         Me.txtTipo.TabIndex = 1
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(8, 145)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(161, 24)
-        Me.Label3.TabIndex = 5
-        Me.Label3.Text = "DESCRIPCION:"
-        '
-        'txtDescripcionTipo
-        '
-        Me.txtDescripcionTipo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtDescripcionTipo.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDescripcionTipo.Location = New System.Drawing.Point(12, 172)
-        Me.txtDescripcionTipo.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtDescripcionTipo.MaxLength = 150
-        Me.txtDescripcionTipo.Multiline = True
-        Me.txtDescripcionTipo.Name = "txtDescripcionTipo"
-        Me.txtDescripcionTipo.Size = New System.Drawing.Size(527, 183)
-        Me.txtDescripcionTipo.TabIndex = 2
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(70, 69)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(52, 56)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(60, 24)
+        Me.Label2.Size = New System.Drawing.Size(51, 19)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Tipo:"
         '
@@ -123,10 +93,9 @@ Partial Class frmTipo
         Me.Panel2.BackColor = System.Drawing.Color.Teal
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.Label4)
-        Me.Panel2.Location = New System.Drawing.Point(13, 13)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel2.Location = New System.Drawing.Point(10, 11)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1311, 62)
+        Me.Panel2.Size = New System.Drawing.Size(984, 51)
         Me.Panel2.TabIndex = 235
         '
         'Label4
@@ -135,10 +104,9 @@ Partial Class frmTipo
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Tahoma", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(356, 11)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Location = New System.Drawing.Point(267, 9)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(91, 36)
+        Me.Label4.Size = New System.Drawing.Size(74, 29)
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "TIPO"
         '
@@ -148,10 +116,9 @@ Partial Class frmTipo
         Me.Panel1.Controls.Add(Me.GroupOpciones)
         Me.Panel1.Controls.Add(Me.GroupCategoria)
         Me.Panel1.Controls.Add(Me.PictureBox1)
-        Me.Panel1.Location = New System.Drawing.Point(13, 83)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel1.Location = New System.Drawing.Point(10, 67)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(872, 383)
+        Me.Panel1.Size = New System.Drawing.Size(654, 312)
         Me.Panel1.TabIndex = 234
         '
         'GroupOpciones
@@ -163,11 +130,9 @@ Partial Class frmTipo
         Me.GroupOpciones.Controls.Add(Me.btnActualizar)
         Me.GroupOpciones.Controls.Add(Me.btnGuardar)
         Me.GroupOpciones.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupOpciones.Location = New System.Drawing.Point(575, 226)
-        Me.GroupOpciones.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupOpciones.Location = New System.Drawing.Point(431, 184)
         Me.GroupOpciones.Name = "GroupOpciones"
-        Me.GroupOpciones.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupOpciones.Size = New System.Drawing.Size(291, 151)
+        Me.GroupOpciones.Size = New System.Drawing.Size(218, 123)
         Me.GroupOpciones.TabIndex = 57
         Me.GroupOpciones.TabStop = False
         '
@@ -178,10 +143,9 @@ Partial Class frmTipo
         Me.btnSalir.FlatAppearance.BorderSize = 0
         Me.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnSalir.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalir.Location = New System.Drawing.Point(145, 108)
-        Me.btnSalir.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSalir.Location = New System.Drawing.Point(109, 88)
         Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(135, 38)
+        Me.btnSalir.Size = New System.Drawing.Size(101, 31)
         Me.btnSalir.TabIndex = 14
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = False
@@ -193,10 +157,9 @@ Partial Class frmTipo
         Me.btnLimpiar.FlatAppearance.BorderSize = 0
         Me.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnLimpiar.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLimpiar.Location = New System.Drawing.Point(8, 108)
-        Me.btnLimpiar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnLimpiar.Location = New System.Drawing.Point(6, 88)
         Me.btnLimpiar.Name = "btnLimpiar"
-        Me.btnLimpiar.Size = New System.Drawing.Size(135, 38)
+        Me.btnLimpiar.Size = New System.Drawing.Size(101, 31)
         Me.btnLimpiar.TabIndex = 13
         Me.btnLimpiar.Text = "Limpiar"
         Me.btnLimpiar.UseVisualStyleBackColor = False
@@ -208,10 +171,9 @@ Partial Class frmTipo
         Me.btnEliminar.FlatAppearance.BorderSize = 0
         Me.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnEliminar.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEliminar.Location = New System.Drawing.Point(8, 66)
-        Me.btnEliminar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnEliminar.Location = New System.Drawing.Point(6, 54)
         Me.btnEliminar.Name = "btnEliminar"
-        Me.btnEliminar.Size = New System.Drawing.Size(135, 38)
+        Me.btnEliminar.Size = New System.Drawing.Size(101, 31)
         Me.btnEliminar.TabIndex = 11
         Me.btnEliminar.Text = "Eliminar"
         Me.btnEliminar.UseVisualStyleBackColor = False
@@ -223,10 +185,9 @@ Partial Class frmTipo
         Me.btnActualizar.FlatAppearance.BorderSize = 0
         Me.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnActualizar.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnActualizar.Location = New System.Drawing.Point(145, 66)
-        Me.btnActualizar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnActualizar.Location = New System.Drawing.Point(109, 54)
         Me.btnActualizar.Name = "btnActualizar"
-        Me.btnActualizar.Size = New System.Drawing.Size(135, 38)
+        Me.btnActualizar.Size = New System.Drawing.Size(101, 31)
         Me.btnActualizar.TabIndex = 10
         Me.btnActualizar.Text = "Actualizar"
         Me.btnActualizar.UseVisualStyleBackColor = False
@@ -238,10 +199,9 @@ Partial Class frmTipo
         Me.btnGuardar.FlatAppearance.BorderSize = 0
         Me.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnGuardar.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardar.Location = New System.Drawing.Point(145, 66)
-        Me.btnGuardar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnGuardar.Location = New System.Drawing.Point(109, 54)
         Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(135, 38)
+        Me.btnGuardar.Size = New System.Drawing.Size(101, 31)
         Me.btnGuardar.TabIndex = 9
         Me.btnGuardar.Text = "Guardar"
         Me.btnGuardar.UseVisualStyleBackColor = False
@@ -251,10 +211,9 @@ Partial Class frmTipo
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(598, 22)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.PictureBox1.Location = New System.Drawing.Point(448, 18)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(235, 199)
+        Me.PictureBox1.Size = New System.Drawing.Size(176, 162)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.PictureBox1.TabIndex = 56
         Me.PictureBox1.TabStop = False
@@ -267,42 +226,44 @@ Partial Class frmTipo
         Me.panelCategoria.Controls.Add(Me.dgvTipo)
         Me.panelCategoria.Controls.Add(Me.TextBox1)
         Me.panelCategoria.Controls.Add(Me.Label7)
-        Me.panelCategoria.Location = New System.Drawing.Point(892, 82)
+        Me.panelCategoria.Location = New System.Drawing.Point(669, 67)
+        Me.panelCategoria.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.panelCategoria.Name = "panelCategoria"
-        Me.panelCategoria.Size = New System.Drawing.Size(433, 384)
+        Me.panelCategoria.Size = New System.Drawing.Size(325, 312)
         Me.panelCategoria.TabIndex = 237
         '
         'dgvTipo
         '
         Me.dgvTipo.AllowUserToAddRows = False
         Me.dgvTipo.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.dgvTipo.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.dgvTipo.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.dgvTipo.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvTipo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.dgvTipo.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dgvTipo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvTipo.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvTipo.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.dgvTipo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvTipo.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvTipo.DefaultCellStyle = DataGridViewCellStyle6
         Me.dgvTipo.GridColor = System.Drawing.Color.ForestGreen
-        Me.dgvTipo.Location = New System.Drawing.Point(3, 56)
+        Me.dgvTipo.Location = New System.Drawing.Point(2, 46)
+        Me.dgvTipo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.dgvTipo.MultiSelect = False
         Me.dgvTipo.Name = "dgvTipo"
         Me.dgvTipo.ReadOnly = True
@@ -310,35 +271,38 @@ Partial Class frmTipo
         Me.dgvTipo.RowTemplate.DividerHeight = 1
         Me.dgvTipo.RowTemplate.Height = 24
         Me.dgvTipo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvTipo.Size = New System.Drawing.Size(427, 325)
+        Me.dgvTipo.Size = New System.Drawing.Size(320, 264)
         Me.dgvTipo.TabIndex = 2
         '
         'TextBox1
         '
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(78, 7)
+        Me.TextBox1.Location = New System.Drawing.Point(58, 6)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(333, 34)
+        Me.TextBox1.Size = New System.Drawing.Size(251, 28)
         Me.TextBox1.TabIndex = 1
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Minion Pro", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(3, 7)
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(2, 6)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(69, 33)
+        Me.Label7.Size = New System.Drawing.Size(58, 24)
         Me.Label7.TabIndex = 0
         Me.Label7.Text = "Tipo:"
         '
         'frmTipo
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1337, 539)
+        Me.ClientSize = New System.Drawing.Size(1003, 438)
         Me.Controls.Add(Me.panelCategoria)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "frmTipo"
         Me.GroupCategoria.ResumeLayout(False)
         Me.GroupCategoria.PerformLayout()
@@ -356,8 +320,6 @@ Partial Class frmTipo
     End Sub
     Friend WithEvents GroupCategoria As System.Windows.Forms.GroupBox
     Friend WithEvents txtTipo As System.Windows.Forms.TextBox
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents txtDescripcionTipo As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents Label4 As System.Windows.Forms.Label
