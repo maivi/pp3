@@ -65,7 +65,46 @@ Public Class frmCuentaCorriente
 
                 sqlComando = "SELECT * FROM `zapateria`.`cuentacorriente` WHERE IdCliente='" & Cliente.IdCliente & "';"
                 MySql.MiComandoSQL(sqlComando, cuentasCorrientes)
-                Fecha = Date.Now.Year & "/" & Date.Now.Month & "/" & Date.Now.Day & " " & Date.Now.Hour & ":" & Date.Now.Minute & ":" & Date.Now.Second
+
+
+                Dim Hora As String = Date.Now.Hour
+                Dim Minutos As String = Date.Now.Minute
+                Dim Segundos As String = Date.Now.Second
+
+                Dim Dia As String = Date.Now.Day
+                Dim Mes As String = Date.Now.Year
+
+                If (Dia < 10) Then
+                    If Not Dia.Contains(0) Then
+                        Dia = "0" & Dia
+                    End If
+                End If
+
+                If (Mes < 10) Then
+                    If Not Mes.Contains(0) Then
+                        Mes = "0" & Mes
+                    End If
+                End If
+
+                If (Hora < 10) Then
+                    If Not Hora.Contains(0) Then
+                        Hora = "0" & Hora
+                    End If
+                End If
+
+                If (Minutos < 10) Then
+                    If Not Minutos.Contains(0) Then
+                        Minutos = "0" & Minutos
+                    End If
+                End If
+
+                If (Segundos < 10) Then
+                    If Not Segundos.Contains(0) Then
+                        Segundos = "0" & Segundos
+                    End If
+                End If
+
+                Fecha = Date.Now.Year & "/" & Mes & "/" & Dia & " " & Hora & ":" & Minutos & ":" & Segundos
                 sqlComando = "INSERT INTO `zapateria`.`movimientos_cc`(`idCC`,`SaldoPrevio`,`SaldoCalculado`,`Movimiento`,`FechaActualizacion`) VALUES ('" & cuentasCorrientes.IdCuentaCorriente & "','" & SaldoPendiente & "','" & nuevoSaldo & "', '" & Entrega & "', '" & Fecha & "');"
                 MySql.MiComandoSQL(sqlComando)
                 llenarCC()
