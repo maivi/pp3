@@ -308,7 +308,44 @@ Public Class frmVenta
         Venta.CantidadCuentaCorriente = Double.Parse(txtCajaAhorro.Text)
         Venta.CantidadEfectivo = Double.Parse(txtPago.Text)
         Venta.IdUsuario = Integer.Parse(lblID.Text)
-        Venta.Fecha = Date.Now.Year & "/" & Date.Now.Month & "/" & Date.Now.Day & " " & Date.Now.Hour & ":" & Date.Now.Minute & ":" & Date.Now.Second
+        Dim Hora As String = Date.Now.Hour
+        Dim Minutos As String = Date.Now.Minute
+        Dim Segundos As String = Date.Now.Second
+
+        Dim Dia As String = Date.Now.Day
+        Dim Mes As String = Date.Now.Month
+
+        If (Dia < 10) Then
+            If Not Dia.Contains(0) Then
+                Dia = "0" & Dia
+            End If
+        End If
+
+        If (Mes < 10) Then
+            If Not Mes.Contains(0) Then
+                Mes = "0" & Mes
+            End If
+        End If
+
+        If (Hora < 10) Then
+            If Not Hora.Contains(0) Then
+                Hora = "0" & Hora
+            End If
+        End If
+
+        If (Minutos < 10) Then
+            If Not Minutos.Contains(0) Then
+                Minutos = "0" & Minutos
+            End If
+        End If
+
+        If (Segundos < 10) Then
+            If Not Segundos.Contains(0) Then
+                Segundos = "0" & Segundos
+            End If
+        End If
+
+        Venta.Fecha = Date.Now.Year & "/" & Mes & "/" & Dia & " " & Hora & ":" & Minutos & ":" & Segundos
         sqlComando = "INSERT INTO `zapateria`.`venta`(`Cliente`,`Usuario`,`TipoPago`,`CantidadEfectivo`,`CantidadCuentaCorriente`,`Total`,`Fecha`) VALUES ('" & Venta.IdCliente & "','" & Venta.IdUsuario & "','" & (Venta.IdTipoPago + 1) & "','" & Venta.CantidadEfectivo & "','" & Venta.CantidadCuentaCorriente & "','" & Venta.Total & "','" & Venta.Fecha & "' );"
         If MySql.MiComandoSQL(sqlComando) Then
             sqlComando = "SELECT * FROM `zapateria`.`venta` ORDER BY IdVenta DESC LIMIT 1"
@@ -324,6 +361,15 @@ Public Class frmVenta
 
                 sqlComando = "INSERT INTO `zapateria`.`detalleventa`(`VentaAsociada`,`Producto`,`CantidadProducto`,`TotalProducto`) VALUES ('" & detalleVenta.IdVentaAsociada & "','" & detalleVenta.IdProducto & "','" & detalleVenta.CantProducto & "','" & detalleVenta.TotalProducto & "' );"
                 StatusSQL = MySql.MiComandoSQL(sqlComando)
+
+                sqlComando = "SELECT * FROM `zapateria`.`producto` WHERE IdProducto = '" & detalleVenta.IdProducto & "';"
+                MySql.MiComandoSQL(sqlComando, Producto)
+                Dim restaStock = Integer.Parse(Producto.Stock) - Integer.Parse(detalleVenta.CantProducto)
+
+                If MySql.MiComandoSQL("producto", "Stock=" & restaStock, "IdProducto=" & detalleVenta.IdProducto) Then
+
+                End If
+
             Next
 
             If (StatusSQL) Then
@@ -362,6 +408,7 @@ Public Class frmVenta
                     End If
                 End If
                 MsgBox("La venta fue almacenada satisfactoriamente")
+                Me.Dispose()
             Else
                 MsgBox("La venta fallo al almacenarse")
             End If
